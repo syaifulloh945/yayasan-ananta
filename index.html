@@ -1,0 +1,1376 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yayasan Ananta Karuna Bahagia — Melayani Sepenuh Hati</title>
+<meta name="description" content="Yayasan Ananta Karuna Bahagia: yayasan sosial, kesehatan, kemanusiaan, dan keagamaan di Lampung Tengah. Bantu anak, balita, lansia, dan difabel yang sedang berjuang. Donasi sekarang.">
+<meta name="theme-color" content="#0b5e31">
+<meta property="og:title" content="Yayasan Ananta Karuna Bahagia — Melayani Sepenuh Hati">
+<meta property="og:description" content="Hadirkan harapan, kasih sayang, dan kekuatan bagi mereka yang sedang berjuang. Mari jadi #SahabatAnanta.">
+<meta property="og:image" content="assets/img/hero-penerima.webp">
+<link rel="icon" type="image/png" href="assets/img/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g-950:#06331b; --g-900:#0a4526; --g-800:#0b5e31; --g-700:#11753d; --g-600:#1f8f45; --g-500:#3fa34d;
+  --lime:#8dc63f; --lime-300:#c3e58f; --lime-100:#eef7df;
+  --navy:#1b365d; --navy-700:#24497a;
+  --cream:#f7faf2; --paper:#ffffff; --ink:#13201a; --body:#33443a; --muted:#64756a; --line:#e2eadb;
+  --warn-bg:#fff6e0; --warn:#8a5a00;
+  --radius:20px; --radius-sm:12px;
+  --shadow:0 1px 2px rgba(10,40,20,.06),0 8px 24px rgba(10,40,20,.08);
+  --shadow-lg:0 24px 60px rgba(6,51,27,.18);
+  --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:"Plus Jakarta Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--body);background:var(--cream);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{color:var(--ink);line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,5.2vw,3.9rem);font-weight:800}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:700}
+p{margin:0 0 1em}
+.serif{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:600;letter-spacing:-.01em}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.section{padding:96px 0}
+.section.tight{padding:72px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g-700);margin-bottom:14px}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--lime);border-radius:2px}
+.lead{font-size:1.1rem;color:var(--muted);max-width:640px}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}.center .eyebrow{justify-content:center}
+.sec-head{margin-bottom:48px}
+.icon{width:1.25em;height:1.25em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:.98rem;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,background .2s ease;font-family:inherit;line-height:1.2}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:linear-gradient(135deg,var(--g-700),var(--g-600));color:#fff;box-shadow:0 8px 20px rgba(17,117,61,.28)}
+.btn-primary:hover{box-shadow:0 12px 28px rgba(17,117,61,.38);transform:translateY(-1px)}
+.btn-lime{background:var(--lime);color:var(--g-950)}
+.btn-lime:hover{background:#9ed24f}
+.btn-ghost{background:#fff;color:var(--g-800);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--g-500)}
+.btn-outline-light{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.btn-outline-light:hover{background:rgba(255,255,255,.08)}
+.btn-sm{padding:10px 18px;font-size:.9rem}
+.btn-block{width:100%}
+
+/* topbar + nav */
+.topbar{background:var(--g-950);color:#cfe3d4;font-size:.82rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:8px;padding-bottom:8px}
+.topbar a{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.topbar a:hover{color:#fff}
+.topbar .tb-right{display:flex;gap:18px}
+.nav{position:sticky;top:0;z-index:50;background:rgba(247,250,242,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s, box-shadow .2s}
+.nav.scrolled{border-color:var(--line);box-shadow:0 4px 20px rgba(10,40,20,.06)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:46px;height:auto}
+.brand b{display:block;color:var(--navy);font-size:1.05rem;letter-spacing:.06em;line-height:1}
+.brand small{display:block;color:var(--g-600);font-size:.62rem;font-weight:700;letter-spacing:.2em;margin-top:3px}
+.menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.menu a{display:block;padding:8px 14px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.93rem;color:var(--body)}
+.menu a:hover,.menu a.active{background:var(--lime-100);color:var(--g-800)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;cursor:pointer;align-items:center;justify-content:center;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:64px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:720px;height:720px;background:radial-gradient(closest-side,rgba(141,198,63,.28),transparent);pointer-events:none}
+.hero::after{content:"";position:absolute;left:-200px;bottom:-260px;width:600px;height:600px;background:radial-gradient(closest-side,rgba(27,54,93,.08),transparent);pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center;position:relative;z-index:1}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:6px 14px 6px 6px;border-radius:999px;font-size:.84rem;font-weight:600;color:var(--g-800);box-shadow:var(--shadow);margin-bottom:22px}
+.pill span{background:var(--g-700);color:#fff;border-radius:999px;padding:3px 10px;font-size:.74rem;letter-spacing:.04em}
+.hero h1 .hl{color:var(--g-700)}
+.hero h1 .serif{color:var(--g-600)}
+.hero p.lead{font-size:1.15rem;margin:18px 0 30px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.trust{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;padding-top:26px;border-top:1px dashed #cfdcc6}
+.trust div{display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--muted);max-width:240px;line-height:1.35}
+.trust .ic{width:38px;height:38px;border-radius:12px;background:var(--lime-100);color:var(--g-700);display:grid;place-items:center;flex:none}
+.trust b{color:var(--ink);display:block}
+.hero-visual{position:relative}
+.hero-card{border-radius:32px;overflow:hidden;background:#e7efe0;box-shadow:var(--shadow-lg);aspect-ratio:1.18/1;position:relative}
+.hero-card img{width:100%;height:100%;object-fit:cover;object-position:62% 0%}
+.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(6,51,27,.35))}
+.float{position:absolute;background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);padding:14px 18px;display:flex;align-items:center;gap:12px;z-index:2;animation:bob 6s ease-in-out infinite}
+.float .num{font-size:1.6rem;font-weight:800;color:var(--g-700);line-height:1}
+.float small{display:block;font-size:.78rem;color:var(--muted);line-height:1.3;max-width:150px}
+.float.f1{left:-28px;bottom:48px}
+.float.f2{right:-18px;top:28px;animation-delay:-3s}
+.float .dot{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--lime-100);color:var(--g-700)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* stats */
+.stats{margin-top:-40px;position:relative;z-index:3}
+.stats-grid{background:linear-gradient(135deg,var(--g-900),var(--g-700));border-radius:28px;display:grid;grid-template-columns:repeat(4,1fr);color:#fff;box-shadow:var(--shadow-lg);overflow:hidden}
+.stat{padding:30px 28px;position:relative}
+.stat+.stat::before{content:"";position:absolute;left:0;top:24px;bottom:24px;width:1px;background:rgba(255,255,255,.14)}
+.stat .n{font-size:2.6rem;font-weight:800;line-height:1;color:#fff}
+.stat .n sup{font-size:1.2rem;color:var(--lime)}
+.stat p{margin:8px 0 0;color:#bfd8c6;font-size:.9rem;line-height:1.4}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.quote{position:relative;background:#fff;border-radius:var(--radius);padding:28px 30px 26px 30px;border-left:4px solid var(--lime);box-shadow:var(--shadow);margin-top:28px}
+.quote p{font-size:1.02rem;color:var(--body);margin:0 0 10px}
+.quote cite{font-style:normal;font-weight:700;color:var(--g-800);font-size:.9rem}
+.info-card{background:#fff;border-radius:24px;padding:10px;box-shadow:var(--shadow)}
+.info-head{background:linear-gradient(135deg,var(--navy),var(--navy-700));color:#fff;border-radius:18px;padding:22px 24px;display:flex;align-items:center;gap:16px}
+.info-head .seal{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.12);display:grid;place-items:center;color:var(--lime)}
+.info-head b{display:block;font-size:1.05rem}
+.info-head span{font-size:.85rem;color:#c9d6ea}
+.info-list{list-style:none;margin:0;padding:8px 14px 10px}
+.info-list li{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.93rem}
+.info-list li:last-child{border-bottom:0}
+.info-list span{color:var(--muted)}
+.info-list b{color:var(--ink);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:var(--lime-100);color:var(--g-800);font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px}
+
+/* vision mission */
+.vm{background:#fff}
+.vm-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:stretch}
+.vision{background:linear-gradient(160deg,var(--g-800),var(--g-950));color:#fff;border-radius:28px;padding:44px 40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:420px}
+.vision::after{content:"";position:absolute;right:-60px;bottom:-60px;width:300px;height:300px;background:url(assets/img/logo-mark.png) center/contain no-repeat;opacity:.09}
+.vision .eyebrow{color:var(--lime)}
+.vision blockquote{margin:0;font-family:Fraunces,Georgia,serif;font-style:italic;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.35;color:#fff;position:relative;z-index:1}
+.vision .mark{font-size:5rem;line-height:.6;color:var(--lime);font-family:Fraunces,serif;display:block;margin-bottom:10px}
+.mission-list{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:m}
+.mission-list li{counter-increment:m;display:flex;gap:18px;align-items:flex-start;background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:18px 22px;transition:transform .2s, border-color .2s, background .2s}
+.mission-list li:hover{transform:translateX(4px);border-color:var(--lime);background:#fff}
+.mission-list li::before{content:"0" counter(m);font-weight:800;color:var(--g-600);font-size:1.05rem;background:#fff;border:1px solid var(--line);border-radius:12px;min-width:46px;height:46px;display:grid;place-items:center}
+.mission-list p{margin:0;padding-top:10px;color:var(--body)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pillar{background:#fff;border-radius:24px;padding:28px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;border:1px solid transparent;transition:transform .25s, border-color .25s, box-shadow .25s;position:relative;overflow:hidden}
+.pillar:hover{transform:translateY(-6px);border-color:var(--lime-300);box-shadow:var(--shadow-lg)}
+.pillar .pic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;margin-bottom:20px;color:#fff}
+.pillar .pic .icon{width:28px;height:28px}
+.pillar .kat{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pillar h3{margin:4px 0 10px}
+.pillar p{font-size:.93rem;color:var(--body);flex:1}
+.pillar .link{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--g-700);background:none;border:0;padding:0;cursor:pointer;font:inherit;font-weight:700;font-size:.92rem}
+.pillar .link:hover{gap:10px}
+.c1{background:linear-gradient(135deg,#e2475b,#f07a5a)}
+.c2{background:linear-gradient(135deg,#d99a1e,#f0c040)}
+.c3{background:linear-gradient(135deg,var(--g-700),var(--lime))}
+.c4{background:linear-gradient(135deg,var(--navy),#3c78b5)}
+
+/* programs */
+.programs{background:linear-gradient(180deg,var(--cream),#eef5e6)}
+.prog-shell{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start}
+.prog-tabs{display:flex;flex-direction:column;gap:8px;position:sticky;top:96px}
+.prog-tab{display:flex;align-items:center;gap:14px;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;font:inherit;color:var(--ink);transition:all .2s}
+.prog-tab .ti{width:40px;height:40px;border-radius:12px;background:var(--lime-100);color:var(--g-700);display:grid;place-items:center;flex:none;transition:all .2s}
+.prog-tab b{display:block;font-size:.97rem}
+.prog-tab small{display:block;color:var(--muted);font-size:.8rem}
+.prog-tab:hover{border-color:var(--lime)}
+.prog-tab[aria-selected=true]{background:var(--g-800);border-color:var(--g-800);color:#fff;box-shadow:0 10px 24px rgba(11,94,49,.25)}
+.prog-tab[aria-selected=true] small{color:#bfe0c8}
+.prog-tab[aria-selected=true] .ti{background:var(--lime);color:var(--g-950)}
+.prog-panel{background:#fff;border-radius:28px;box-shadow:var(--shadow);overflow:hidden;display:none}
+.prog-panel.active{display:grid;grid-template-columns:1fr 1fr;animation:fadeUp .4s ease}
+.prog-body{padding:38px 36px;display:flex;flex-direction:column}
+.prog-body .badge{align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;background:var(--lime-100);color:var(--g-800);margin-bottom:14px}
+.prog-body h3{font-size:1.7rem;margin-bottom:12px}
+.prog-body p{color:var(--body)}
+.checks{list-style:none;padding:0;margin:4px 0 26px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.checks li{display:flex;gap:8px;align-items:flex-start;font-size:.9rem;font-weight:600;color:var(--ink)}
+.checks .icon{color:var(--g-600);margin-top:2px;width:18px;height:18px}
+.prog-body .btn{align-self:flex-start;margin-top:auto}
+.prog-photos{display:grid;gap:6px;padding:6px;background:#fff;grid-auto-rows:1fr}
+.prog-photos figure{margin:0;position:relative;overflow:hidden;border-radius:20px;min-height:200px;cursor:zoom-in}
+.prog-photos img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.prog-photos figure:hover img{transform:scale(1.05)}
+.prog-photos figcaption{position:absolute;left:10px;bottom:10px;right:10px;background:rgba(6,51,27,.72);backdrop-filter:blur(6px);color:#fff;font-size:.78rem;padding:6px 10px;border-radius:10px;font-weight:600;line-height:1.3}
+.ph-2{grid-template-columns:1fr 1fr}
+.ph-3{grid-template-columns:1fr 1fr}.ph-3 figure:first-child{grid-row:span 2}
+.ph-4{grid-template-columns:1fr 1fr}.ph-4 figure:first-child{grid-column:span 2}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+.step{background:#fff;border-radius:22px;padding:26px 22px;border:1px solid var(--line);position:relative}
+.step .sn{width:44px;height:44px;border-radius:14px;background:var(--g-800);color:#fff;font-weight:800;display:grid;place-items:center;margin-bottom:16px}
+.step h4{font-size:1.05rem;margin-bottom:6px}
+.step p{font-size:.9rem;color:var(--muted);margin:0}
+.step:not(:last-child)::after{content:"";position:absolute;top:47px;right:-21px;width:22px;height:2px;background:repeating-linear-gradient(90deg,var(--lime) 0 5px,transparent 5px 9px)}
+
+/* partners */
+.partners{background:var(--g-950);color:#d4e6d9;position:relative;overflow:hidden}
+.partners::before{content:"";position:absolute;right:-120px;top:-120px;width:480px;height:480px;border-radius:50%;background:radial-gradient(closest-side,rgba(141,198,63,.22),transparent)}
+.partners h2,.partners h3{color:#fff}
+.partners .eyebrow{color:var(--lime)}
+.partners .lead{color:#a9c4b1}
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+.p-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:28px;transition:background .2s, transform .2s}
+.p-card:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+.p-logo{height:56px;border-radius:14px;display:flex;align-items:center;padding:0 18px;font-weight:800;font-size:1.3rem;color:#fff;margin-bottom:22px;width:max-content}
+.p-card .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.p-card .row div{background:rgba(255,255,255,.06);border-radius:16px;padding:14px 16px}
+.p-card .row b{display:block;font-size:2rem;color:#fff;line-height:1}
+.p-card .row span{font-size:.8rem;color:#a9c4b1}
+.p-card p{font-size:.9rem;color:#b8cfbf;margin:0 0 16px}
+.p-card a{color:var(--lime);font-weight:700;text-decoration:none;font-size:.9rem;display:inline-flex;gap:6px;align-items:center}
+.p-card a:hover{text-decoration:underline}
+
+/* gallery */
+.gallery{columns:3 280px;column-gap:14px}
+.gallery figure{margin:0 0 14px;break-inside:avoid;border-radius:18px;overflow:hidden;position:relative;cursor:zoom-in;background:#dfe8d7}
+.gallery img{width:100%;height:auto;transition:transform .5s ease}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;inset:auto 0 0 0;padding:28px 14px 12px;color:#fff;font-size:.85rem;font-weight:600;background:linear-gradient(transparent,rgba(0,0,0,.65));opacity:0;transform:translateY(8px);transition:all .25s}
+.gallery figure:hover figcaption{opacity:1;transform:none}
+
+/* logo philosophy */
+.logo-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.logo-stage{background:#fff;border-radius:32px;padding:48px;box-shadow:var(--shadow);display:grid;place-items:center;position:relative;overflow:hidden}
+.logo-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,var(--lime-100),transparent 65%)}
+.logo-stage img{position:relative;width:min(320px,100%)}
+.phil{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.phil div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+.phil .pi{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--lime-100);color:var(--g-700)}
+.phil b{display:block;color:var(--ink);margin-bottom:2px}
+.phil span{font-size:.9rem;color:var(--muted);line-height:1.45;display:block}
+.sw{width:42px;height:42px;border-radius:12px;flex:none}
+
+/* structure */
+.struct{background:#fff}
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:64px}
+.person{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:24px 16px;text-align:center;transition:transform .2s, box-shadow .2s}
+.person:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.avatar{width:64px;height:64px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;font-weight:800;font-size:1.2rem;color:#fff;background:linear-gradient(135deg,var(--g-700),var(--lime))}
+.person.key .avatar{background:linear-gradient(135deg,var(--navy),#3c78b5)}
+.person .role{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g-600)}
+.person b{display:block;color:var(--ink);font-size:.98rem;line-height:1.3;margin-top:4px}
+.sub-title{display:flex;align-items:center;gap:14px;margin:0 0 24px}
+.sub-title h3{margin:0}
+.sub-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.org{display:flex;flex-direction:column;align-items:center;gap:0}
+.org-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative;width:100%}
+.org-line{width:2px;height:28px;background:var(--lime-300)}
+.node{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:200px;text-align:center;box-shadow:0 2px 6px rgba(10,40,20,.04)}
+.node .nh{background:linear-gradient(90deg,var(--g-600),var(--lime));color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px}
+.node .nb{padding:12px 14px;font-weight:700;color:var(--ink);font-size:.93rem}
+.node.lead-node{min-width:280px}
+.node.lead-node .nh{background:linear-gradient(90deg,var(--navy),#3c78b5)}
+.node .nb ul{list-style:none;margin:0;padding:0;font-weight:600;font-size:.88rem;color:var(--body);line-height:1.9}
+.org-row.rel .node{min-width:180px}
+
+/* cta band */
+.cta-band{position:relative;border-radius:36px;overflow:hidden;background:linear-gradient(135deg,var(--g-800),var(--g-950));color:#e3f0e6;padding:64px 56px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.cta-band::after{content:"";position:absolute;right:-80px;top:-80px;width:420px;height:420px;background:url(assets/img/logo-mark.png) center/contain no-repeat;opacity:.08}
+.cta-band h2{color:#fff}
+.cta-band .tag-h{color:var(--lime);font-weight:800;font-size:1rem;letter-spacing:.04em;margin-bottom:12px;display:block}
+.cta-band p{color:#bcd6c3;font-size:1.05rem}
+.cta-actions{display:grid;gap:12px;position:relative;z-index:1}
+.cta-tile{display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px 18px;color:#fff;text-decoration:none;cursor:pointer;font:inherit;text-align:left;width:100%;transition:background .2s}
+.cta-tile:hover{background:rgba(255,255,255,.13)}
+.cta-tile .ci{width:44px;height:44px;border-radius:12px;background:var(--lime);color:var(--g-950);display:grid;place-items:center;flex:none}
+.cta-tile b{display:block}
+.cta-tile small{color:#a9c4b1;font-size:.84rem}
+
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:18px;margin-bottom:12px;overflow:hidden;transition:border-color .2s}
+.faq details[open]{border-color:var(--lime)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 24px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.5rem;color:var(--g-600);font-weight:500;transition:transform .2s;line-height:1}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 24px 20px;margin:0;color:var(--body)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:stretch}
+.c-list{display:grid;gap:12px}
+.c-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border-radius:18px;padding:18px 20px;border:1px solid var(--line);text-decoration:none;transition:border-color .2s, transform .2s}
+a.c-item:hover{border-color:var(--lime);transform:translateX(3px)}
+.c-item .ci{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex:none;background:var(--lime-100);color:var(--g-700)}
+.c-item small{display:block;color:var(--muted);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.c-item b{color:var(--ink);font-weight:700;word-break:break-word}
+.socials{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.socials a{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--g-800);transition:all .2s}
+.socials a:hover{background:var(--g-800);color:#fff;border-color:var(--g-800)}
+.map{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-height:420px;background:#dfe8d7}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+
+/* footer */
+footer{background:var(--g-950);color:#9fbaa7;padding:72px 0 28px;margin-top:0}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:40px}
+.f-brand img{width:150px;background:#fff;border-radius:20px;padding:12px;margin-bottom:18px}
+footer h4{color:#fff;font-size:1rem;margin-bottom:16px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:.93rem}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+.f-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem}
+
+/* floating */
+.fab-wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(37,211,102,.45);transition:transform .2s}
+.fab-wa:hover{transform:scale(1.06)}
+.fab-wa svg{width:30px;height:30px}
+.mob-bar{display:none}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(6,30,16,.55);backdrop-filter:blur(4px);animation:fade .2s}
+.modal-box{position:relative;background:#fff;border-radius:28px;width:100%;max-width:560px;max-height:calc(100vh - 40px);overflow:auto;box-shadow:0 30px 80px rgba(0,0,0,.3);animation:pop .25s ease}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.m-head{position:sticky;top:0;background:#fff;z-index:2;padding:22px 26px 16px;border-bottom:1px solid var(--line)}
+.m-head h3{margin:0;font-size:1.25rem}
+.m-head p{margin:2px 0 0;font-size:.88rem;color:var(--muted)}
+.m-close{position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:12px;border:0;background:var(--cream);cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.m-close:hover{background:var(--lime-100)}
+.progress{display:flex;gap:6px;margin-top:14px}
+.progress span{flex:1;height:4px;border-radius:4px;background:var(--line);transition:background .3s}
+.progress span.on{background:var(--g-600)}
+.m-body{padding:22px 26px 26px}
+.m-step{display:none}
+.m-step.on{display:block;animation:fadeUp .3s ease}
+label.lbl{display:block;font-weight:700;color:var(--ink);font-size:.9rem;margin:18px 0 8px}
+label.lbl:first-child{margin-top:0}
+.field{width:100%;font:inherit;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);transition:border-color .2s, box-shadow .2s}
+.field:focus{outline:0;border-color:var(--g-500);box-shadow:0 0 0 4px rgba(63,163,77,.15)}
+textarea.field{min-height:84px;resize:vertical}
+.amounts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.amt{padding:12px 6px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font:inherit;font-weight:700;color:var(--ink);cursor:pointer;transition:all .15s}
+.amt:hover{border-color:var(--g-500)}
+.amt.on{background:var(--g-800);color:#fff;border-color:var(--g-800)}
+.money{position:relative;margin-top:8px}
+.money span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;color:var(--muted)}
+.money .field{padding-left:44px;font-weight:700}
+.check{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:.9rem;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--g-700)}
+.err{color:#c0392b;font-size:.85rem;margin-top:6px;display:none}
+.err.on{display:block}
+.methods{display:grid;gap:10px}
+.method{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);cursor:pointer;transition:all .15s;background:#fff;text-align:left;font:inherit;width:100%}
+.method:hover{border-color:var(--g-500)}
+.method.on{border-color:var(--g-700);background:var(--lime-100)}
+.method .bi{width:46px;height:46px;border-radius:12px;background:var(--cream);display:grid;place-items:center;font-weight:800;font-size:.8rem;color:var(--navy);flex:none;border:1px solid var(--line)}
+.method b{display:block;color:var(--ink)}
+.method small{color:var(--muted)}
+.summary{background:var(--cream);border-radius:18px;padding:16px 18px;margin-bottom:16px;border:1px solid var(--line)}
+.summary .r{display:flex;justify-content:space-between;gap:12px;padding:5px 0;font-size:.92rem}
+.summary .r span{color:var(--muted)}
+.summary .r b{color:var(--ink);text-align:right}
+.summary .total{border-top:1px dashed #cfdcc6;margin-top:8px;padding-top:12px}
+.summary .total b{font-size:1.35rem;color:var(--g-800)}
+.pay-box{border:1.5px solid var(--g-600);border-radius:18px;padding:18px;margin-bottom:14px}
+.pay-box .pb-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0}
+.pay-box .pb-row+ .pb-row{border-top:1px solid var(--line)}
+.pay-box small{display:block;color:var(--muted);font-size:.8rem}
+.pay-box b{font-size:1.15rem;color:var(--ink);letter-spacing:.02em}
+.copy{border:0;background:var(--lime-100);color:var(--g-800);font:inherit;font-weight:700;font-size:.82rem;padding:8px 12px;border-radius:10px;cursor:pointer;flex:none}
+.copy:hover{background:var(--lime-300)}
+.qris-img{width:240px;margin:6px auto 10px;border-radius:14px;border:1px solid var(--line)}
+.note{font-size:.84rem;color:var(--muted);background:var(--cream);border-radius:14px;padding:12px 14px;margin:12px 0}
+.warn{background:var(--warn-bg);color:var(--warn);border:1px solid #f3d99b;border-radius:14px;padding:12px 14px;font-size:.85rem;margin-bottom:14px;display:flex;gap:10px}
+.warn .icon{margin-top:2px}
+.m-actions{display:flex;gap:10px;margin-top:22px}
+.m-actions .btn{flex:1}
+.success{text-align:center;padding:10px 0}
+.success .ok{width:80px;height:80px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:var(--lime-100);color:var(--g-700)}
+.success .ok .icon{width:40px;height:40px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:110;background:rgba(3,15,8,.92);display:none;align-items:center;justify-content:center;padding:40px 70px}
+.lb.open{display:flex}
+.lb img{max-height:82vh;max-width:100%;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb .cap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#d6e6da;font-weight:600;font-size:.95rem;padding:0 20px}
+.lb button{position:absolute;width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.2)}
+.lb .x{top:20px;right:20px}.lb .pv{left:14px;top:50%;transform:translateY(-50%)}.lb .nx{right:14px;top:50%;transform:translateY(-50%)}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.9rem;opacity:0;pointer-events:none;transition:all .25s;z-index:200}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.float{animation:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:1080px){
+  .menu{display:none}
+  .burger{display:flex}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:#fff;padding:12px 16px 18px;border-bottom:1px solid var(--line);box-shadow:0 20px 30px rgba(0,0,0,.08)}
+  .menu.open a{padding:12px 14px}
+  .pillars{grid-template-columns:1fr 1fr}
+  .board{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(2)::after{display:none}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .section{padding:72px 0}
+  .hero{padding:36px 0 80px}
+  .hero .wrap,.about-grid,.vm-grid,.logo-grid,.faq-grid,.contact-grid,.cta-band{grid-template-columns:1fr}
+  .hero-visual{max-width:560px;margin:0 auto;width:100%}
+  .float.f1{left:-6px}.float.f2{right:-6px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3)::before{display:none}
+  .stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}
+  .prog-shell{grid-template-columns:1fr}
+  .prog-tabs{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;margin:0 -20px;padding-left:20px;padding-right:20px}
+  .prog-tab{flex:none;scroll-snap-align:start}
+  .prog-tab small{display:none}
+  .prog-panel.active{grid-template-columns:1fr}
+  .prog-photos{order:-1}
+  .p-grid{grid-template-columns:1fr}
+  .cta-band{padding:44px 28px}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .topbar .tb-left{display:none}
+  .topbar .wrap{justify-content:center}
+  .nav-cta .btn{display:none}
+  .brand b{font-size:.95rem}
+  .pillars,.steps,.board,.phil,.checks{grid-template-columns:1fr}
+  .board{grid-template-columns:1fr 1fr}
+  .board .person:first-child{grid-column:span 2}
+  .step::after{display:none}
+  .info-list li{grid-template-columns:1fr;gap:2px}
+  .prog-body{padding:28px 22px}
+  .prog-photos figure{min-height:170px}
+  .stat{padding:22px 18px}
+  .stat .n{font-size:2rem}
+  .f-grid{grid-template-columns:1fr}
+  .org-row .node,.node.lead-node{min-width:0;width:100%}
+  .org-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .org-row:first-child{grid-template-columns:1fr}
+  .org-row .node .nh{font-size:.64rem;padding:7px 6px}
+  .org-row .node .nb{font-size:.85rem;padding:10px 8px}
+  .fab-wa{bottom:84px;right:16px;width:52px;height:52px}
+  .mob-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));gap:10px;box-shadow:0 -8px 24px rgba(0,0,0,.06)}
+  .mob-bar .btn{flex:1;padding:13px}
+  footer{padding-bottom:96px}
+  .lb{padding:20px 10px}
+  .lb .pv,.lb .nx{top:auto;bottom:60px;transform:none}
+  .amounts{grid-template-columns:repeat(2,1fr)}
+  .modal{padding:0;align-items:flex-end}
+  .modal-box{border-radius:24px 24px 0 0;max-height:94vh}
+  .float{padding:10px 12px}
+  .float .num{font-size:1.25rem}
+  .float .dot{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ikon -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-stetho" viewBox="0 0 24 24"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></symbol>
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+    <symbol id="i-hands" viewBox="0 0 24 24"><path d="M11 12h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 14"/><path d="m7 18 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 13 6 6"/></symbol>
+    <symbol id="i-mosque" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21v-8a7 7 0 0 1 14 0v8"/><path d="M12 6V3"/><path d="M10 21v-4a2 2 0 0 1 4 0v4"/><path d="M3 21V10M21 21V10"/></symbol>
+    <symbol id="i-baby" viewBox="0 0 24 24"><path d="M9 12h.01M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></symbol>
+    <symbol id="i-elder" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2"/><path d="M10 22v-6l-2-3 2-5h4l1 4 3 1"/><path d="M18 13v9"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+    <symbol id="i-access" viewBox="0 0 24 24"><circle cx="16" cy="4" r="1"/><path d="m18 19 1-7-6 1"/><path d="m5 8 3-3 5.5 3-2.36 3.5"/><path d="M4.24 14.5a5 5 0 0 0 6.88 6"/><path d="M13.76 17.5a5 5 0 0 0-6.88-6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l8 5H4z"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-hand-heart" viewBox="0 0 24 24"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></symbol>
+    <symbol id="i-feather" viewBox="0 0 24 24"><path d="M12.67 19a2 2 0 0 0 1.42-.59l6.31-6.31a6 6 0 0 0-8.5-8.5L5.6 9.92A2 2 0 0 0 5 11.33V19z"/><path d="M16 8 2 22M17.5 15H9"/></symbol>
+    <symbol id="i-bird" viewBox="0 0 24 24"><path d="M16 7h.01"/><path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20"/><path d="m20 7 2 .5-2 .5M10 18v3M14 17.75V21M7 18a6 6 0 0 0 3.84-10.61"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></symbol>
+    <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 5 6 5"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9.5 9.5c0 2.8 2.2 5 5 5l1-1.5-2-1-1 .8a3 3 0 0 1-1.3-1.3l.8-1-1-2z"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">Terdaftar di Kemenkumham · SK AHU-0004149.AH.01.04 Tahun 2026</div>
+    <div class="tb-right">
+      <a href="#" data-wa="Assalamualaikum, saya ingin bertanya tentang Yayasan Ananta Karuna Bahagia."><svg class="icon"><use href="#i-phone"/></svg> 0821-8153-973</a>
+      <a href="mailto:yayasananantakarunabahagia@gmail.com"><svg class="icon"><use href="#i-mail"/></svg> Email</a>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#beranda" class="brand" aria-label="Yayasan Ananta Karuna Bahagia — beranda">
+      <img src="assets/img/logo-mark.png" alt="Logo Yayasan Ananta Karuna Bahagia" width="46" height="32">
+      <span><b>ANANTA</b><small>KARUNA BAHAGIA</small></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#visi-misi">Visi &amp; Misi</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#dampak">Dampak</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#struktur">Struktur</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn btn-primary btn-sm" data-donate><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button>
+      <button class="burger" id="burger" aria-label="Buka menu" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<header class="hero" id="beranda">
+  <div class="wrap">
+    <div class="rv">
+      <div class="pill"><span>#SahabatAnanta</span> Melayani Sepenuh Hati</div>
+      <h1>Menghadirkan <span class="hl">harapan</span> bagi mereka yang sedang <span class="serif">berjuang.</span></h1>
+      <p class="lead">Yayasan Ananta Karuna Bahagia mendampingi anak, balita, lansia, dan saudara difabel yang sedang berjuang melawan sakit dan keterbatasan. Karena ada cinta dalam setiap kebaikan.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" data-donate><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button>
+        <a href="#program" class="btn btn-ghost">Lihat Program <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="trust">
+        <div><span class="ic"><svg class="icon"><use href="#i-shield"/></svg></span><span><b>Resmi &amp; legal</b>Terdaftar di Kemenkumham RI</span></div>
+        <div><span class="ic"><svg class="icon"><use href="#i-pin"/></svg></span><span><b>Lampung Tengah</b>Bandar Jaya Barat, Terbanggi Besar</span></div>
+      </div>
+    </div>
+    <div class="hero-visual rv">
+      <div class="hero-card"><img src="assets/img/hero-penerima.webp" alt="Relawan Yayasan Ananta Karuna Bahagia bersama para penerima manfaat dan paket bantuan" fetchpriority="high"></div>
+      <div class="float f2"><span class="dot"><svg class="icon"><use href="#i-users"/></svg></span><div><div class="num">70+</div><small>penerima manfaat dibantu lewat galang dana</small></div></div>
+      <div class="float f1"><span class="dot"><svg class="icon"><use href="#i-hand-heart"/></svg></span><div><div class="num">32</div><small>campaign kebaikan sedang berjalan</small></div></div>
+    </div>
+  </div>
+</header>
+
+<section class="stats" aria-label="Capaian">
+  <div class="wrap">
+    <div class="stats-grid rv">
+      <div class="stat"><div class="n"><span data-count="70">0</span><sup>+</sup></div><p>Penerima manfaat diajukan lewat platform galang dana</p></div>
+      <div class="stat"><div class="n"><span data-count="32">0</span></div><p>Campaign donasi sedang berjalan</p></div>
+      <div class="stat"><div class="n"><span data-count="4">0</span></div><p>Pilar program: kesehatan, ekonomi, sosial, keagamaan</p></div>
+      <div class="stat"><div class="n"><span data-count="3">0</span></div><p>Platform mitra: Kitabisa, Raihmimpi, Beridampak</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section class="section" id="tentang">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <span class="eyebrow">Tentang Kami</span>
+      <h2>Lahir dari semangat <span class="serif" style="color:var(--g-600)">kepedulian</span>, kasih, dan kemanusiaan.</h2>
+      <p>Kepedulian terhadap sesama merupakan nilai penting dalam kehidupan bermasyarakat. Masih banyak masyarakat yang membutuhkan perhatian, dukungan, dan bantuan dalam menghadapi berbagai keterbatasan.</p>
+      <p>Berangkat dari semangat itu, Yayasan Ananta Karuna Bahagia hadir sebagai lembaga sosial yang memberikan manfaat serta menyalurkan bantuan kepada masyarakat yang membutuhkan. Yayasan bergerak di bidang <b>kesehatan, sosial, kemanusiaan, dan keagamaan</b>.</p>
+      <p>Melalui berbagai program dan kegiatan sosial, kami berkomitmen meningkatkan kesejahteraan masyarakat, memperkuat kebersamaan, serta menumbuhkan semangat saling membantu dan berbagi secara berkelanjutan.</p>
+      <div class="quote">
+        <p>“Kami berharap profil ini dapat memperkenalkan visi, misi, dan kegiatan yayasan, sekaligus membuka peluang kerja sama untuk memberikan manfaat yang lebih luas bagi masyarakat.”</p>
+        <cite>— Pengurus Yayasan Ananta Karuna Bahagia</cite>
+      </div>
+    </div>
+    <aside class="info-card rv" aria-label="Informasi yayasan">
+      <div class="info-head">
+        <span class="seal"><svg class="icon" style="width:28px;height:28px"><use href="#i-shield"/></svg></span>
+        <div><b>Legalitas Yayasan</b><span>Terdaftar resmi di Kemenkumham RI</span></div>
+      </div>
+      <ul class="info-list">
+        <li><span>Nama</span><b>Yayasan Ananta Karuna Bahagia</b></li>
+        <li><span>Bentuk</span><b>Yayasan</b></li>
+        <li><span>Didirikan</span><b>10 Februari 2026</b></li>
+        <li><span>Nomor SK</span><b>AHU-0004149.AH.01.04 Tahun 2026</b></li>
+        <li><span>Bidang</span><div class="tags"><span class="tag">Kesehatan</span><span class="tag">Sosial</span><span class="tag">Kemanusiaan</span><span class="tag">Keagamaan</span></div></li>
+        <li><span>Sekretariat</span><b>Lingkungan IV, Kel. Bandar Jaya Barat, Kec. Terbanggi Besar, Kab. Lampung Tengah, Lampung 34163</b></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- VISI MISI -->
+<section class="section vm" id="visi-misi">
+  <div class="wrap vm-grid">
+    <div class="vision rv">
+      <div>
+        <span class="eyebrow">Visi Kami</span>
+        <span class="mark">“</span>
+        <blockquote>Menjadi yayasan yang menghadirkan harapan, kasih sayang, kepedulian dan kekuatan bagi anak dan balita yang sedang berjuang melawan sakit demi masa depan yang lebih baik.</blockquote>
+      </div>
+      <div style="position:relative;z-index:1;margin-top:28px"><button class="btn btn-lime" data-donate="medis-anak"><svg class="icon"><use href="#i-heart"/></svg> Bantu Anak Pejuang Sakit</button></div>
+    </div>
+    <div class="rv">
+      <span class="eyebrow">Misi Kami</span>
+      <h2 style="margin-bottom:22px">Lima langkah kami untuk mereka</h2>
+      <ol class="mission-list">
+        <li><p>Memberikan bantuan dan pendampingan bagi anak dan balita yang sedang berjuang melawan sakit.</p></li>
+        <li><p>Menghadirkan kasih sayang, perhatian, dan dukungan moral untuk memperkuat semangat anak dan balita selama masa pengobatan.</p></li>
+        <li><p>Mendukung keluarga anak dan balita agar tetap kuat dan berdaya dalam mendampingi proses penyembuhan.</p></li>
+        <li><p>Mengajak masyarakat untuk berperan aktif dalam menumbuhkan kepedulian terhadap anak dan balita pejuang sakit.</p></li>
+        <li><p>Berkontribusi dalam menciptakan masa depan yang lebih baik bagi anak dan balita melalui bantuan yang berkelanjutan.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PILAR -->
+<section class="section" id="pilar">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Pilar Program</span>
+      <h2>Empat pilar, satu tujuan: <span class="serif" style="color:var(--g-600)">kebaikan yang menyeluruh</span></h2>
+      <p class="lead">Setiap pilar adalah cara kita menjadi “teman” bagi sesama, sesuai kebutuhan yang paling mendesak.</p>
+    </div>
+    <div class="pillars">
+      <article class="pillar rv">
+        <div class="pic c1"><svg class="icon"><use href="#i-stetho"/></svg></div>
+        <span class="kat">Kesehatan</span>
+        <h3>Teman Sembuh</h3>
+        <p>Penggalangan dana online, bantuan biaya berobat, pendampingan di rumah sakit, layanan antar-jemput pasien, dan edukasi kesehatan.</p>
+        <button class="link" data-donate="teman-sembuh">Dukung pilar ini <svg class="icon"><use href="#i-arrow"/></svg></button>
+      </article>
+      <article class="pillar rv">
+        <div class="pic c2"><svg class="icon"><use href="#i-sprout"/></svg></div>
+        <span class="kat">Ekonomi</span>
+        <h3>Teman Peduli</h3>
+        <p>Aksi kebaikan sebagai langkah mewujudkan keberdayaan dan kemandirian ekonomi masyarakat.</p>
+        <button class="link" data-donate="teman-peduli">Dukung pilar ini <svg class="icon"><use href="#i-arrow"/></svg></button>
+      </article>
+      <article class="pillar rv">
+        <div class="pic c3"><svg class="icon"><use href="#i-hands"/></svg></div>
+        <span class="kat">Sosial</span>
+        <h3>Teman Berbagi</h3>
+        <p>Aksi kebaikan untuk memberikan dukungan dan solusi terhadap isu sosial yang berkembang di masyarakat.</p>
+        <button class="link" data-donate="teman-berbagi">Dukung pilar ini <svg class="icon"><use href="#i-arrow"/></svg></button>
+      </article>
+      <article class="pillar rv">
+        <div class="pic c4"><svg class="icon"><use href="#i-mosque"/></svg></div>
+        <span class="kat">Keagamaan</span>
+        <h3>Teman Masjid</h3>
+        <p>Gerakan dakwah untuk menguatkan pemahaman Islam di pelosok negeri: pembangunan/renovasi masjid, safari dakwah, dan kegiatan keagamaan lainnya.</p>
+        <button class="link" data-donate="teman-masjid">Dukung pilar ini <svg class="icon"><use href="#i-arrow"/></svg></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section programs" id="program">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Program Bantuan</span>
+      <h2>Mereka yang sedang kami dampingi</h2>
+      <p class="lead">Kisah nyata dari lapangan. Pilih program untuk melihat siapa yang dibantu, lalu salurkan kebaikan Anda langsung ke program tersebut.</p>
+    </div>
+    <div class="prog-shell">
+      <div class="prog-tabs" role="tablist" aria-label="Daftar program">
+        <button class="prog-tab" role="tab" aria-selected="true" aria-controls="p-medis-anak" id="t-medis-anak"><span class="ti"><svg class="icon"><use href="#i-baby"/></svg></span><span><b>Medis Anak</b><small>Pengobatan, operasi, terapi</small></span></button>
+        <button class="prog-tab" role="tab" aria-selected="false" aria-controls="p-medis-dewasa" id="t-medis-dewasa"><span class="ti"><svg class="icon"><use href="#i-bed"/></svg></span><span><b>Medis Dewasa</b><small>Biaya perawatan kesehatan</small></span></button>
+        <button class="prog-tab" role="tab" aria-selected="false" aria-controls="p-lansia" id="t-lansia"><span class="ti"><svg class="icon"><use href="#i-elder"/></svg></span><span><b>Pejuang Nafkah Lansia</b><small>Lansia yang masih bekerja</small></span></button>
+        <button class="prog-tab" role="tab" aria-selected="false" aria-controls="p-sebatangkara" id="t-sebatangkara"><span class="ti"><svg class="icon"><use href="#i-home"/></svg></span><span><b>Lansia Sebatangkara</b><small>Hidup sendiri &amp; kesulitan</small></span></button>
+        <button class="prog-tab" role="tab" aria-selected="false" aria-controls="p-difabel" id="t-difabel"><span class="ti"><svg class="icon"><use href="#i-access"/></svg></span><span><b>Difabel</b><small>Alat bantu &amp; kemandirian</small></span></button>
+        <button class="prog-tab" role="tab" aria-selected="false" aria-controls="p-komunitas" id="t-komunitas"><span class="ti"><svg class="icon"><use href="#i-users"/></svg></span><span><b>Komunitas</b><small>Kegiatan bersama keluarga</small></span></button>
+      </div>
+      <div>
+        <article class="prog-panel active" id="p-medis-anak" role="tabpanel" aria-labelledby="t-medis-anak">
+          <div class="prog-body">
+            <span class="badge">Teman Sembuh · Kesehatan</span>
+            <h3>Bantuan Medis Anak</h3>
+            <p>Menyediakan bantuan penanganan medis dan pendampingan keluarga bagi anak-anak kurang mampu agar mereka dapat sembuh, tumbuh sehat, dan meraih masa depan yang lebih baik.</p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg>Pengobatan</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Operasi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Terapi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Transportasi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Kebutuhan penunjang</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Pendampingan keluarga</li>
+            </ul>
+            <button class="btn btn-primary" data-donate="medis-anak"><svg class="icon"><use href="#i-heart"/></svg> Donasi untuk Medis Anak</button>
+          </div>
+          <div class="prog-photos ph-2">
+            <figure data-lb><img src="assets/img/medis-anak-tangguh.webp" alt="Dek Tangguh, pejuang hydrocephalus, sedang disuapi di ranjang rumah sakit" loading="lazy"><figcaption>Dek Tangguh · Hydrocephalus</figcaption></figure>
+            <figure data-lb><img src="assets/img/medis-anak-gilang.webp" alt="Gilang, pejuang kanker leher, didampingi ayahnya" loading="lazy"><figcaption>Gilang · Kanker leher</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="prog-panel" id="p-medis-dewasa" role="tabpanel" aria-labelledby="t-medis-dewasa">
+          <div class="prog-body">
+            <span class="badge">Teman Sembuh · Kesehatan</span>
+            <h3>Bantuan Medis Dewasa</h3>
+            <p>Menyediakan bantuan biaya perawatan kesehatan serta pendampingan moral bagi masyarakat dewasa kurang mampu agar dapat pulih dan kembali beraktivitas dengan baik.</p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg>Pengobatan</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Operasi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Terapi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Transportasi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Kebutuhan penunjang</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Pendampingan moral</li>
+            </ul>
+            <button class="btn btn-primary" data-donate="medis-dewasa"><svg class="icon"><use href="#i-heart"/></svg> Donasi untuk Medis Dewasa</button>
+          </div>
+          <div class="prog-photos ph-2">
+            <figure data-lb><img src="assets/img/medis-dewasa-marliyah.webp" alt="Bu Marliyah, pejuang kanker usus, terbaring di rumah sakit ditemani suaminya" loading="lazy"><figcaption>Bu Marliyah · Kanker usus</figcaption></figure>
+            <figure data-lb><img src="assets/img/medis-dewasa-sani.webp" alt="Bu Sani, korban penyiraman air keras, sedang dirawat" loading="lazy"><figcaption>Bu Sani · Korban penyiraman air keras</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="prog-panel" id="p-lansia" role="tabpanel" aria-labelledby="t-lansia">
+          <div class="prog-body">
+            <span class="badge">Teman Peduli · Ekonomi</span>
+            <h3>Pejuang Nafkah Lansia</h3>
+            <p>Hadir untuk membantu meringankan beban para lansia yang masih harus bekerja di usia senja, agar mereka dapat menjalani hari tua dengan lebih layak, aman, dan sejahtera.</p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg>Kebutuhan pokok</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Modal &amp; kemandirian</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Kunjungan rutin</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Dukungan moral</li>
+            </ul>
+            <button class="btn btn-primary" data-donate="lansia"><svg class="icon"><use href="#i-heart"/></svg> Donasi untuk Lansia</button>
+          </div>
+          <div class="prog-photos ph-3">
+            <figure data-lb><img src="assets/img/lansia-1.webp" alt="Nenek pejuang nafkah mengumpulkan pelepah daun kelapa" loading="lazy"><figcaption>Mengumpulkan lidi di usia senja</figcaption></figure>
+            <figure data-lb><img src="assets/img/lansia-2.webp" alt="Nenek merapikan lidi untuk dijadikan sapu" loading="lazy"><figcaption>Membuat sapu lidi</figcaption></figure>
+            <figure data-lb><img src="assets/img/lansia-3.webp" alt="Nenek menjual sapu lidi kepada warga" loading="lazy"><figcaption>Menjajakan hasil kerja</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="prog-panel" id="p-sebatangkara" role="tabpanel" aria-labelledby="t-sebatangkara">
+          <div class="prog-body">
+            <span class="badge">Teman Berbagi · Sosial</span>
+            <h3>Lansia Sebatangkara</h3>
+            <p>Menyediakan kebutuhan pokok, layanan kesehatan, dan dukungan moral bagi masyarakat yang hidup sendiri dan kesulitan ekonomi, agar mereka merasa diperhatikan dan memiliki harapan.</p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg>Kebutuhan pokok</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Layanan kesehatan</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Dukungan moral</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Hunian lebih layak</li>
+            </ul>
+            <button class="btn btn-primary" data-donate="sebatangkara"><svg class="icon"><use href="#i-heart"/></svg> Donasi untuk Lansia Sebatangkara</button>
+          </div>
+          <div class="prog-photos ph-2">
+            <figure data-lb><img src="assets/img/sebatangkara-1.webp" alt="Bu Sani, lansia sebatangkara, tidur di gubuk beratap terpal" loading="lazy"><figcaption>Bu Sani · Lansia sebatangkara</figcaption></figure>
+            <figure data-lb><img src="assets/img/sebatangkara-2.webp" alt="Pak Suprihatin, lansia sebatangkara, menjual telur di pinggir jalan" loading="lazy"><figcaption>Pak Suprihatin · Lansia sebatangkara</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="prog-panel" id="p-difabel" role="tabpanel" aria-labelledby="t-difabel">
+          <div class="prog-body">
+            <span class="badge">Teman Berbagi · Sosial</span>
+            <h3>Bantuan Difabel</h3>
+            <p>Menyediakan alat bantu, terapi, bantuan kebutuhan dasar, dan pelatihan kemandirian bagi masyarakat difabel kurang mampu agar dapat hidup mandiri, bermartabat, dan memiliki kesempatan yang setara.</p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg>Alat bantu</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Terapi</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Kebutuhan dasar</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Pelatihan kemandirian</li>
+            </ul>
+            <button class="btn btn-primary" data-donate="difabel"><svg class="icon"><use href="#i-heart"/></svg> Donasi untuk Difabel</button>
+          </div>
+          <div class="prog-photos ph-3">
+            <figure data-lb><img src="assets/img/difabel-3.webp" alt="Mbah Rasman, difabel, berjalan dengan tongkat di pinggir jalan" loading="lazy"><figcaption>Mbah Rasman · Difabel</figcaption></figure>
+            <figure data-lb><img src="assets/img/difabel-1.webp" alt="Pak Suprihatin berjalan dengan tongkat membawa pisang untuk dijual" loading="lazy"><figcaption>Pak Suprihatin · Difabel sebatangkara</figcaption></figure>
+            <figure data-lb><img src="assets/img/difabel-2.webp" alt="Pak Suprihatin duduk di kursi di rumahnya" loading="lazy"><figcaption>Pak Suprihatin di rumahnya</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="prog-panel" id="p-komunitas" role="tabpanel" aria-labelledby="t-komunitas">
+          <div class="prog-body">
+            <span class="badge">Teman Berbagi · Sosial</span>
+            <h3>Program Komunitas</h3>
+            <p>Kegiatan bersama komunitas anak berkebutuhan khusus dan keluarganya: silaturahmi, edukasi kesehatan bersama dokter spesialis, serta berbagi paket bantuan, agar keluarga tidak berjuang sendirian.</p>
+            <ul class="checks">
+              <li><svg class="icon"><use href="#i-check"/></svg>Silaturahmi keluarga</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Edukasi kesehatan</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Paket bantuan</li>
+              <li><svg class="icon"><use href="#i-check"/></svg>Dukungan sesama orang tua</li>
+            </ul>
+            <button class="btn btn-primary" data-donate="komunitas"><svg class="icon"><use href="#i-heart"/></svg> Donasi untuk Komunitas</button>
+          </div>
+          <div class="prog-photos ph-4">
+            <figure data-lb><img src="assets/img/komunitas-1.webp" alt="Kegiatan bersama komunitas anak dan para ibu di sebuah pendopo" loading="lazy"><figcaption>Kebersamaan komunitas</figcaption></figure>
+            <figure data-lb><img src="assets/img/komunitas-3.webp" alt="Seorang anak peserta kegiatan komunitas" loading="lazy"><figcaption>Senyum peserta</figcaption></figure>
+            <figure data-lb><img src="assets/img/komunitas-4.webp" alt="Anak peserta kegiatan komunitas tersenyum" loading="lazy"><figcaption>Ceria bersama</figcaption></figure>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARA DONASI -->
+<section class="section tight" id="cara-donasi">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Cara Berdonasi</span>
+      <h2>Mudah, cepat, dan langsung tersalurkan</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="sn">1</div><h4>Pilih program</h4><p>Tentukan program yang ingin Anda bantu, atau pilih donasi umum.</p></div>
+      <div class="step rv"><div class="sn">2</div><h4>Isi nominal</h4><p>Pilih nominal donasi dan tuliskan doa terbaik Anda.</p></div>
+      <div class="step rv"><div class="sn">3</div><h4>Transfer / QRIS</h4><p>Bayar melalui rekening resmi yayasan atau scan QRIS.</p></div>
+      <div class="step rv"><div class="sn">4</div><h4>Konfirmasi WhatsApp</h4><p>Kirim konfirmasi, tim kami akan mencatat dan membalas Anda.</p></div>
+    </div>
+    <div class="center rv" style="margin-top:36px"><button class="btn btn-primary" data-donate><svg class="icon"><use href="#i-heart"/></svg> Mulai Donasi</button></div>
+  </div>
+</section>
+
+<!-- DAMPAK / KOLABORASI -->
+<section class="section partners" id="dampak">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Kolaborasi Platform</span>
+      <h2>Bersama platform galang dana, kebaikan menjangkau lebih luas</h2>
+      <p class="lead">Kami mengajukan dan mendampingi penerima manfaat, baik kategori medis maupun non-medis, melalui platform galang donasi online terpercaya.</p>
+    </div>
+    <div class="p-grid">
+      <article class="p-card rv">
+        <div class="p-logo" style="background:#1d9be3">Kitabisa</div>
+        <h3>Kitabisa.com</h3>
+        <div class="row"><div><b data-count="40">0</b><span>penerima manfaat</span></div><div><b data-count="19">0</b><span>campaign berjalan</span></div></div>
+        <p>Kategori medis dan non-medis.</p>
+        <a href="https://kitabisa.com" target="_blank" rel="noopener">Kunjungi Kitabisa <svg class="icon"><use href="#i-ext"/></svg></a>
+      </article>
+      <article class="p-card rv">
+        <div class="p-logo" style="background:#f28b1e">Raihmimpi</div>
+        <h3>Raihmimpi.id</h3>
+        <div class="row"><div><b data-count="15">0</b><span>penerima manfaat</span></div><div><b data-count="9">0</b><span>campaign berjalan</span></div></div>
+        <p>Kategori medis dan non-medis.</p>
+        <a href="https://raihmimpi.id" target="_blank" rel="noopener">Kunjungi Raihmimpi <svg class="icon"><use href="#i-ext"/></svg></a>
+      </article>
+      <article class="p-card rv">
+        <div class="p-logo" style="background:#7a4fd1">Beridampak</div>
+        <h3>Beridampak.com</h3>
+        <div class="row"><div><b data-count="15">0</b><span>penerima manfaat</span></div><div><b data-count="4">0</b><span>campaign berjalan</span></div></div>
+        <p>Kategori medis dan non-medis.</p>
+        <a href="https://beridampak.com" target="_blank" rel="noopener">Kunjungi Beridampak <svg class="icon"><use href="#i-ext"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALERI -->
+<section class="section" id="galeri">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Galeri Kegiatan</span>
+      <h2>Jejak kebaikan di lapangan</h2>
+      <p class="lead">Penyaluran bantuan, kunjungan ke rumah penerima manfaat, hingga silaturahmi dan edukasi kesehatan bersama dokter spesialis.</p>
+    </div>
+    <div class="gallery rv" id="gallery">
+      <figure data-lb><img src="assets/img/kegiatan-7.webp" alt="Penyerahan paket bantuan kepada para ibu dan anak di pendopo" loading="lazy"><figcaption>Penyerahan paket bantuan</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-2.webp" alt="Relawan berkunjung ke rumah keluarga penerima manfaat" loading="lazy"><figcaption>Kunjungan ke rumah penerima manfaat</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-8.webp" alt="Relawan bersama dokter dalam acara silaturahmi dan edukasi kesehatan" loading="lazy"><figcaption>Silaturahmi &amp; edukasi kesehatan bersama dokter spesialis</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-1.webp" alt="Relawan bersama penerima manfaat di sebuah minimarket" loading="lazy"><figcaption>Belanja kebutuhan untuk penerima manfaat</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-3.webp" alt="Relawan duduk bersama keluarga penerima manfaat di rumahnya" loading="lazy"><figcaption>Mendengar langsung cerita keluarga</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-6.webp" alt="Acara silaturahmi dan edukasi kesehatan bersama komunitas" loading="lazy"><figcaption>Edukasi kesehatan untuk keluarga</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-4.webp" alt="Relawan bersama keluarga penerima manfaat" loading="lazy"><figcaption>Bersama keluarga penerima manfaat</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-5.webp" alt="Relawan bersama warga lansia di depan rumah" loading="lazy"><figcaption>Kunjungan lansia</figcaption></figure>
+      <figure data-lb><img src="assets/img/kegiatan-9.webp" alt="Relawan menyerahkan paket bantuan di rumah warga" loading="lazy"><figcaption>Penyaluran paket bantuan</figcaption></figure>
+      <figure data-lb><img src="assets/img/komunitas-2.webp" alt="Anak-anak peserta kegiatan komunitas" loading="lazy"><figcaption>Kegiatan komunitas anak</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFI LOGO -->
+<section class="section tight" id="logo" style="background:#fff">
+  <div class="wrap logo-grid">
+    <div class="logo-stage rv"><img src="assets/img/logo.png" alt="Logo Yayasan Ananta Karuna Bahagia: burung bersayap hijau, tunas daun, dan sepasang tangan" loading="lazy"></div>
+    <div class="rv">
+      <span class="eyebrow">Filosofi Logo</span>
+      <h2 style="margin-bottom:24px">Setiap unsur membawa makna</h2>
+      <div class="phil">
+        <div><span class="pi"><svg class="icon"><use href="#i-hands"/></svg></span><span><b>Tangan</b><span>Wujud kepedulian dan pertolongan.</span></span></div>
+        <div><span class="pi"><svg class="icon"><use href="#i-feather"/></svg></span><span><b>Sayap</b><span>Perlindungan dan harapan untuk bangkit.</span></span></div>
+        <div><span class="pi"><svg class="icon"><use href="#i-leaf"/></svg></span><span><b>Tunas / Daun</b><span>Kehidupan, pertumbuhan, dan masa depan.</span></span></div>
+        <div><span class="pi"><svg class="icon"><use href="#i-bird"/></svg></span><span><b>Burung</b><span>Keberanian dan semangat untuk membawa perubahan.</span></span></div>
+        <div><span class="sw" style="background:var(--navy)"></span><span><b>Biru</b><span>Kepercayaan dan ketulusan.</span></span></div>
+        <div><span class="sw" style="background:linear-gradient(135deg,var(--g-600),var(--lime))"></span><span><b>Hijau</b><span>Kehidupan dan harapan.</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUKTUR -->
+<section class="section struct" id="struktur" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Struktur Yayasan</span>
+      <h2>Orang-orang di balik setiap kebaikan</h2>
+    </div>
+
+    <div class="sub-title rv"><h3>Pengurus Yayasan</h3></div>
+    <div class="board">
+      <div class="person key rv"><div class="avatar">DA</div><span class="role">Pembina</span><b>Devi Agung Jaya Mardiyanto</b></div>
+      <div class="person key rv"><div class="avatar">DT</div><span class="role">Ketua</span><b>Dela Trinengsih</b></div>
+      <div class="person rv"><div class="avatar">AS</div><span class="role">Sekretaris</span><b>Adi Susanto</b></div>
+      <div class="person rv"><div class="avatar">NF</div><span class="role">Bendahara</span><b>Nurul Febriana</b></div>
+      <div class="person rv"><div class="avatar">HW</div><span class="role">Pengawas</span><b>Heru Wahyudi</b></div>
+    </div>
+
+    <div class="sub-title rv"><h3>Tim Pelaksana</h3></div>
+    <div class="org rv">
+      <div class="org-row"><div class="node lead-node"><div class="nh">Ketua Pelaksana</div><div class="nb">Renno Agus Susanto, S.T., M.M.</div></div></div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div class="node"><div class="nh">Staf Administrasi</div><div class="nb">Winda Istiana, S.T.</div></div>
+        <div class="node"><div class="nh">Content Creator</div><div class="nb">Nadia Firdausi Ahla</div></div>
+        <div class="node"><div class="nh">Staf Administrasi Umum</div><div class="nb">Rama Sona, S.Kom.</div></div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div class="node"><div class="nh">Koordinator</div><div class="nb">Muhammad Romdan</div></div>
+        <div class="node"><div class="nh">Koordinator</div><div class="nb">Ninuk</div></div>
+        <div class="node"><div class="nh">Koordinator</div><div class="nb">Asmila</div></div>
+        <div class="node"><div class="nh">Koordinator</div><div class="nb">Rahman</div></div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-row rel">
+        <div class="node"><div class="nh">Relawan</div><div class="nb"><ul><li>Dwi Andika</li><li>Fitri Handayani</li><li>Surmini</li></ul></div></div>
+        <div class="node"><div class="nh">Relawan</div><div class="nb"><ul><li>Rangga Setiawan</li><li>Olva Noviana</li><li>Rohmawati</li></ul></div></div>
+        <div class="node"><div class="nh">Relawan</div><div class="nb"><ul><li>Murni Kurnia</li><li>Andi Saputra</li><li>Rudi Hartono</li></ul></div></div>
+        <div class="node"><div class="nh">Relawan</div><div class="nb"><ul><li>Putri</li><li>Resta</li><li>Ajeng</li></ul></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AKSI KEBAIKAN -->
+<section class="section" id="aksi">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <div style="position:relative;z-index:1">
+        <span class="tag-h">#SahabatAnanta · #MelayaniSepenuhHati</span>
+        <h2>Karena ada cinta dalam setiap kebaikan.</h2>
+        <p>Ananta Karuna Bahagia adalah ajakan untuk kita, kamu, mereka, dan semua individu yang terhubung menjadi teman dalam melakukan aksi kebaikan kepada sesama, dilandasi rasa cinta dan kepedulian. Setiap interaksi kebaikan akan menghadirkan senyum kebahagiaan dan ketulusan.</p>
+      </div>
+      <div class="cta-actions">
+        <button class="cta-tile" data-donate><span class="ci"><svg class="icon"><use href="#i-heart"/></svg></span><span><b>Berdonasi</b><small>Salurkan bantuan untuk program pilihan Anda</small></span></button>
+        <button class="cta-tile" data-form="relawan"><span class="ci"><svg class="icon"><use href="#i-users"/></svg></span><span><b>Jadi Relawan</b><small>Bergabung bersama tim di lapangan</small></span></button>
+        <button class="cta-tile" data-form="ajukan"><span class="ci"><svg class="icon"><use href="#i-file"/></svg></span><span><b>Ajukan Penerima Manfaat</b><small>Kenal seseorang yang butuh bantuan? Kabari kami</small></span></button>
+        <button class="cta-tile" data-form="kerjasama"><span class="ci"><svg class="icon"><use href="#i-hand-heart"/></svg></span><span><b>Kerja Sama / CSR</b><small>Kolaborasi lembaga, perusahaan, dan komunitas</small></span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section tight" id="faq">
+  <div class="wrap faq-grid">
+    <div class="rv">
+      <span class="eyebrow">Tanya Jawab</span>
+      <h2>Pertanyaan seputar donasi</h2>
+      <p class="lead">Belum menemukan jawaban? Tim kami siap membantu melalui WhatsApp.</p>
+      <a href="#" class="btn btn-ghost" data-wa="Assalamualaikum, saya ingin bertanya seputar donasi di Yayasan Ananta Karuna Bahagia."><svg class="icon"><use href="#i-wa"/></svg> Tanya via WhatsApp</a>
+    </div>
+    <div class="faq rv">
+      <details open><summary>Ke mana donasi saya disalurkan?</summary><p>Donasi disalurkan sesuai program yang Anda pilih: Medis Anak, Medis Dewasa, Pejuang Nafkah Lansia, Lansia Sebatangkara, Difabel, Komunitas, atau pilar Teman Sembuh, Teman Peduli, Teman Berbagi, dan Teman Masjid. Jika memilih Donasi Umum, dana dialokasikan ke kebutuhan yang paling mendesak.</p></details>
+      <details><summary>Bagaimana saya tahu donasi saya sudah diterima?</summary><p>Setelah transfer, tekan tombol “Konfirmasi via WhatsApp” di formulir donasi. Pesan konfirmasi berisi rincian donasi Anda akan terkirim ke admin yayasan, dan tim kami akan membalas setelah dana tercatat.</p></details>
+      <details><summary>Apa itu kode unik pada nominal transfer?</summary><p>Tiga digit terakhir nominal (misalnya Rp100.<b>127</b>) membantu admin mencocokkan transfer Anda dengan cepat. Selisih kode unik tersebut ikut disalurkan sebagai donasi.</p></details>
+      <details><summary>Apakah yayasan ini resmi?</summary><p>Ya. Yayasan Ananta Karuna Bahagia terdaftar di Kementerian Hukum dan HAM RI dengan SK Nomor AHU-0004149.AH.01.04 Tahun 2026, dibentuk pada 10 Februari 2026 di Lampung Tengah.</p></details>
+      <details><summary>Bisakah saya berdonasi tanpa menampilkan nama?</summary><p>Bisa. Centang pilihan “Sembunyikan nama saya” pada formulir donasi, maka nama Anda dicatat sebagai Hamba Allah.</p></details>
+      <details><summary>Bisakah saya donasi barang (sembako, alat bantu, dll.)?</summary><p>Bisa. Silakan hubungi kami melalui WhatsApp untuk koordinasi jenis barang dan pengirimannya.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK -->
+<section class="section" id="kontak" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Hubungi Kami</span>
+      <h2>Sekretariat yayasan</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="c-list rv">
+        <div class="c-item"><span class="ci"><svg class="icon"><use href="#i-pin"/></svg></span><span><small>Alamat</small><b>Lingkungan IV, Kel. Bandar Jaya Barat, Kec. Terbanggi Besar, Kab. Lampung Tengah, Lampung 34163</b></span></div>
+        <a class="c-item" href="#" data-wa="Assalamualaikum, saya ingin bertanya tentang Yayasan Ananta Karuna Bahagia."><span class="ci"><svg class="icon"><use href="#i-wa"/></svg></span><span><small>WhatsApp</small><b>0821-8153-973</b></span></a>
+        <a class="c-item" href="mailto:yayasananantakarunabahagia@gmail.com"><span class="ci"><svg class="icon"><use href="#i-mail"/></svg></span><span><small>Email</small><b>yayasananantakarunabahagia@gmail.com</b></span></a>
+        <div class="c-item"><span class="ci"><svg class="icon"><use href="#i-heart"/></svg></span><span><small>Media sosial</small><b>Ikuti kabar kebaikan kami</b>
+          <div class="socials">
+            <a href="https://www.facebook.com/share/1BA93WK6ni/" target="_blank" rel="noopener" aria-label="Facebook Ananta Karuna" title="Facebook: Ananta Karuna"><svg class="icon"><use href="#i-fb"/></svg></a>
+            <a href="https://www.instagram.com/yayasananantakarunabahagia/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram: @yayasananantakarunabahagia"><svg class="icon"><use href="#i-ig"/></svg></a>
+            <a href="https://www.tiktok.com/@yayasan.ananta.ka" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok: @yayasan.ananta.ka"><svg class="icon"><use href="#i-tiktok"/></svg></a>
+            <a href="https://www.facebook.com/share/1CFsd8wq9a/" target="_blank" rel="noopener" aria-label="Fanspage Facebook Amaria Pelita Kasih" title="Fanspage: Amaria Pelita Kasih"><svg class="icon"><use href="#i-users"/></svg></a>
+          </div></span></div>
+      </div>
+      <div class="map rv"><iframe title="Peta lokasi sekretariat di Bandar Jaya Barat, Terbanggi Besar" src="https://www.google.com/maps?q=Bandar+Jaya+Barat,+Terbanggi+Besar,+Lampung+Tengah&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <img src="assets/img/logo.png" alt="Logo Yayasan Ananta Karuna Bahagia" loading="lazy">
+        <p>Yayasan sosial, kesehatan, kemanusiaan, dan keagamaan dari Lampung Tengah. Melayani sepenuh hati.</p>
+        <p style="font-size:.85rem">SK Kemenkumham AHU-0004149.AH.01.04 Tahun 2026</p>
+      </div>
+      <div>
+        <h4>Jelajahi</h4>
+        <ul><li><a href="#tentang">Tentang kami</a></li><li><a href="#visi-misi">Visi &amp; misi</a></li><li><a href="#pilar">Pilar program</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#struktur">Struktur</a></li></ul>
+      </div>
+      <div>
+        <h4>Program</h4>
+        <ul><li><a href="#program" data-tab="medis-anak">Medis Anak</a></li><li><a href="#program" data-tab="medis-dewasa">Medis Dewasa</a></li><li><a href="#program" data-tab="lansia">Pejuang Nafkah Lansia</a></li><li><a href="#program" data-tab="sebatangkara">Lansia Sebatangkara</a></li><li><a href="#program" data-tab="difabel">Difabel</a></li><li><a href="#program" data-tab="komunitas">Komunitas</a></li></ul>
+      </div>
+      <div>
+        <h4>Hubungi</h4>
+        <ul><li><a href="#" data-wa="Assalamualaikum, saya ingin bertanya tentang Yayasan Ananta Karuna Bahagia.">WhatsApp 0821-8153-973</a></li><li><a href="mailto:yayasananantakarunabahagia@gmail.com">Email yayasan</a></li><li><a href="https://www.instagram.com/yayasananantakarunabahagia/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@yayasan.ananta.ka" target="_blank" rel="noopener">TikTok</a></li></ul>
+        <button class="btn btn-lime btn-sm" style="margin-top:18px" data-donate><svg class="icon"><use href="#i-heart"/></svg> Donasi</button>
+      </div>
+    </div>
+    <div class="f-bottom"><span>© <span id="yr">2026</span> Yayasan Ananta Karuna Bahagia. Hak cipta dilindungi.</span><span>#SahabatAnanta · Melayani Sepenuh Hati</span></div>
+  </div>
+</footer>
+
+<a class="fab-wa" href="#" data-wa="Assalamualaikum, saya ingin bertanya tentang Yayasan Ananta Karuna Bahagia." aria-label="Chat WhatsApp"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.2 1.6 7 0 12.7-5.7 12.7-12.6C28.8 8.6 23.1 3 16 3zm0 23.1c-2 0-3.9-.5-5.6-1.6l-.4-.2-4.1 1.2 1.3-4-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.1 16 26.1zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg></a>
+
+<div class="mob-bar">
+  <a href="#program" class="btn btn-ghost">Program</a>
+  <button class="btn btn-primary" data-donate><svg class="icon"><use href="#i-heart"/></svg> Donasi</button>
+</div>
+
+<!-- MODAL DONASI -->
+<div class="modal" id="donateModal" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box">
+    <div class="m-head">
+      <h3 id="dTitle">Donasi Kebaikan</h3>
+      <p id="dSub">Langkah 1 dari 3 · Pilih program &amp; nominal</p>
+      <div class="progress"><span class="on"></span><span></span><span></span></div>
+      <button class="m-close" data-close aria-label="Tutup"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+    <div class="m-body">
+      <!-- step 1 -->
+      <div class="m-step on" data-step="1">
+        <label class="lbl" for="dProgram">Program yang ingin dibantu</label>
+        <select class="field" id="dProgram"></select>
+        <label class="lbl">Nominal donasi</label>
+        <div class="amounts" id="dAmounts"></div>
+        <div class="money"><span>Rp</span><input class="field" id="dAmount" inputmode="numeric" placeholder="Nominal lainnya" autocomplete="off"></div>
+        <div class="err" id="eAmount">Minimal donasi Rp10.000.</div>
+        <div class="m-actions"><button class="btn btn-primary" id="toStep2">Lanjut <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+      </div>
+      <!-- step 2 -->
+      <div class="m-step" data-step="2">
+        <label class="lbl" for="dName">Nama lengkap</label>
+        <input class="field" id="dName" autocomplete="name" placeholder="Nama Anda">
+        <label class="check"><input type="checkbox" id="dAnon"> Sembunyikan nama saya (tampil sebagai Hamba Allah)</label>
+        <div class="err" id="eName">Mohon isi nama, atau centang sembunyikan nama.</div>
+        <label class="lbl" for="dMsg">Doa &amp; dukungan <span style="font-weight:500;color:var(--muted)">(opsional)</span></label>
+        <textarea class="field" id="dMsg" placeholder="Semoga lekas sembuh dan diberi kekuatan…"></textarea>
+        <label class="lbl">Metode pembayaran</label>
+        <div class="methods" id="dMethods"></div>
+        <div class="m-actions"><button class="btn btn-ghost" data-back="1"><svg class="icon"><use href="#i-left"/></svg> Kembali</button><button class="btn btn-primary" id="toStep3">Lanjut bayar <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+      </div>
+      <!-- step 3 -->
+      <div class="m-step" data-step="3">
+        <div id="dPlaceholderWarn" class="warn" hidden><svg class="icon"><use href="#i-alert"/></svg><span><b>Rekening contoh.</b> Nomor rekening/QRIS belum diisi oleh pengelola situs. Jangan transfer dulu; hubungi admin via WhatsApp untuk rekening resmi.</span></div>
+        <div class="summary" id="dSummary"></div>
+        <div class="pay-box" id="dPayBox"></div>
+        <div class="note">Mohon transfer <b>tepat sesuai nominal</b> (termasuk 3 digit kode unik) agar mudah kami cocokkan. Setelah transfer, tekan tombol konfirmasi di bawah dan lampirkan foto bukti transfer di WhatsApp.</div>
+        <div class="m-actions"><button class="btn btn-ghost" data-back="2"><svg class="icon"><use href="#i-left"/></svg> Kembali</button><button class="btn btn-primary" id="dConfirm" style="background:linear-gradient(135deg,#1aa851,#25d366)"><svg class="icon"><use href="#i-wa"/></svg> Konfirmasi via WhatsApp</button></div>
+      </div>
+      <!-- step 4 -->
+      <div class="m-step" data-step="4">
+        <div class="success">
+          <div class="ok"><svg class="icon"><use href="#i-circle-check"/></svg></div>
+          <h3>Jazakumullahu khairan!</h3>
+          <p style="color:var(--muted)">Terima kasih, <b id="dThanksName">Sahabat Ananta</b>. Jika WhatsApp belum terbuka, tekan tombol di bawah. Jangan lupa lampirkan bukti transfer ya.</p>
+          <div class="m-actions"><a class="btn btn-primary" id="dWaAgain" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg> Buka WhatsApp lagi</a></div>
+          <button class="btn btn-ghost btn-block" style="margin-top:10px" data-close>Selesai</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FORM (relawan / ajukan / kerja sama) -->
+<div class="modal" id="formModal" role="dialog" aria-modal="true" aria-labelledby="fTitle">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box">
+    <div class="m-head">
+      <h3 id="fTitle">Formulir</h3>
+      <p id="fSub"></p>
+      <button class="m-close" data-close aria-label="Tutup"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+    <form class="m-body" id="fForm" novalidate>
+      <div id="fFields"></div>
+      <div class="err" id="eForm">Mohon lengkapi isian yang wajib.</div>
+      <div class="m-actions"><button type="submit" class="btn btn-primary" style="background:linear-gradient(135deg,#1aa851,#25d366)"><svg class="icon"><use href="#i-send"/></svg> Kirim via WhatsApp</button></div>
+      <p style="font-size:.82rem;color:var(--muted);margin:12px 0 0;text-align:center">Data Anda tidak disimpan di situs ini; formulir hanya menyusun pesan WhatsApp ke admin yayasan.</p>
+    </form>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto">
+  <button class="x" aria-label="Tutup"><svg class="icon"><use href="#i-x"/></svg></button>
+  <button class="pv" aria-label="Sebelumnya"><svg class="icon"><use href="#i-left"/></svg></button>
+  <img alt="">
+  <button class="nx" aria-label="Berikutnya"><svg class="icon"><use href="#i-right"/></svg></button>
+  <div class="cap"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   PENGATURAN — UBAH DI SINI
+   ========================================================= */
+var CONFIG = {
+  // Nomor WhatsApp admin (format internasional, tanpa + dan tanpa 0 di depan)
+  whatsapp: "628218153973",
+
+  // Rekening donasi. GANTI dengan rekening resmi atas nama yayasan,
+  // lalu ubah contoh: true menjadi contoh: false (atau hapus barisnya).
+  rekening: [
+    { kode: "BSI", bank: "Bank Syariah Indonesia", nomor: "0000000000", atasNama: "Yayasan Ananta Karuna Bahagia", contoh: true },
+    { kode: "BRI", bank: "Bank Rakyat Indonesia", nomor: "000000000000000", atasNama: "Yayasan Ananta Karuna Bahagia", contoh: true }
+  ],
+
+  // QRIS: isi path gambar QRIS, mis. "assets/img/qris.png". Biarkan "" jika belum ada.
+  qris: "",
+
+  // Pilihan nominal cepat
+  nominal: [25000, 50000, 100000, 250000, 500000, 1000000],
+
+  // Pakai kode unik 3 digit di nominal transfer (true/false)
+  kodeUnik: true
+};
+
+var PROGRAMS = [
+  { group: "Umum", items: [["umum", "Donasi Umum (kebutuhan paling mendesak)"]] },
+  { group: "Program Bantuan", items: [
+    ["medis-anak", "Bantuan Medis Anak"], ["medis-dewasa", "Bantuan Medis Dewasa"],
+    ["lansia", "Pejuang Nafkah Lansia"], ["sebatangkara", "Lansia Sebatangkara"],
+    ["difabel", "Bantuan Difabel"], ["komunitas", "Program Komunitas"] ] },
+  { group: "Pilar Program", items: [
+    ["teman-sembuh", "Teman Sembuh (Kesehatan)"], ["teman-peduli", "Teman Peduli (Ekonomi)"],
+    ["teman-berbagi", "Teman Berbagi (Sosial)"], ["teman-masjid", "Teman Masjid (Keagamaan)"] ] }
+];
+
+/* ========================================================= */
+(function(){
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  var rupiah = function(n){ return "Rp" + Number(n||0).toLocaleString("id-ID"); };
+  var waLink = function(text){ return "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(text); };
+  var toastT;
+  function toast(msg){ var t = $("#toast"); t.textContent = msg; t.classList.add("on"); clearTimeout(toastT); toastT = setTimeout(function(){ t.classList.remove("on"); }, 2200); }
+  function copy(text){
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ toast("Disalin: " + text); }, fallback); else fallback();
+    function fallback(){ var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); toast("Disalin: " + text); } catch(e) {} document.body.removeChild(ta); }
+  }
+
+  $("#yr").textContent = new Date().getFullYear();
+
+  /* WA links */
+  $$("[data-wa]").forEach(function(a){ a.href = waLink(a.getAttribute("data-wa")); a.target = "_blank"; a.rel = "noopener"; });
+
+  /* nav */
+  var nav = $("#nav"), menu = $("#menu"), burger = $("#burger");
+  window.addEventListener("scroll", function(){ nav.classList.toggle("scrolled", window.scrollY > 10); }, { passive: true });
+  burger.addEventListener("click", function(){ var o = menu.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
+  $$("a", menu).forEach(function(a){ a.addEventListener("click", function(){ menu.classList.remove("open"); burger.setAttribute("aria-expanded", false); }); });
+  var sections = $$("main section[id], main header[id]");
+  if ("IntersectionObserver" in window) {
+    var so = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { $$("a", menu).forEach(function(a){ a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id); }); } }); }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(function(s){ so.observe(s); });
+  }
+
+  /* reveal + counters */
+  function countUp(el){
+    var to = +el.getAttribute("data-count"), start = null, dur = 1400;
+    function step(ts){ if (!start) start = ts; var p = Math.min((ts - start) / dur, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window) {
+    var ro = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); $$("[data-count]", e.target).forEach(countUp); ro.unobserve(e.target); } }); }, { threshold: .12 });
+    $$(".rv").forEach(function(el, i){ el.style.transitionDelay = ((i % 4) * 70) + "ms"; ro.observe(el); });
+  } else { $$(".rv").forEach(function(el){ el.classList.add("in"); }); $$("[data-count]").forEach(function(el){ el.textContent = el.getAttribute("data-count"); }); }
+
+  /* program tabs */
+  var tabs = $$(".prog-tab");
+  function selectTab(id, focus){
+    tabs.forEach(function(t){ var on = t.id === "t-" + id; t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1; if (on && focus) t.focus(); });
+    $$(".prog-panel").forEach(function(p){ p.classList.toggle("active", p.id === "p-" + id); });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ selectTab(t.id.slice(2)); if (window.innerWidth <= 900) t.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" }); });
+    t.addEventListener("keydown", function(e){
+      var k = e.key, n = null;
+      if (k === "ArrowDown" || k === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+      if (k === "ArrowUp" || k === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (n) { e.preventDefault(); selectTab(n.id.slice(2), true); }
+    });
+  });
+  $$("[data-tab]").forEach(function(a){ a.addEventListener("click", function(){ selectTab(a.getAttribute("data-tab")); }); });
+
+  /* lightbox */
+  var lb = $("#lb"), lbImg = $("img", lb), lbCap = $(".cap", lb), lbList = [], lbIdx = 0, lbLast;
+  function lbShow(i){ lbIdx = (i + lbList.length) % lbList.length; var f = lbList[lbIdx], im = $("img", f); lbImg.src = im.src; lbImg.alt = im.alt; var c = $("figcaption", f); lbCap.textContent = c ? c.textContent : im.alt; }
+  function lbOpen(fig){ var scope = fig.closest(".gallery, .prog-photos"); lbList = $$("figure[data-lb]", scope); lbLast = document.activeElement; lbShow(lbList.indexOf(fig)); lb.classList.add("open"); document.body.style.overflow = "hidden"; $(".x", lb).focus(); }
+  function lbClose(){ lb.classList.remove("open"); document.body.style.overflow = ""; if (lbLast) lbLast.focus(); }
+  $$("figure[data-lb]").forEach(function(f){ f.tabIndex = 0; f.addEventListener("click", function(){ lbOpen(f); }); f.addEventListener("keydown", function(e){ if (e.key === "Enter") lbOpen(f); }); });
+  $(".x", lb).addEventListener("click", lbClose);
+  $(".pv", lb).addEventListener("click", function(){ lbShow(lbIdx - 1); });
+  $(".nx", lb).addEventListener("click", function(){ lbShow(lbIdx + 1); });
+  lb.addEventListener("click", function(e){ if (e.target === lb) lbClose(); });
+
+  /* modals */
+  var openModal = null, lastFocus = null;
+  function showModal(m){ lastFocus = document.activeElement; m.classList.add("open"); document.body.style.overflow = "hidden"; openModal = m; setTimeout(function(){ var f = $(".m-body .field, .m-body button", m); if (f && window.innerWidth > 640) f.focus(); }, 60); }
+  function hideModal(m){ m.classList.remove("open"); document.body.style.overflow = ""; openModal = null; if (lastFocus) lastFocus.focus(); }
+  $$(".modal").forEach(function(m){ $$("[data-close]", m).forEach(function(b){ b.addEventListener("click", function(){ hideModal(m); }); }); });
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape") { if (lb.classList.contains("open")) lbClose(); else if (openModal) hideModal(openModal); }
+    if (lb.classList.contains("open")) { if (e.key === "ArrowLeft") lbShow(lbIdx - 1); if (e.key === "ArrowRight") lbShow(lbIdx + 1); }
+  });
+
+  /* ---------- donasi ---------- */
+  var dm = $("#donateModal"), sel = $("#dProgram"), amtInput = $("#dAmount");
+  var state = { program: "umum", amount: 0, method: 0, code: 0 };
+  PROGRAMS.forEach(function(g){ var og = document.createElement("optgroup"); og.label = g.group; g.items.forEach(function(it){ var o = document.createElement("option"); o.value = it[0]; o.textContent = it[1]; og.appendChild(o); }); sel.appendChild(og); });
+  function progName(v){ var o = sel.querySelector('option[value="' + v + '"]'); return o ? o.textContent : v; }
+
+  var amtWrap = $("#dAmounts");
+  CONFIG.nominal.forEach(function(n){ var b = document.createElement("button"); b.type = "button"; b.className = "amt"; b.textContent = rupiah(n).replace("Rp", "Rp "); b.dataset.v = n; amtWrap.appendChild(b); });
+  function setAmount(n, fromInput){ state.amount = n; $$(".amt", amtWrap).forEach(function(b){ b.classList.toggle("on", +b.dataset.v === n); }); if (!fromInput) amtInput.value = n ? n.toLocaleString("id-ID") : ""; $("#eAmount").classList.remove("on"); }
+  amtWrap.addEventListener("click", function(e){ var b = e.target.closest(".amt"); if (b) setAmount(+b.dataset.v); });
+  amtInput.addEventListener("input", function(){ var n = +amtInput.value.replace(/\D/g, ""); amtInput.value = n ? n.toLocaleString("id-ID") : ""; setAmount(n, true); });
+
+  var methods = CONFIG.rekening.map(function(r){ return { type: "bank", r: r }; });
+  if (CONFIG.qris) methods.push({ type: "qris" });
+  var mWrap = $("#dMethods");
+  methods.forEach(function(m, i){
+    var b = document.createElement("button"); b.type = "button"; b.className = "method" + (i === 0 ? " on" : ""); b.dataset.i = i;
+    b.innerHTML = m.type === "bank"
+      ? '<span class="bi">' + m.r.kode + '</span><span><b>Transfer ' + m.r.bank + '</b><small>a.n. ' + m.r.atasNama + '</small></span>'
+      : '<span class="bi"><svg class="icon"><use href="#i-qr"/></svg></span><span><b>QRIS</b><small>Scan dari semua e-wallet &amp; m-banking</small></span>';
+    mWrap.appendChild(b);
+  });
+  mWrap.addEventListener("click", function(e){ var b = e.target.closest(".method"); if (!b) return; state.method = +b.dataset.i; $$(".method", mWrap).forEach(function(x){ x.classList.toggle("on", x === b); }); });
+
+  var steps = ["Pilih program &amp; nominal", "Data donatur &amp; metode", "Selesaikan pembayaran", "Terima kasih"];
+  function go(n){
+    $$(".m-step", dm).forEach(function(s){ s.classList.toggle("on", +s.dataset.step === n); });
+    $$(".progress span", dm).forEach(function(s, i){ s.classList.toggle("on", i < n); });
+    $("#dSub").innerHTML = (n <= 3 ? "Langkah " + n + " dari 3 · " : "") + steps[n - 1];
+    $(".modal-box", dm).scrollTop = 0;
+  }
+  $$("[data-back]", dm).forEach(function(b){ b.addEventListener("click", function(){ go(+b.dataset.back); }); });
+
+  function openDonate(program){
+    sel.value = program && sel.querySelector('option[value="' + program + '"]') ? program : "umum";
+    if (!state.amount) setAmount(100000);
+    go(1); showModal(dm);
+  }
+  $$("[data-donate]").forEach(function(b){ b.addEventListener("click", function(e){ e.preventDefault(); openDonate(b.getAttribute("data-donate")); }); });
+
+  $("#toStep2").addEventListener("click", function(){
+    if (!state.amount || state.amount < 10000) { $("#eAmount").classList.add("on"); amtInput.focus(); return; }
+    state.program = sel.value; go(2);
+  });
+  $("#dAnon").addEventListener("change", function(){ $("#eName").classList.remove("on"); });
+  $("#toStep3").addEventListener("click", function(){
+    var name = $("#dName").value.trim(), anon = $("#dAnon").checked;
+    if (!name && !anon) { $("#eName").classList.add("on"); $("#dName").focus(); return; }
+    $("#eName").classList.remove("on");
+    state.code = CONFIG.kodeUnik ? 100 + Math.floor(Math.random() * 900) : 0;
+    renderPay(); go(3);
+  });
+  $("#dName").addEventListener("input", function(){ $("#eName").classList.remove("on"); });
+
+  function total(){ return state.amount + state.code; }
+  function renderPay(){
+    var m = methods[state.method];
+    var row = function(k, v){ return '<div class="r"><span>' + k + '</span><b>' + v + '</b></div>'; };
+    $("#dSummary").innerHTML = row("Program", progName(state.program)) + row("Donasi", rupiah(state.amount)) + (state.code ? row("Kode unik", "+" + state.code) : "") +
+      '<div class="r total"><span>Total transfer</span><b>' + rupiah(total()) + '</b></div>';
+    var box = $("#dPayBox");
+    if (m.type === "bank") {
+      box.innerHTML = '<div class="pb-row"><div><small>Bank</small><b>' + m.r.bank + '</b></div></div>' +
+        '<div class="pb-row"><div><small>Nomor rekening</small><b>' + m.r.nomor + '</b></div><button type="button" class="copy" data-copy="' + m.r.nomor + '">Salin</button></div>' +
+        '<div class="pb-row"><div><small>Atas nama</small><b style="font-size:1rem">' + m.r.atasNama + '</b></div></div>' +
+        '<div class="pb-row"><div><small>Nominal transfer</small><b style="color:var(--g-800)">' + rupiah(total()) + '</b></div><button type="button" class="copy" data-copy="' + total() + '">Salin</button></div>';
+      $("#dPlaceholderWarn").hidden = !m.r.contoh;
+    } else {
+      box.innerHTML = '<img class="qris-img" src="' + CONFIG.qris + '" alt="QRIS Yayasan Ananta Karuna Bahagia"><div class="pb-row"><div><small>Nominal yang dibayar</small><b style="color:var(--g-800)">' + rupiah(total()) + '</b></div><button type="button" class="copy" data-copy="' + total() + '">Salin</button></div>';
+      $("#dPlaceholderWarn").hidden = true;
+    }
+    $$("[data-copy]", box).forEach(function(b){ b.addEventListener("click", function(){ copy(b.dataset.copy); }); });
+  }
+
+  $("#dConfirm").addEventListener("click", function(){
+    var m = methods[state.method], anon = $("#dAnon").checked, name = anon ? "Hamba Allah" : $("#dName").value.trim();
+    var msg = $("#dMsg").value.trim();
+    var text = "Assalamualaikum, Admin Yayasan Ananta Karuna Bahagia.\nSaya ingin konfirmasi donasi:\n\n" +
+      "Nama: " + name + "\n" +
+      "Program: " + progName(state.program) + "\n" +
+      "Nominal transfer: " + rupiah(total()) + "\n" +
+      "Metode: " + (m.type === "bank" ? "Transfer " + m.r.bank : "QRIS") + "\n" +
+      (msg ? "Doa/pesan: " + msg + "\n" : "") +
+      "\nBukti transfer saya lampirkan. Terima kasih.";
+    var url = waLink(text);
+    $("#dWaAgain").href = url;
+    $("#dThanksName").textContent = name;
+    window.open(url, "_blank", "noopener");
+    go(4);
+  });
+
+  /* ---------- form relawan / ajukan / kerja sama ---------- */
+  var FORMS = {
+    relawan: { title: "Daftar Relawan", sub: "Bergabung sebagai #SahabatAnanta di lapangan.", intro: "Assalamualaikum, saya ingin mendaftar menjadi relawan Yayasan Ananta Karuna Bahagia.",
+      fields: [["Nama lengkap", "text", true], ["Domisili (kota/kabupaten)", "text", true], ["Usia", "number", false], ["Keahlian / minat", "text", false, "Mis. desain, fotografi, kesehatan, logistik"], ["Alasan bergabung", "textarea", false]] },
+    ajukan: { title: "Ajukan Penerima Manfaat", sub: "Kabari kami tentang seseorang yang membutuhkan bantuan.", intro: "Assalamualaikum, saya ingin mengajukan calon penerima manfaat.",
+      fields: [["Nama pengaju", "text", true], ["Nama calon penerima", "text", true], ["Kategori", "select", true, ["Medis anak", "Medis dewasa", "Lansia pejuang nafkah", "Lansia sebatangkara", "Difabel", "Lainnya"]], ["Alamat / lokasi", "text", true], ["Cerita singkat kondisinya", "textarea", true]] },
+    kerjasama: { title: "Kerja Sama / CSR", sub: "Untuk lembaga, perusahaan, komunitas, dan media.", intro: "Assalamualaikum, kami tertarik menjalin kerja sama dengan Yayasan Ananta Karuna Bahagia.",
+      fields: [["Nama", "text", true], ["Instansi / organisasi", "text", true], ["Bentuk kerja sama", "select", true, ["Program CSR", "Kolaborasi kegiatan", "Donasi barang", "Liputan media", "Lainnya"]], ["Pesan", "textarea", false]] }
+  };
+  var fm = $("#formModal"), fForm = $("#fForm"), curForm;
+  $$("[data-form]").forEach(function(b){ b.addEventListener("click", function(){
+    curForm = FORMS[b.getAttribute("data-form")];
+    $("#fTitle").textContent = curForm.title; $("#fSub").textContent = curForm.sub; $("#eForm").classList.remove("on");
+    $("#fFields").innerHTML = curForm.fields.map(function(f, i){
+      var id = "ff" + i, req = f[2] ? ' required' : '', lab = '<label class="lbl" for="' + id + '">' + f[0] + (f[2] ? '' : ' <span style="font-weight:500;color:var(--muted)">(opsional)</span>') + '</label>';
+      if (f[1] === "textarea") return lab + '<textarea class="field" id="' + id + '"' + req + '></textarea>';
+      if (f[1] === "select") return lab + '<select class="field" id="' + id + '"' + req + '>' + f[3].map(function(o){ return "<option>" + o + "</option>"; }).join("") + '</select>';
+      return lab + '<input class="field" id="' + id + '" type="' + f[1] + '"' + req + (f[3] ? ' placeholder="' + f[3] + '"' : '') + '>';
+    }).join("");
+    showModal(fm);
+  }); });
+  fForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var ok = true, lines = [];
+    curForm.fields.forEach(function(f, i){ var el = $("#ff" + i), v = el.value.trim(); if (f[2] && !v) ok = false; if (v) lines.push(f[0] + ": " + v); });
+    if (!ok) { $("#eForm").classList.add("on"); return; }
+    window.open(waLink(curForm.intro + "\n\n" + lines.join("\n")), "_blank", "noopener");
+    hideModal(fm); toast("Membuka WhatsApp…");
+  });
+})();
+</script>
+</body>
+</html>
