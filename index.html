@@ -375,6 +375,7 @@ textarea.field{min-height:84px;resize:vertical}
 .note{font-size:.84rem;color:var(--muted);background:var(--cream);border-radius:14px;padding:12px 14px;margin:12px 0}
 .warn{background:var(--warn-bg);color:var(--warn);border:1px solid #f3d99b;border-radius:14px;padding:12px 14px;font-size:.85rem;margin-bottom:14px;display:flex;gap:10px}
 .warn .icon{margin-top:2px}
+.warn[hidden]{display:none}
 .m-actions{display:flex;gap:10px;margin-top:22px}
 .m-actions .btn{flex:1}
 .success{text-align:center;padding:10px 0}
@@ -1162,8 +1163,7 @@ var CONFIG = {
   // Rekening donasi. GANTI dengan rekening resmi atas nama yayasan,
   // lalu ubah contoh: true menjadi contoh: false (atau hapus barisnya).
   rekening: [
-    { kode: "BSI", bank: "Bank Syariah Indonesia", nomor: "0000000000", atasNama: "Yayasan Ananta Karuna Bahagia", contoh: true },
-    { kode: "BRI", bank: "Bank Rakyat Indonesia", nomor: "000000000000000", atasNama: "Yayasan Ananta Karuna Bahagia", contoh: true }
+    { kode: "BNI", bank: "BNI / BNI Syariah", nomor: "2034102192", atasNama: "ANANTA KARUNA BAHAGIA", contoh: false }
   ],
 
   // QRIS: isi path gambar QRIS, mis. "assets/img/qris.png". Biarkan "" jika belum ada.
