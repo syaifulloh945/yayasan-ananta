@@ -2,6 +2,7 @@
 // File berawalan "_" tidak dijadikan endpoint oleh Vercel.
 import { neon } from '@neondatabase/serverless';
 import crypto from 'node:crypto';
+import { SEED_CAMPAIGNS } from './_seed.js';
 
 /* ---------------- Error & respons ---------------- */
 export class HttpError extends Error {
@@ -102,6 +103,16 @@ export function ensureSchema() {
       await q(`INSERT INTO admins (username, name, pass_hash, recovery_hash)
                SELECT $1, $2, $3, $4 WHERE NOT EXISTS (SELECT 1 FROM admins)`,
         [SEED_ADMIN.username, SEED_ADMIN.name, SEED_ADMIN.passHash, SEED_ADMIN.recoveryHash]);
+      // Campaign awal: dimasukkan sekali saja (penanda di tabel meta), jadi aman diedit/dihapus admin.
+      await q(`CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, created_at TIMESTAMPTZ NOT NULL DEFAULT now())`);
+      for (const s of SEED_CAMPAIGNS) {
+        const fresh = await q('INSERT INTO meta (key) VALUES ($1) ON CONFLICT (key) DO NOTHING RETURNING key', ['seed-campaign:' + s.slug]);
+        if (!fresh[0]) continue;
+        await q(`INSERT INTO campaigns (slug, title, category, summary, story, target, collected, donors, deadline, images, visible, sort)
+                 VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11,$12) ON CONFLICT (slug) DO NOTHING`,
+          [s.slug, s.title, s.category, s.summary, s.story, s.target, s.collected, s.donors, s.deadline,
+            JSON.stringify(s.images), s.visible, s.sort]);
+      }
     })().catch((e) => { schemaReady = null; throw e; });
   }
   return schemaReady;
@@ -236,6 +247,11 @@ export function isBlobUrl(u) {
   } catch { return false; }
 }
 
+// Foto campaign boleh dari Vercel Blob atau dari folder website sendiri (/assets/img/campaign/...).
+export function isImageUrl(u) {
+  return isBlobUrl(u) || /^\/assets\/img\/campaign\/[a-z0-9._-]+\.(webp|jpe?g|png)$/i.test(String(u));
+}
+
 function toInt(v, min, max, label) {
   const n = Math.round(Number(String(v ?? 0).replace(/[^\d-]/g, '') || 0));
   if (!Number.isFinite(n) || n < min || n > max) throw new HttpError(400, `${label} tidak valid.`);
@@ -259,7 +275,7 @@ export function cleanCampaign(b) {
   const images = Array.isArray(b.images) ? b.images.map(String) : [];
   if (!images.length) throw new HttpError(400, 'Tambahkan minimal 1 foto.');
   if (images.length > 4) throw new HttpError(400, 'Maksimal 4 foto.');
-  if (!images.every(isBlobUrl)) throw new HttpError(400, 'Alamat foto tidak valid.');
+  if (!images.every(isImageUrl)) throw new HttpError(400, 'Alamat foto tidak valid.');
   return { title, summary, story, category, target, collected, donors, deadline, images, sort, visible: !!b.visible };
 }
 
