@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="/">
 <title>Yayasan Ananta Karuna Bahagia — Melayani Sepenuh Hati</title>
 <meta name="description" content="Yayasan Ananta Karuna Bahagia: yayasan sosial, kesehatan, kemanusiaan, dan keagamaan di Lampung Tengah. Bantu anak, balita, lansia, dan difabel yang sedang berjuang. Donasi sekarang.">
 <meta name="theme-color" content="#0b5e31">
@@ -399,6 +400,105 @@ textarea.field{min-height:84px;resize:vertical}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.float{animation:none}html{scroll-behavior:auto}}
 
+/* ===== campaign (halaman depan) ===== */
+.camp-sec{padding:88px 0 8px}
+.camp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.camp-head .lead{margin:0}
+.camp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.camp-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;cursor:pointer;border:1px solid transparent;transition:transform .25s, box-shadow .25s, border-color .25s;text-align:left;font:inherit;color:inherit;padding:0}
+.camp-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--lime-300)}
+.camp-card:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.cimg{position:relative;aspect-ratio:16/10;background:#dfe8d7;overflow:hidden}
+.cimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.camp-card:hover .cimg img{transform:scale(1.05)}
+.ccat{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.94);color:var(--g-800);font-size:.75rem;font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.02em}
+.cdays{position:absolute;right:14px;top:14px;background:rgba(6,51,27,.78);color:#fff;font-size:.75rem;font-weight:700;padding:5px 12px;border-radius:999px}
+.cbody{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+.cbody h3{font-size:1.15rem;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cbody p{font-size:.92rem;color:var(--muted);margin:0 0 16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cprog{margin-top:auto}
+.pbar{height:10px;background:#e7eee1;border-radius:999px;overflow:hidden}
+.pbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g-600),var(--lime));border-radius:999px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.pnums{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:10px}
+.pnums small{display:block;font-size:.76rem;color:var(--muted);font-weight:600}
+.pnums b{color:var(--g-800);font-size:1.05rem}
+.pnums .pp{text-align:right}
+.pnums .pp b{color:var(--ink)}
+.cfoot{display:flex;gap:10px;margin-top:18px;align-items:center}
+.cfoot .btn{flex:1;padding:12px 16px}
+.cfoot .donors{font-size:.82rem;color:var(--muted);font-weight:600;flex:none}
+.camp-grid.one{grid-template-columns:1fr}
+.camp-grid.one .camp-card{flex-direction:row}
+.camp-grid.one .cimg{flex:1.15;aspect-ratio:auto;min-height:340px}
+.camp-grid.one .cbody{flex:1;padding:34px 34px 30px}
+.camp-grid.one .cbody h3{font-size:1.6rem;-webkit-line-clamp:3}
+.camp-grid.one .cbody p{-webkit-line-clamp:4;font-size:1rem}
+.camp-grid.two{grid-template-columns:repeat(2,1fr)}
+
+/* ===== detail campaign ===== */
+.cview{position:fixed;inset:0;z-index:80;background:var(--cream);overflow-y:auto;overscroll-behavior:contain;animation:fade .25s}
+.cv-top{position:sticky;top:0;z-index:5;background:rgba(247,250,242,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.cv-top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:14px}
+.cv-back{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+.cv-back:hover{border-color:var(--g-500)}
+.cv-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start;padding-top:28px;padding-bottom:110px}
+.slides{position:relative;border-radius:26px;overflow:hidden;background:#dfe8d7;aspect-ratio:4/3;box-shadow:var(--shadow)}
+.slides .track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.slides .track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover}
+.sl-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.sl-btn:hover{background:#fff}
+.sl-btn.pv{left:14px}.sl-btn.nx{right:14px}
+.sl-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px}
+.sl-dots button{width:9px;height:9px;border-radius:99px;border:0;background:rgba(255,255,255,.6);cursor:pointer;padding:0;transition:all .25s}
+.sl-dots button.on{width:26px;background:#fff}
+.sl-count{position:absolute;top:14px;right:14px;background:rgba(6,51,27,.75);color:#fff;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.thumbs button{border:2px solid transparent;border-radius:14px;overflow:hidden;padding:0;cursor:pointer;aspect-ratio:4/3;background:#dfe8d7;opacity:.65;transition:all .2s}
+.thumbs button.on{border-color:var(--g-600);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.cv-story{background:#fff;border-radius:24px;padding:30px 32px;box-shadow:var(--shadow);margin-top:24px}
+.cv-story h2{font-size:1.35rem;margin-bottom:14px}
+.cv-story p{font-size:1.02rem;color:var(--body);line-height:1.8;margin:0 0 1.1em}
+.cv-side{position:sticky;top:90px}
+.cv-card{background:#fff;border-radius:24px;padding:28px;box-shadow:var(--shadow)}
+.cv-card .ccat{position:static;display:inline-block;background:var(--lime-100);margin-bottom:12px}
+.cv-card h1{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:10px}
+.cv-card .sum{color:var(--muted);margin:0 0 22px}
+.cv-amt{font-size:1.9rem;font-weight:800;color:var(--g-800);line-height:1.1}
+.cv-of{color:var(--muted);font-size:.92rem;margin:4px 0 14px}
+.cv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 22px;text-align:center}
+.cv-stats div{background:var(--cream);border-radius:14px;padding:12px 6px}
+.cv-stats b{display:block;color:var(--ink);font-size:1.05rem}
+.cv-stats small{color:var(--muted);font-size:.76rem;font-weight:600}
+.cv-share{display:flex;gap:10px;margin-top:12px}
+.cv-share .btn{flex:1;padding:11px 12px;font-size:.88rem}
+.cv-bar{display:none}
+.cv-msg{text-align:center;padding:80px 20px;color:var(--muted)}
+.cv-ended{background:var(--warn-bg);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:.88rem;font-weight:600;margin-bottom:14px}
+@media (max-width:1080px){.camp-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){
+  .camp-sec{padding:72px 0 0}
+  .camp-grid.one .camp-card{flex-direction:column}
+  .camp-grid.one .cimg{min-height:0;aspect-ratio:16/10}
+  .camp-grid.one .cbody{padding:22px}
+  .camp-grid.one .cbody h3{font-size:1.25rem}
+  .cv-wrap{grid-template-columns:1fr;gap:20px;padding-top:16px}
+  .cv-side{position:static;order:-1}
+  .cv-main{display:contents}
+  .slides,.thumbs{order:-2}
+  .cv-story{order:1;margin-top:0}
+  .cv-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:6;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(0,0,0,.06)}
+}
+@media (max-width:640px){
+  .camp-grid,.camp-grid.two{grid-template-columns:1fr}
+  .cv-top .brand b{font-size:.9rem}
+  .cv-top #cvDonateTop{display:none}
+  .slides{border-radius:18px}
+  .sl-btn{width:38px;height:38px}
+  .cv-card,.cv-story{padding:22px 20px;border-radius:20px}
+  .cv-amt{font-size:1.6rem}
+}
+
 /* responsive */
 @media (max-width:1080px){
   .menu{display:none}
@@ -520,6 +620,7 @@ textarea.field{min-height:84px;resize:vertical}
     <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
     <symbol id="i-yt" viewBox="0 0 24 24"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
     <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 5 6 5"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/><path d="M9.5 9.5c0 2.8 2.2 5 5 5l1-1.5-2-1-1 .8a3 3 0 0 1-1.3-1.3l.8-1-1-2z"/></symbol>
@@ -543,6 +644,7 @@ textarea.field{min-height:84px;resize:vertical}
       <span><b>ANANTA</b><small>KARUNA BAHAGIA</small></span>
     </a>
     <ul class="menu" id="menu">
+      <li id="navCampaign" hidden><a href="#campaign">Campaign</a></li>
       <li><a href="#tentang">Tentang</a></li>
       <li><a href="#visi-misi">Visi &amp; Misi</a></li>
       <li><a href="#program">Program</a></li>
@@ -591,6 +693,20 @@ textarea.field{min-height:84px;resize:vertical}
       <div class="stat"><div class="n"><span data-count="4">0</span></div><p>Pilar program: kesehatan, ekonomi, sosial, keagamaan</p></div>
       <div class="stat"><div class="n"><span data-count="3">0</span></div><p>Platform mitra: Kitabisa, Raihmimpi, Beridampak</p></div>
     </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN (diisi otomatis dari panel admin; tersembunyi bila belum ada campaign) -->
+<section class="camp-sec" id="campaign" hidden>
+  <div class="wrap">
+    <div class="camp-head">
+      <div>
+        <span class="eyebrow">Campaign Kebaikan</span>
+        <h2>Mari bantu mereka <span class="serif" style="color:var(--g-600)">hari ini</span></h2>
+        <p class="lead">Pilih campaign yang menyentuh hati Anda. Setiap rupiah tersalurkan langsung untuk kebutuhan penerima manfaat.</p>
+      </div>
+    </div>
+    <div class="camp-grid" id="campGrid"></div>
   </div>
 </section>
 
@@ -1152,6 +1268,22 @@ textarea.field{min-height:84px;resize:vertical}
   <div class="cap"></div>
 </div>
 
+<!-- DETAIL CAMPAIGN -->
+<div class="cview" id="campaignView" role="dialog" aria-modal="true" aria-label="Detail campaign" hidden>
+  <div class="cv-top">
+    <div class="wrap">
+      <button class="cv-back" id="cvBack"><svg class="icon"><use href="#i-left"/></svg> Kembali</button>
+      <a href="/" class="brand" id="cvHome" aria-label="Beranda Yayasan Ananta Karuna Bahagia">
+        <img src="assets/img/logo-mark.png" alt="" width="40" height="28">
+        <span><b>ANANTA</b><small>KARUNA BAHAGIA</small></span>
+      </a>
+      <button class="btn btn-primary btn-sm" id="cvDonateTop"><svg class="icon"><use href="#i-heart"/></svg> Donasi</button>
+    </div>
+  </div>
+  <div id="cvBody"></div>
+  <div class="cv-bar" id="cvBar"><button class="btn btn-primary btn-block" id="cvDonateBar"><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button></div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -1356,6 +1488,165 @@ var PROGRAMS = [
     $("#dThanksName").textContent = name;
     window.open(url, "_blank", "noopener");
     go(4);
+  });
+
+  /* ---------- campaign (data dari panel admin) ---------- */
+  var CAMPS = [];
+  var baseTitle = document.title;
+  var campSec = $("#campaign"), campGrid = $("#campGrid"), cv = $("#campaignView"), cvBody = $("#cvBody");
+  var cvPushed = false, cvCurrent = null, slideIdx = 0;
+
+  function escH(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]; }); }
+  function campPct(c){ return c.target > 0 ? Math.min(100, Math.floor(c.collected / c.target * 100)) : 0; }
+  function daysLeft(c){ if (!c.deadline) return null; return Math.ceil((new Date(c.deadline + "T23:59:59") - new Date()) / 864e5); }
+  function daysText(c){ var d = daysLeft(c); if (d === null) return "Tanpa batas waktu"; if (d < 0) return "Telah berakhir"; if (d === 0) return "Hari terakhir"; return d + " hari lagi"; }
+  function storyHtml(s){ s = String(s || "").trim(); if (!s) return ""; return escH(s).split(/\n\s*\n/).map(function(p){ return "<p>" + p.replace(/\n/g, "<br>") + "</p>"; }).join(""); }
+  function campUrl(c){ return location.origin + "/campaign/" + encodeURIComponent(c.slug); }
+
+  function addCampaignOptions(list){
+    var old = $("#optCampaign"); if (old) old.remove();
+    if (!list.length) return;
+    var og = document.createElement("optgroup"); og.id = "optCampaign"; og.label = "Campaign";
+    list.forEach(function(c){ var o = document.createElement("option"); o.value = "c:" + c.slug; o.textContent = c.title; og.appendChild(o); });
+    var first = sel.querySelector("optgroup");
+    sel.insertBefore(og, first ? first.nextSibling : null);
+  }
+  function donateCampaign(c){
+    if (!sel.querySelector('option[value="c:' + c.slug + '"]')) addCampaignOptions(CAMPS.concat(CAMPS.some(function(x){ return x.slug === c.slug; }) ? [] : [c]));
+    openDonate("c:" + c.slug);
+  }
+
+  function cardHtml(c){
+    var img = (c.images && c.images[0]) || "assets/img/hero-penerima.webp", p = campPct(c);
+    return '<article class="camp-card" tabindex="0" role="link" data-slug="' + escH(c.slug) + '" aria-label="' + escH(c.title) + '">' +
+      '<div class="cimg"><img src="' + escH(img) + '" alt="' + escH(c.title) + '" loading="lazy"><span class="ccat">' + escH(c.category) + '</span>' +
+      (c.deadline ? '<span class="cdays">' + escH(daysText(c)) + '</span>' : '') + '</div>' +
+      '<div class="cbody"><h3>' + escH(c.title) + '</h3><p>' + escH(c.summary) + '</p>' +
+      '<div class="cprog"><div class="pbar"><span data-w="' + p + '"></span></div>' +
+      '<div class="pnums"><div><small>Terkumpul</small><b>' + rupiah(c.collected) + '</b></div><div class="pp"><small>dari ' + rupiah(c.target) + '</small><b>' + p + '%</b></div></div></div>' +
+      '<div class="cfoot"><span class="donors">' + Number(c.donors || 0).toLocaleString("id-ID") + ' donatur</span>' +
+      '<button class="btn btn-primary" data-cdonate><svg class="icon"><use href="#i-heart"/></svg> Donasi</button></div></div></article>';
+  }
+  function renderCampaigns(list){
+    if (!list.length) { campSec.hidden = true; $("#navCampaign").hidden = true; return; }
+    campGrid.className = "camp-grid" + (list.length === 1 ? " one" : list.length === 2 ? " two" : "");
+    campGrid.innerHTML = list.map(cardHtml).join("");
+    campSec.hidden = false; $("#navCampaign").hidden = false;
+    $$(".camp-card", campGrid).forEach(function(card){
+      var c = list.filter(function(x){ return x.slug === card.dataset.slug; })[0];
+      card.addEventListener("click", function(e){ if (e.target.closest("[data-cdonate]")) return; openCampaign(c.slug, true); });
+      card.addEventListener("keydown", function(e){ if (e.key === "Enter" && e.target === card) openCampaign(c.slug, true); });
+      $("[data-cdonate]", card).addEventListener("click", function(e){ e.stopPropagation(); donateCampaign(c); });
+    });
+    // animasi progress bar saat terlihat
+    var bars = $$(".pbar span", campGrid);
+    function fill(){ bars.forEach(function(b){ b.style.width = b.dataset.w + "%"; }); }
+    if ("IntersectionObserver" in window) { var o = new IntersectionObserver(function(es){ if (es.some(function(e){ return e.isIntersecting; })) { fill(); o.disconnect(); } }, { threshold: .2 }); o.observe(campGrid); } else fill();
+  }
+  function loadCampaigns(){
+    return fetch("/api/public", { headers: { Accept: "application/json" } })
+      .then(function(r){ return r.ok ? r.json() : { campaigns: [] }; })
+      .then(function(d){ CAMPS = (d && d.campaigns) || []; addCampaignOptions(CAMPS); renderCampaigns(CAMPS); })
+      .catch(function(){ CAMPS = []; });
+  }
+
+  /* detail */
+  function showCv(){ cv.hidden = false; document.documentElement.style.overflow = "hidden"; cv.scrollTop = 0; }
+  function openCampaign(slug, push){
+    var local = CAMPS.filter(function(x){ return x.slug === slug; })[0];
+    showCv();
+    if (push) { history.pushState({ camp: slug }, "", "/campaign/" + encodeURIComponent(slug)); cvPushed = true; }
+    if (!local) cvBody.innerHTML = '<div class="cv-msg">Memuat campaign…</div>';
+    var p = local ? Promise.resolve(local) : fetch("/api/public?slug=" + encodeURIComponent(slug), { headers: { Accept: "application/json" } })
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(d){ if (!d || !d.ok) throw new Error((d && d.error) || "Campaign tidak ditemukan."); return d.campaign; });
+    p.then(renderDetail).catch(function(err){
+      cvCurrent = null;
+      cvBody.innerHTML = '<div class="wrap cv-msg"><h2>' + escH(err.message) + '</h2><p>Campaign mungkin sudah selesai atau tidak lagi ditampilkan.</p><button class="btn btn-primary" id="cvErrBack">Lihat campaign lainnya</button></div>';
+      $("#cvErrBack").addEventListener("click", function(){ closeCampaign(); });
+    });
+  }
+  function closeCampaign(fromPop){
+    if (cv.hidden) return;
+    cv.hidden = true; document.documentElement.style.overflow = ""; document.title = baseTitle; cvCurrent = null;
+    if (!fromPop) {
+      if (cvPushed) history.back(); else history.replaceState(null, "", "/");
+      if (!cvPushed && !campSec.hidden) setTimeout(function(){ campSec.scrollIntoView(); }, 30);
+    }
+    cvPushed = false;
+  }
+  function renderDetail(c){
+    cvCurrent = c; slideIdx = 0;
+    document.title = c.title + " — Yayasan Ananta Karuna Bahagia";
+    var imgs = (c.images && c.images.length ? c.images : ["assets/img/hero-penerima.webp"]), p = campPct(c), d = daysLeft(c);
+    var many = imgs.length > 1;
+    cvBody.innerHTML =
+      '<div class="wrap cv-wrap"><div class="cv-main">' +
+        '<div class="slides" id="slides"><div class="track" id="track">' +
+          imgs.map(function(u, i){ return '<img src="' + escH(u) + '" alt="' + escH(c.title) + ' — foto ' + (i + 1) + '"' + (i ? ' loading="lazy"' : '') + '>'; }).join("") + '</div>' +
+          (many ? '<button class="sl-btn pv" id="slPrev" aria-label="Foto sebelumnya"><svg class="icon"><use href="#i-left"/></svg></button>' +
+                  '<button class="sl-btn nx" id="slNext" aria-label="Foto berikutnya"><svg class="icon"><use href="#i-right"/></svg></button>' +
+                  '<span class="sl-count" id="slCount">1/' + imgs.length + '</span>' +
+                  '<div class="sl-dots">' + imgs.map(function(_, i){ return '<button data-dot="' + i + '" aria-label="Foto ' + (i + 1) + '"></button>'; }).join("") + '</div>' : '') +
+        '</div>' +
+        (many ? '<div class="thumbs">' + imgs.map(function(u, i){ return '<button data-th="' + i + '" aria-label="Lihat foto ' + (i + 1) + '"><img src="' + escH(u) + '" alt="" loading="lazy"></button>'; }).join("") + '</div>' : '') +
+        (c.story ? '<div class="cv-story"><h2>Cerita</h2>' + storyHtml(c.story) + '</div>' : '') +
+      '</div>' +
+      '<aside class="cv-side"><div class="cv-card">' +
+        '<span class="ccat">' + escH(c.category) + '</span>' +
+        '<h1>' + escH(c.title) + '</h1><p class="sum">' + escH(c.summary) + '</p>' +
+        (d !== null && d < 0 ? '<div class="cv-ended">Campaign ini telah berakhir. Donasi tetap bisa disalurkan untuk kebutuhan serupa.</div>' : '') +
+        '<div class="cv-amt">' + rupiah(c.collected) + '</div><div class="cv-of">terkumpul dari target <b>' + rupiah(c.target) + '</b></div>' +
+        '<div class="pbar"><span id="cvBar1"></span></div>' +
+        '<div class="cv-stats"><div><b>' + p + '%</b><small>tercapai</small></div><div><b>' + Number(c.donors || 0).toLocaleString("id-ID") + '</b><small>donatur</small></div>' +
+        '<div><b>' + (d === null ? '∞' : d < 0 ? 'Selesai' : d) + '</b><small>' + (d === null ? 'tanpa batas' : d < 0 ? 'berakhir' : 'hari lagi') + '</small></div></div>' +
+        '<button class="btn btn-primary btn-block" id="cvDonate"><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button>' +
+        '<div class="cv-share"><a class="btn btn-ghost" id="cvShareWa" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg> Bagikan</a>' +
+        '<button class="btn btn-ghost" id="cvCopy"><svg class="icon"><use href="#i-link"/></svg> Salin link</button></div>' +
+      '</div></aside></div>';
+
+    setTimeout(function(){ var b = $("#cvBar1"); if (b) b.style.width = p + "%"; }, 80);
+    $("#cvDonate").addEventListener("click", function(){ donateCampaign(c); });
+    $("#cvShareWa").href = "https://wa.me/?text=" + encodeURIComponent(c.title + "\n\n" + c.summary + "\n\nYuk bantu lewat Yayasan Ananta Karuna Bahagia:\n" + campUrl(c));
+    $("#cvCopy").addEventListener("click", function(){ copy(campUrl(c)); });
+
+    if (many) {
+      var track = $("#track"), n = imgs.length;
+      var goSlide = function(i){
+        slideIdx = (i + n) % n;
+        track.style.transform = "translateX(" + (-slideIdx * 100) + "%)";
+        $("#slCount").textContent = (slideIdx + 1) + "/" + n;
+        $$("[data-dot]", cvBody).forEach(function(b, k){ b.classList.toggle("on", k === slideIdx); });
+        $$("[data-th]", cvBody).forEach(function(b, k){ b.classList.toggle("on", k === slideIdx); });
+      };
+      $("#slPrev").addEventListener("click", function(){ goSlide(slideIdx - 1); });
+      $("#slNext").addEventListener("click", function(){ goSlide(slideIdx + 1); });
+      $$("[data-dot]", cvBody).forEach(function(b){ b.addEventListener("click", function(){ goSlide(+b.dataset.dot); }); });
+      $$("[data-th]", cvBody).forEach(function(b){ b.addEventListener("click", function(){ goSlide(+b.dataset.th); }); });
+      var sx = null, slides = $("#slides");
+      slides.addEventListener("touchstart", function(e){ sx = e.touches[0].clientX; }, { passive: true });
+      slides.addEventListener("touchend", function(e){ if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) goSlide(slideIdx + (dx < 0 ? 1 : -1)); sx = null; });
+      goSlide(0);
+    }
+  }
+  $("#cvBack").addEventListener("click", function(){ closeCampaign(); });
+  $("#cvHome").addEventListener("click", function(e){ e.preventDefault(); closeCampaign(); });
+  $("#cvDonateTop").addEventListener("click", function(){ if (cvCurrent) donateCampaign(cvCurrent); else openDonate(); });
+  $("#cvDonateBar").addEventListener("click", function(){ if (cvCurrent) donateCampaign(cvCurrent); else openDonate(); });
+  document.addEventListener("keydown", function(e){
+    if (cv.hidden || openModal || lb.classList.contains("open")) return;
+    if (e.key === "Escape") closeCampaign();
+    if (cvCurrent && e.key === "ArrowLeft" && $("#slPrev")) $("#slPrev").click();
+    if (cvCurrent && e.key === "ArrowRight" && $("#slNext")) $("#slNext").click();
+  }, true);
+  window.addEventListener("popstate", function(){
+    var m = /^\/campaign\/([^\/?#]+)/.exec(location.pathname);
+    if (m) { cvPushed = false; openCampaign(decodeURIComponent(m[1]), false); } else closeCampaign(true);
+  });
+
+  loadCampaigns().then(function(){
+    var m = /^\/campaign\/([^\/?#]+)/.exec(location.pathname);
+    if (m) openCampaign(decodeURIComponent(m[1]), false);
   });
 
   /* ---------- form relawan / ajukan / kerja sama ---------- */
