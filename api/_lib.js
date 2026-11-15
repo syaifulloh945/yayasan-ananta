@@ -118,6 +118,10 @@ export function ensureSchema() {
         donated_at DATE NOT NULL DEFAULT CURRENT_DATE,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now()
       )`);
+      // Versi 3: donasi dari website masuk sebagai "pending" sampai admin menekan Terima.
+      await q(`ALTER TABLE donations ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'approved'`);
+      await q(`ALTER TABLE donations ADD COLUMN IF NOT EXISTS source TEXT NOT NULL DEFAULT 'admin'`);
+      await q(`ALTER TABLE donations ADD COLUMN IF NOT EXISTS method TEXT NOT NULL DEFAULT ''`);
       await q(`CREATE TABLE IF NOT EXISTS updates (
         id SERIAL PRIMARY KEY,
         campaign_id INTEGER NOT NULL REFERENCES campaigns(id) ON DELETE CASCADE,
@@ -292,8 +296,8 @@ export const PUBLIC_LIST_COLS = `slug, title, category, summary,
 // Hitung ulang dana terkumpul & jumlah donatur dari catatan donasi.
 export async function recomputeTotals(campaignId) {
   await q(`UPDATE campaigns c SET
-      collected = coalesce((SELECT sum(amount) FROM donations WHERE campaign_id = c.id), 0),
-      donors = coalesce((SELECT sum(donor_count) FROM donations WHERE campaign_id = c.id), 0),
+      collected = coalesce((SELECT sum(amount) FROM donations WHERE campaign_id = c.id AND status = 'approved'), 0),
+      donors = coalesce((SELECT sum(donor_count) FROM donations WHERE campaign_id = c.id AND status = 'approved'), 0),
       updated_at = now()
     WHERE c.id = $1`, [campaignId]);
 }

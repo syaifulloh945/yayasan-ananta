@@ -467,7 +467,9 @@ textarea.field{min-height:84px;resize:vertical}
 .cv-days b{display:block;font-size:1.05rem}
 .cv-pbar{height:9px;background:#e7eee1;border-radius:999px;overflow:hidden;margin:14px 0 4px}
 .cv-pbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g-600),var(--lime));border-radius:999px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
-.cv-pct{font-size:.8rem;color:var(--muted);font-weight:600;text-align:right}
+.cv-pct{font-size:.82rem;color:var(--muted);font-weight:600;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cv-pct b{color:var(--ink)}
+.cv-pct b.ok{color:var(--g-700)}
 .cv-stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 6px}
 .cv-stats3 button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 6px;cursor:pointer;font:inherit;color:inherit;transition:border-color .2s, background .2s}
 .cv-stats3 button:hover{border-color:var(--g-500);background:var(--cream)}
@@ -1552,6 +1554,14 @@ var PROGRAMS = [
       (msg ? "Doa/pesan: " + msg + "\n" : "") +
       "\nBukti transfer saya lampirkan. Terima kasih.";
     var url = waLink(text);
+    // Simpan juga ke sistem sebagai "menunggu verifikasi" (hanya untuk donasi campaign).
+    if (/^c:/.test(state.program)) {
+      try {
+        fetch("/api/public?action=donate", { method: "POST", keepalive: true, headers: { "Content-Type": "application/json", "X-AKB": "1" },
+          body: JSON.stringify({ slug: state.program.slice(2), name: anon ? "" : name, anonymous: anon, amount: total(), prayer: msg,
+            method: m.type === "bank" ? "Transfer " + m.r.bank : "QRIS" }) }).catch(function(){});
+      } catch (e) {}
+    }
     $("#dWaAgain").href = url;
     $("#dThanksName").textContent = name;
     window.open(url, "_blank", "noopener");
@@ -1675,7 +1685,8 @@ var PROGRAMS = [
         '<h1 class="cv-title">' + escH(c.title) + '</h1>' +
         '<div class="cv-fund"><div><span class="cv-amt">' + rupiah(c.collected) + '</span> <span class="cv-of">terkumpul dari</span><div class="cv-of"><b>' + rupiah(c.target) + '</b></div></div>' +
         '<div class="cv-days">' + (d === null ? '<b>∞</b>Tanpa batas' : d < 0 ? '<b>0</b>Selesai' : '<b>' + d + '</b>Hari') + '</div></div>' +
-        '<div class="cv-pbar"><span id="cvBar1"></span></div><div class="cv-pct">' + p + '% tercapai</div>' +
+        '<div class="cv-pbar"><span id="cvBar1"></span></div>' +
+        '<div class="cv-pct"><span>' + (c.target > 0 ? (c.collected >= c.target ? '<b class="ok">Target tercapai. Terima kasih, Sahabat Ananta!</b>' : 'Kurang <b>' + rupiah(c.target - c.collected) + '</b> lagi') : '') + '</span><span>' + p + '% tercapai</span></div>' +
         (d !== null && d < 0 ? '<div class="cv-ended">Campaign ini telah berakhir. Donasi tetap bisa disalurkan untuk kebutuhan serupa.</div>' : '') +
         '<div class="cv-stats3">' +
           '<button data-go="donatur"><span class="si">' + ico("heart") + '</span><b>' + Number(c.donors || 0).toLocaleString("id-ID") + '</b><small>Donasi</small></button>' +

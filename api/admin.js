@@ -23,8 +23,9 @@ const campaignImages = (c) => [...(c.images || []), ...imagesInHtml(c.story_html
 
 async function campaignExtras(id) {
   const [donations, updates, disbursements] = await Promise.all([
-    q(`SELECT id, name, anonymous, amount::float8 AS amount, donor_count, prayer, show_prayer,
-         to_char(donated_at, 'YYYY-MM-DD') AS date FROM donations WHERE campaign_id = $1 ORDER BY donated_at DESC, id DESC`, [id]),
+    q(`SELECT id, name, anonymous, amount::float8 AS amount, donor_count, prayer, show_prayer, status, source, method,
+         to_char(donated_at, 'YYYY-MM-DD') AS date, to_char(created_at AT TIME ZONE 'Asia/Jakarta', 'DD Mon YYYY HH24:MI') AS created
+         FROM donations WHERE campaign_id = $1 ORDER BY (status = 'pending') DESC, donated_at DESC, id DESC`, [id]),
     q(`SELECT id, title, body, image, to_char(posted_at, 'YYYY-MM-DD') AS date FROM updates
        WHERE campaign_id = $1 ORDER BY posted_at DESC, id DESC`, [id]),
     q(`SELECT id, amount::float8 AS amount, description, image, to_char(disbursed_at, 'YYYY-MM-DD') AS date
@@ -56,10 +57,15 @@ export default handler(async (req, res) => {
           coalesce(sum(collected), 0)::float8 AS collected,
           coalesce(sum(donors), 0)::int AS donors
         FROM campaigns`);
-      return res.status(200).json({ ok: true, stats: rows[0], me: { id: me.id, username: me.username, name: me.name } });
+      const pending = await q(`SELECT d.id, d.campaign_id, c.title, CASE WHEN d.anonymous OR d.name = '' THEN 'Hamba Allah' ELSE d.name END AS name,
+          d.amount::float8 AS amount, to_char(d.created_at AT TIME ZONE 'Asia/Jakarta', 'DD Mon YYYY HH24:MI') AS created
+        FROM donations d JOIN campaigns c ON c.id = d.campaign_id WHERE d.status = 'pending' ORDER BY d.created_at DESC LIMIT 50`);
+      return res.status(200).json({ ok: true, stats: rows[0], pending, me: { id: me.id, username: me.username, name: me.name } });
     }
     if (action === 'campaigns') {
-      const rows = await q(`SELECT ${CAMPAIGN_COLS} FROM campaigns ORDER BY sort ASC, created_at DESC`);
+      const rows = await q(`SELECT ${CAMPAIGN_COLS},
+          (SELECT count(*)::int FROM donations d WHERE d.campaign_id = campaigns.id AND d.status = 'pending') AS pending
+        FROM campaigns ORDER BY sort ASC, created_at DESC`);
       return res.status(200).json({ ok: true, campaigns: rows });
     }
     if (action === 'campaign') {
@@ -148,6 +154,12 @@ export default handler(async (req, res) => {
     }
     await recomputeTotals(cid);
     return res.status(200).json({ ok: true, campaign: await campaignWithExtras(cid) });
+  }
+  if (action === 'donation-approve') {
+    const r = await q(`UPDATE donations SET status = 'approved' WHERE id = $1 RETURNING campaign_id`, [Number(b.id) || 0]);
+    if (!r[0]) throw new HttpError(404, 'Catatan donasi tidak ditemukan.');
+    await recomputeTotals(r[0].campaign_id);
+    return res.status(200).json({ ok: true, campaign: await campaignWithExtras(r[0].campaign_id) });
   }
   if (action === 'donation-delete') {
     const r = await q('DELETE FROM donations WHERE id = $1 RETURNING campaign_id', [Number(b.id) || 0]);

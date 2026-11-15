@@ -177,6 +177,14 @@ td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
 .one-img img{max-width:100%;max-height:180px;border-radius:12px}
 .check input{width:18px;height:18px;accent-color:var(--g-700)}
 
+/* donasi menunggu */
+.card.pend{border:1.5px solid #f3d99b;background:#fffaf0}
+.card.pend h2{display:flex;align-items:center;gap:8px;color:var(--amber)}
+.card.pend .rec{background:#fff}
+.pend-item{width:100%;font:inherit;cursor:pointer;border:1px solid var(--line);align-items:center}
+.pend-item:hover{border-color:var(--g-500)}
+.tag.warnt{background:var(--amber-bg);color:var(--amber)}
+
 /* panduan */
 .guide h2{font-size:1.1rem;margin:4px 0 12px}
 .guide h2:not(:first-child){margin-top:22px}
@@ -244,6 +252,8 @@ td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
   <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
 </defs></svg>
@@ -416,23 +426,27 @@ function renderShell(){
   app.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); go(b.dataset.go); }); });
   go(state.view);
 }
-function go(view, arg){
+function go(view, arg, arg2){
   state.view = view;
   app.querySelectorAll('.nav[data-go]').forEach(function(b){ b.classList.toggle('on', b.dataset.go === (view === 'edit' ? 'campaigns' : view)); });
   var v = document.getElementById('view');
   v.innerHTML = '<div class="loading">Memuat…</div>';
   window.scrollTo(0, 0);
-  ({ dashboard: viewDashboard, campaigns: viewCampaigns, edit: viewEdit, admins: viewAdmins, account: viewAccount, guide: viewGuide })[view](v, arg);
+  ({ dashboard: viewDashboard, campaigns: viewCampaigns, edit: viewEdit, admins: viewAdmins, account: viewAccount, guide: viewGuide })[view](v, arg, arg2);
 }
 function viewError(v, msg){ v.innerHTML = '<div class="card"><div class="alert err">' + esc(msg) + '</div><button class="btn btn-ghost" style="margin-top:14px" id="retry">Coba lagi</button></div>'; document.getElementById('retry').onclick = function(){ go(state.view); }; }
 
 /* ---------- dashboard ---------- */
 function viewDashboard(v){
   Promise.all([api('admin', 'stats'), api('admin', 'campaigns')]).then(function(r){
-    var s = r[0].stats, list = r[1].campaigns.slice(0, 5);
+    var s = r[0].stats, list = r[1].campaigns.slice(0, 5), pend = r[0].pending || [];
     v.innerHTML =
       '<div class="head"><div><h1>Assalamualaikum, ' + esc(state.me.name || state.me.username) + '</h1><p>Ringkasan campaign yayasan.</p></div>' +
       '<button class="btn btn-primary" id="newC">' + ic('plus') + ' Campaign Baru</button></div>' +
+      (pend.length ? '<div class="card pend" style="margin-bottom:18px"><h2>' + ic('alert') + ' ' + pend.length + ' donasi menunggu verifikasi</h2>' +
+        '<p class="hint" style="margin:0 0 10px">Cocokkan dengan mutasi rekening BNI, lalu klik untuk Terima/Tolak.</p><div class="clist">' +
+        pend.slice(0, 8).map(function(d){ return '<button class="rec pend-item" data-cid="' + d.campaign_id + '"><div style="flex:1;min-width:0;text-align:left"><div class="meta">' + esc(d.created) + ' · ' + esc(d.title) + '</div><h3>' + esc(d.name) + ' · <span style="color:var(--g-700)">' + rp(d.amount) + '</span></h3></div><span class="btn btn-ghost btn-sm">Periksa →</span></button>'; }).join('') +
+        '</div></div>' : '') +
       '<div class="stats">' +
       '<div class="stat"><small>Total Campaign</small><b>' + s.total + '</b><i>' + s.visible + ' tampil di website</i></div>' +
       '<div class="stat"><small>Total Target</small><b>' + rp(s.target) + '</b></div>' +
@@ -442,6 +456,7 @@ function viewDashboard(v){
       (list.length ? '<div class="clist">' + list.map(campaignItem).join('') + '</div>' : emptyCampaign()) + '</div>';
     document.getElementById('newC').onclick = function(){ go('edit', null); };
     v.querySelector('[data-go2]').onclick = function(){ go('campaigns'); };
+    v.querySelectorAll('.pend-item').forEach(function(b){ b.onclick = function(){ go('edit', Number(b.dataset.cid), 'donasi'); }; });
     bindCampaignItems(v);
   }).catch(function(x){ if (x.message !== '401') viewError(v, x.message); });
 }
@@ -452,7 +467,8 @@ function campaignItem(c){
   var img = (c.images && c.images[0]) || '/assets/img/logo-mark.png';
   return '<div class="citem" data-id="' + c.id + '"><img src="' + esc(img) + '" alt="" loading="lazy">' +
     '<div><h3>' + esc(c.title) + '</h3><div class="meta"><span class="tag">' + esc(c.category) + '</span>' +
-    (c.visible ? '<span class="tag">Tampil</span>' : '<span class="tag off">Disembunyikan</span>') + '</div>' +
+    (c.visible ? '<span class="tag vtag">Tampil</span>' : '<span class="tag off vtag">Disembunyikan</span>') +
+    (c.pending ? '<span class="tag warnt" data-pend>' + c.pending + ' donasi menunggu</span>' : '') + '</div>' +
     '<div class="bar"><span style="width:' + pct(c) + '%"></span></div>' +
     '<div class="meta"><b style="color:var(--ink)">' + rp(c.collected) + '</b> dari ' + rp(c.target) + ' · ' + pct(c) + '% · ' + Number(c.donors).toLocaleString('id-ID') + ' donatur</div></div>' +
     '<div class="cact"><label class="tg"><span class="switch"><input type="checkbox" data-toggle ' + (c.visible ? 'checked' : '') + ' aria-label="Tampilkan di website"><span></span></span>Tampil</label>' +
@@ -467,8 +483,8 @@ function bindCampaignItems(root){
       var on = e.target.checked;
       api('admin', 'campaign-toggle', { body: { id: id, visible: on } }).then(function(){
         toast(on ? 'Campaign ditampilkan di website' : 'Campaign disembunyikan');
-        var tags = el.querySelectorAll('.tag'); var t = tags[tags.length - 1];
-        t.className = on ? 'tag' : 'tag off'; t.textContent = on ? 'Tampil' : 'Disembunyikan';
+        var t = el.querySelector('.vtag');
+        t.className = on ? 'tag vtag' : 'tag off vtag'; t.textContent = on ? 'Tampil' : 'Disembunyikan';
       }).catch(function(x){ e.target.checked = !on; if (x.message !== '401') toast(x.message); });
     };
     el.querySelector('[data-del]').onclick = function(){
@@ -798,16 +814,31 @@ function delConfirm(what, action, id, refresh){
 }
 
 function panelDonations(p, c, refresh){
-  var prayers = c.donations.filter(function(d){ return d.prayer && d.show_prayer; }).length;
-  p.innerHTML = '<div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">' +
+  var pendingList = c.donations.filter(function(d){ return d.status === 'pending'; });
+  var approved = c.donations.filter(function(d){ return d.status !== 'pending'; });
+  var prayers = approved.filter(function(d){ return d.prayer && d.show_prayer; }).length;
+  var all = c.donations;
+  p.innerHTML =
+    (pendingList.length ? '<div class="card pend"><div class="head" style="margin-bottom:10px"><div><h2>' + ic('alert') + ' Menunggu Verifikasi (' + pendingList.length + ')</h2>' +
+      '<p class="hint" style="margin:0">Donatur sudah menekan “Konfirmasi via WhatsApp”. Cocokkan nominal dengan <b>mutasi rekening BNI</b>. Jika uang sudah masuk, klik <b>Terima</b>. Belum tampil di website sampai diterima.</p></div></div>' +
+      '<div class="clist">' + pendingList.map(function(d){
+        return '<div class="rec"><div style="flex:1;min-width:0"><div class="meta">' + esc(d.created || fmtD(d.date)) + (d.method ? ' · ' + esc(d.method) : '') + '</div>' +
+          '<h3>' + esc(d.anonymous || !d.name ? 'Hamba Allah' : d.name) + ' · <span style="color:var(--g-700)">' + rp(d.amount) + '</span></h3>' +
+          (d.prayer ? '<p class="clip2">“' + esc(d.prayer) + '”</p>' : '') + '</div>' +
+          '<div class="acts"><button class="btn btn-primary btn-sm" data-ok="' + d.id + '">' + ic('check') + ' Terima</button>' +
+          '<button class="btn btn-ghost btn-sm" data-ed="' + all.indexOf(d) + '">' + ic('edit') + '</button>' +
+          '<button class="btn btn-danger btn-sm" data-rej="' + d.id + '">Tolak</button></div></div>';
+      }).join('') + '</div></div>' : '') +
+    '<div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">' +
     '<div class="stat"><small>Terkumpul</small><b>' + rp(c.collected) + '</b><i>' + (c.target ? Math.min(100, Math.floor(c.collected / c.target * 100)) : 0) + '% dari ' + rp(c.target) + '</i></div>' +
     '<div class="stat"><small>Donatur</small><b>' + Number(c.donors || 0).toLocaleString('id-ID') + '</b></div>' +
     '<div class="stat"><small>Doa tampil</small><b>' + prayers + '</b></div></div>' +
     '<div class="card"><div class="head" style="margin-bottom:10px"><div><h2>Catatan Donasi</h2><p class="hint" style="margin:0">Setiap catatan otomatis menambah dana terkumpul dan jumlah donatur di website.</p></div>' +
     '<button class="btn btn-primary btn-sm" data-add>' + ic('plus') + ' Catat Donasi</button></div>' +
-    (c.donations.length ? '<table><thead><tr><th>Tanggal</th><th>Donatur</th><th>Nominal</th><th>Doa</th><th></th></tr></thead><tbody>' +
-      c.donations.map(function(d, i){
-        return '<tr><td>' + fmtD(d.date) + '</td><td><b>' + esc(d.anonymous || !d.name ? 'Hamba Allah' : d.name) + '</b>' + (d.donor_count > 1 ? ' <span class="tag">' + d.donor_count + ' donatur</span>' : '') + '</td>' +
+    (approved.length ? '<table><thead><tr><th>Tanggal</th><th>Donatur</th><th>Nominal</th><th>Doa</th><th></th></tr></thead><tbody>' +
+      approved.map(function(d){
+        var i = all.indexOf(d);
+        return '<tr><td>' + fmtD(d.date) + '</td><td><b>' + esc(d.anonymous || !d.name ? 'Hamba Allah' : d.name) + '</b>' + (d.donor_count > 1 ? ' <span class="tag">' + d.donor_count + ' donatur</span>' : '') + (d.source === 'web' ? ' <span class="tag">via website</span>' : '') + '</td>' +
           '<td>' + rp(d.amount) + '</td><td class="clip">' + (d.prayer ? esc(d.prayer) + (d.show_prayer ? '' : ' <span class="tag off">disembunyikan</span>') : '<span style="color:var(--muted)">-</span>') + '</td>' +
           '<td><div class="acts"><button class="btn btn-ghost btn-sm" data-ed="' + i + '">' + ic('edit') + '</button><button class="btn btn-danger btn-sm" data-del="' + d.id + '">' + ic('trash') + '</button></div></td></tr>';
       }).join('') + '</tbody></table>'
@@ -815,6 +846,18 @@ function panelDonations(p, c, refresh){
   p.querySelector('[data-add]').onclick = function(){ donationModal(c, null, refresh); };
   p.querySelectorAll('[data-ed]').forEach(function(b){ b.onclick = function(){ donationModal(c, c.donations[Number(b.dataset.ed)], refresh); }; });
   p.querySelectorAll('[data-del]').forEach(function(b){ b.onclick = function(){ delConfirm('catatan donasi', 'donation-delete', Number(b.dataset.del), refresh); }; });
+  p.querySelectorAll('[data-ok]').forEach(function(b){ b.onclick = function(){
+    busy(b, true, 'Menyimpan…');
+    api('admin', 'donation-approve', { body: { id: Number(b.dataset.ok) } }).then(function(d){ toast('Donasi diterima & tampil di website'); refresh(d); })
+      .catch(function(x){ busy(b, false); if (x.message !== '401') toast(x.message); });
+  }; });
+  p.querySelectorAll('[data-rej]').forEach(function(b){ b.onclick = function(){
+    confirmBox('Tolak donasi ini?', 'Gunakan jika transfer tidak ditemukan di mutasi rekening. Data akan dihapus dan tidak tampil di website.', 'Ya, tolak', true).then(function(yes){
+      if (!yes) return;
+      api('admin', 'donation-delete', { body: { id: Number(b.dataset.rej) } }).then(function(d){ toast('Donasi ditolak'); refresh(d); })
+        .catch(function(x){ if (x.message !== '401') toast(x.message); });
+    });
+  }; });
 }
 function donationModal(c, d, refresh){
   d = d || { date: today(), name: '', anonymous: false, amount: 0, donor_count: 1, prayer: '', show_prayer: true };
