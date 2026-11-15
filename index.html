@@ -499,7 +499,10 @@ textarea.field{min-height:84px;resize:vertical}
 .rich em{font-style:italic}
 .rich h3{font-size:1.1rem;margin:1.3em 0 .5em;text-align:left}
 .rich blockquote{margin:0 0 1em;padding:10px 14px;border-left:4px solid var(--lime);background:var(--lime-100);border-radius:0 12px 12px 0;font-style:italic;text-align:left}
-.rich img{display:block;width:100%;height:auto;border-radius:14px;margin:6px 0 14px;background:#eef3ea}
+.rich img{display:block;max-width:100%;width:auto;height:auto;max-height:560px;border-radius:14px;margin:6px auto 14px;background:#eef3ea}
+.rich p:has(> img){text-align:center}
+.rich p:has(> img ~ img){display:flex;gap:8px;align-items:stretch}
+.rich p:has(> img ~ img) > img{flex:1 1 0;min-width:0;width:0;max-height:440px;object-fit:cover;margin:6px 0 14px}
 .rich ul,.rich ol{padding-left:1.3em;margin:0 0 1em;text-align:left}
 .rich figure{margin:0 0 1em}.rich figcaption{font-size:.82rem;color:var(--muted);text-align:center}
 .cv-disc{display:flex;gap:10px;border:1px solid var(--line);background:var(--cream);border-radius:14px;padding:12px 14px;margin:16px 0;font-size:.82rem;color:var(--muted);line-height:1.55}

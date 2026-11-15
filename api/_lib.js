@@ -153,7 +153,7 @@ export function ensureSchema() {
             JSON.stringify(s.images), s.visible, s.sort]);
       }
       // Cerita Rafka hasil impor Word (sekali saja).
-      const rk = await q(`INSERT INTO meta (key) VALUES ('rafka-story-v2') ON CONFLICT (key) DO NOTHING RETURNING key`);
+      const rk = await q(`INSERT INTO meta (key) VALUES ('rafka-story-v3') ON CONFLICT (key) DO NOTHING RETURNING key`);
       if (rk[0]) {
         const html = sanitizeStory(RAFKA_STORY_HTML);
         await q('UPDATE campaigns SET story_html = $1, story = $2, updated_at = now() WHERE slug = $3', [html, htmlToText(html), RAFKA_SLUG]);

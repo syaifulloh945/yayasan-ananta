@@ -159,7 +159,9 @@ td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
 .ed-area p{margin:0 0 .9em}
 .ed-area h3{font-size:1.15rem;margin:1.2em 0 .5em}
 .ed-area blockquote{margin:0 0 1em;padding:10px 16px;border-left:4px solid var(--lime);background:var(--lime-100);border-radius:0 10px 10px 0;font-style:italic}
-.ed-area img{max-width:100%;height:auto;border-radius:12px;display:block;margin:6px auto}
+.ed-area img{max-width:100%;height:auto;max-height:420px;border-radius:12px;display:block;margin:6px auto}
+.ed-area p:has(> img ~ img){display:flex;gap:8px}
+.ed-area p:has(> img ~ img) > img{flex:1 1 0;min-width:0;width:0;object-fit:cover;margin:6px 0}
 .ed-area img:hover{outline:3px solid var(--lime-300)}
 .ed-area ul,.ed-area ol{padding-left:1.4em;margin:0 0 1em}
 .ed-status{padding:8px 14px;background:var(--amber-bg);color:var(--amber);font-size:.85rem;font-weight:600}
@@ -174,6 +176,18 @@ td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
 .one-img{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 .one-img img{max-width:100%;max-height:180px;border-radius:12px}
 .check input{width:18px;height:18px;accent-color:var(--g-700)}
+
+/* panduan */
+.guide h2{font-size:1.1rem;margin:4px 0 12px}
+.guide h2:not(:first-child){margin-top:22px}
+.gsteps{counter-reset:g;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.gsteps li{counter-increment:g;position:relative;padding:12px 14px 12px 54px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.gsteps li::before{content:counter(g);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--g-700);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.85rem}
+.gsteps b{color:var(--ink)}
+.gsteps span{display:block;font-size:.88rem;color:var(--body);margin-top:3px}
+.gtips{margin:0;padding-left:1.2em;display:grid;gap:7px;font-size:.92rem}
+.modal-box .guide{max-height:none}
+.modal-box:has(.guide){max-width:640px}
 
 /* modal & toast */
 .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,30,16,.5)}
@@ -382,6 +396,7 @@ var NAV = [
   ['dashboard', 'home', 'Dashboard'],
   ['campaigns', 'flag', 'Campaign'],
   ['admins', 'users', 'Kelola Admin'],
+  ['guide', 'file', 'Panduan'],
   ['account', 'user', 'Akun Saya']
 ];
 function renderShell(){
@@ -407,7 +422,7 @@ function go(view, arg){
   var v = document.getElementById('view');
   v.innerHTML = '<div class="loading">Memuat…</div>';
   window.scrollTo(0, 0);
-  ({ dashboard: viewDashboard, campaigns: viewCampaigns, edit: viewEdit, admins: viewAdmins, account: viewAccount })[view](v, arg);
+  ({ dashboard: viewDashboard, campaigns: viewCampaigns, edit: viewEdit, admins: viewAdmins, account: viewAccount, guide: viewGuide })[view](v, arg);
 }
 function viewError(v, msg){ v.innerHTML = '<div class="card"><div class="alert err">' + esc(msg) + '</div><button class="btn btn-ghost" style="margin-top:14px" id="retry">Coba lagi</button></div>'; document.getElementById('retry').onclick = function(){ go(state.view); }; }
 
@@ -666,7 +681,7 @@ function formCampaign(v, c, tab){
     '<div class="photos" id="photos"></div><input type="file" id="fileIn" accept="image/jpeg,image/png,image/webp" multiple hidden></div>' +
 
     '<div class="card"><h2>Cerita Lengkap</h2>' +
-    '<p class="hint" style="margin:0 0 12px">Bisa diketik langsung, ditempel dari Word, atau klik <b>Impor dari Word</b>: teks, huruf tebal/miring, dan foto di tengah tulisan ikut masuk otomatis.</p>' +
+    '<p class="hint" style="margin:0 0 12px">Bisa diketik langsung, ditempel dari Word, atau klik <b>Impor dari Word</b>: teks, huruf tebal/miring, dan foto di tengah tulisan ikut masuk otomatis. <button type="button" class="link" id="openGuide">Lihat panduan →</button></p>' +
     '<div id="edHost"></div></div>' +
 
     '<div id="cErr" class="alert err" hidden></div>' +
@@ -984,6 +999,40 @@ function addAdmin(){
       };
     });
 }
+
+/* ---------- panduan ---------- */
+var GUIDE_HTML =
+  '<div class="guide">' +
+  '<h2>Cara membuat campaign dari file Word</h2>' +
+  '<ol class="gsteps">' +
+  '<li><b>Siapkan file Word (.docx)</b><span>Tulis cerita seperti biasa di Microsoft Word. Baris pertama boleh berisi judul. Simpan dengan format <b>.docx</b>. File <b>.doc</b> lama: buka di Word, lalu <i>File → Save As → Word Document (.docx)</i>.</span></li>' +
+  '<li><b>Buka Campaign → Campaign Baru</b> (atau <b>Edit</b> pada campaign yang sudah ada).</li>' +
+  '<li><b>Klik tombol hijau “Impor dari Word”</b> di kotak Cerita Lengkap, lalu pilih file Word Anda.<span>Tunggu tulisan “Mengunggah foto 1 dari …” sampai selesai. Teks, huruf tebal/miring, dan foto di tengah tulisan masuk otomatis.</span></li>' +
+  '<li><b>Periksa hasilnya</b><span>Judul dan Deskripsi singkat terisi otomatis jika masih kosong. Rapikan bila perlu. Isi juga <b>Target dana</b> dan <b>Foto Banner</b> (1–4 foto, ideal lanskap 16:9).</span></li>' +
+  '<li><b>Klik “Simpan Campaign”</b>. Dalam ±10 detik campaign tampil di halaman depan website.</li>' +
+  '</ol>' +
+  '<h2>Tips agar tampilan di website bagus</h2>' +
+  '<ul class="gtips">' +
+  '<li><b>1 foto di baris sendiri</b> → tampil <b>di tengah</b>, ukuran penuh.</li>' +
+  '<li><b>2–3 foto di baris yang sama</b> (sejajar) di Word → tampil <b>berdampingan</b> di website.</li>' +
+  '<li><b>Masukkan foto asli</b> (Insert → Pictures). Hindari kolase/slide berlatar warna. Latar warna ikut tampil di website.</li>' +
+  '<li><b>Huruf tebal</b> (Ctrl+B) dan <i>miring</i> (Ctrl+I) ikut terbawa. Kutipan ucapan sebaiknya dibuat miring.</li>' +
+  '<li>Pisahkan paragraf dengan <b>Enter</b>. Paragraf pendek (3–5 baris) lebih enak dibaca di HP.</li>' +
+  '<li>Ukuran file Word maksimal sekitar <b>25 MB</b>. Foto otomatis dikecilkan agar website tetap cepat.</li>' +
+  '</ul>' +
+  '<h2>Setelah campaign tayang</h2>' +
+  '<ul class="gtips">' +
+  '<li>Tab <b>Catat Donasi</b>: setiap transfer masuk, catat nama (atau Hamba Allah), nominal, dan doa. Dana terkumpul & jumlah donatur di website bertambah otomatis.</li>' +
+  '<li>Tab <b>Kabar Terbaru</b>: kabarkan perkembangan penerima manfaat (boleh dengan foto).</li>' +
+  '<li>Tab <b>Pencairan</b>: catat setiap penyaluran dana agar transparan.</li>' +
+  '<li>Bisa juga mengetik/mengedit langsung di editor: tombol <b>B</b> (tebal), <i>I</i> (miring), <b>H</b> (subjudul), ❝ (kutipan), dan <b>Foto</b> untuk menyisipkan foto di posisi kursor.</li>' +
+  '</ul></div>';
+function viewGuide(v){
+  v.innerHTML = '<div class="head"><div><h1>Panduan</h1><p>Langkah membuat campaign yang rapi di website.</p></div><button class="btn btn-primary" id="gNew">' + ic('plus') + ' Buat Campaign</button></div><div class="card">' + GUIDE_HTML + '</div>';
+  document.getElementById('gNew').onclick = function(){ go('edit', null); };
+}
+function guideModal(){ modal(GUIDE_HTML + '<div class="acts"><button class="btn btn-primary" data-close>Mengerti</button></div>'); }
+document.addEventListener('click', function(e){ if (e.target.closest('#openGuide')) guideModal(); });
 
 /* ---------- akun saya ---------- */
 function viewAccount(v){
