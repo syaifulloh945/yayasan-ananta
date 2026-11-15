@@ -103,8 +103,46 @@ export function ensureSchema() {
       await q(`INSERT INTO admins (username, name, pass_hash, recovery_hash)
                SELECT $1, $2, $3, $4 WHERE NOT EXISTS (SELECT 1 FROM admins)`,
         [SEED_ADMIN.username, SEED_ADMIN.name, SEED_ADMIN.passHash, SEED_ADMIN.recoveryHash]);
-      // Campaign awal: dimasukkan sekali saja (penanda di tabel meta), jadi aman diedit/dihapus admin.
+      // Versi 2: cerita berformat, catatan donasi, kabar terbaru, pencairan.
+      await q(`ALTER TABLE campaigns ADD COLUMN IF NOT EXISTS story_html TEXT NOT NULL DEFAULT ''`);
+      await q(`CREATE TABLE IF NOT EXISTS donations (
+        id SERIAL PRIMARY KEY,
+        campaign_id INTEGER NOT NULL REFERENCES campaigns(id) ON DELETE CASCADE,
+        name TEXT NOT NULL DEFAULT '',
+        anonymous BOOLEAN NOT NULL DEFAULT false,
+        amount BIGINT NOT NULL DEFAULT 0,
+        donor_count INTEGER NOT NULL DEFAULT 1,
+        prayer TEXT NOT NULL DEFAULT '',
+        show_prayer BOOLEAN NOT NULL DEFAULT true,
+        donated_at DATE NOT NULL DEFAULT CURRENT_DATE,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      )`);
+      await q(`CREATE TABLE IF NOT EXISTS updates (
+        id SERIAL PRIMARY KEY,
+        campaign_id INTEGER NOT NULL REFERENCES campaigns(id) ON DELETE CASCADE,
+        title TEXT NOT NULL DEFAULT '',
+        body TEXT NOT NULL DEFAULT '',
+        image TEXT NOT NULL DEFAULT '',
+        posted_at DATE NOT NULL DEFAULT CURRENT_DATE,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      )`);
+      await q(`CREATE TABLE IF NOT EXISTS disbursements (
+        id SERIAL PRIMARY KEY,
+        campaign_id INTEGER NOT NULL REFERENCES campaigns(id) ON DELETE CASCADE,
+        amount BIGINT NOT NULL DEFAULT 0,
+        description TEXT NOT NULL DEFAULT '',
+        image TEXT NOT NULL DEFAULT '',
+        disbursed_at DATE NOT NULL DEFAULT CURRENT_DATE,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      )`);
       await q(`CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, created_at TIMESTAMPTZ NOT NULL DEFAULT now())`);
+      // Pindahkan angka terkumpul lama (diisi manual) menjadi satu catatan donasi gabungan, sekali saja.
+      const mig = await q(`INSERT INTO meta (key) VALUES ('migrate-donations-v1') ON CONFLICT (key) DO NOTHING RETURNING key`);
+      if (mig[0]) {
+        await q(`INSERT INTO donations (campaign_id, name, amount, donor_count, show_prayer)
+                 SELECT c.id, 'Donasi sebelumnya (gabungan)', c.collected, GREATEST(c.donors, 0), false
+                 FROM campaigns c WHERE c.collected > 0 AND NOT EXISTS (SELECT 1 FROM donations d WHERE d.campaign_id = c.id)`);
+      }
       for (const s of SEED_CAMPAIGNS) {
         const fresh = await q('INSERT INTO meta (key) VALUES ($1) ON CONFLICT (key) DO NOTHING RETURNING key', ['seed-campaign:' + s.slug]);
         if (!fresh[0]) continue;
@@ -232,13 +270,91 @@ export async function clearLimit(key) { await q('DELETE FROM attempts WHERE key 
 /* ---------------- Campaign ---------------- */
 export const CATEGORIES = ['Kesehatan', 'Air Bersih', 'Pendidikan', 'Sosial', 'Kemanusiaan', 'Keagamaan', 'Ekonomi', 'Bencana', 'Umum'];
 
-export const CAMPAIGN_COLS = `id, slug, title, category, summary, story,
+export const CAMPAIGN_COLS = `id, slug, title, category, summary, story, story_html,
   target::float8 AS target, collected::float8 AS collected, donors,
   to_char(deadline, 'YYYY-MM-DD') AS deadline, images, visible, sort, created_at, updated_at`;
 
-export const PUBLIC_COLS = `slug, title, category, summary, story,
+export const PUBLIC_COLS = `id, slug, title, category, summary, story, story_html,
   target::float8 AS target, collected::float8 AS collected, donors,
   to_char(deadline, 'YYYY-MM-DD') AS deadline, images, updated_at`;
+
+export const PUBLIC_LIST_COLS = `slug, title, category, summary,
+  target::float8 AS target, collected::float8 AS collected, donors,
+  to_char(deadline, 'YYYY-MM-DD') AS deadline, images, updated_at`;
+
+// Hitung ulang dana terkumpul & jumlah donatur dari catatan donasi.
+export async function recomputeTotals(campaignId) {
+  await q(`UPDATE campaigns c SET
+      collected = coalesce((SELECT sum(amount) FROM donations WHERE campaign_id = c.id), 0),
+      donors = coalesce((SELECT sum(donor_count) FROM donations WHERE campaign_id = c.id), 0),
+      updated_at = now()
+    WHERE c.id = $1`, [campaignId]);
+}
+
+/* ---------------- Pembersih HTML cerita (allowlist) ---------------- */
+const ALLOWED_TAGS = { p: 'p', br: 'br', strong: 'strong', b: 'strong', em: 'em', i: 'em', u: 'u',
+  h2: 'h3', h3: 'h3', h4: 'h3', blockquote: 'blockquote', ul: 'ul', ol: 'ol', li: 'li', img: 'img', figure: 'figure', figcaption: 'figcaption' };
+const VOID_TAGS = new Set(['br', 'img']);
+function escAttr(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+function attr(attrs, name) {
+  const m = new RegExp('\\s' + name + '\\s*=\\s*("([^"]*)"|\'([^\']*)\'|([^\\s>]+))', 'i').exec(' ' + attrs);
+  if (!m) return '';
+  return (m[2] ?? m[3] ?? m[4] ?? '').replace(/&amp;/g, '&').replace(/&quot;/g, '"');
+}
+export function sanitizeStory(html) {
+  let s = String(html || '');
+  if (s.length > 200000) throw new HttpError(400, 'Cerita terlalu panjang.');
+  s = s.replace(/<!--[\s\S]*?-->/g, '')
+       .replace(/<(script|style|iframe|object|embed|noscript|template|svg|math)\b[\s\S]*?<\/\1\s*>/gi, '')
+       .replace(/<(script|style|iframe|object|embed|noscript|template|svg|math)\b[^>]*>/gi, '');
+  const out = [];
+  const parts = s.split(/(<[^>]*>)/);
+  for (const part of parts) {
+    if (!part) continue;
+    if (part[0] !== '<' || !part.endsWith('>')) { out.push(part.replace(/</g, '&lt;').replace(/>/g, '&gt;')); continue; }
+    const m = /^<\s*(\/)?\s*([a-zA-Z0-9]+)([^>]*)>$/.exec(part);
+    if (!m) continue;
+    const tag = ALLOWED_TAGS[m[2].toLowerCase()];
+    if (!tag) continue;
+    if (m[1]) { if (!VOID_TAGS.has(tag)) out.push(`</${tag}>`); continue; }
+    if (tag === 'img') {
+      const src = attr(m[3], 'src');
+      if (!isImageUrl(src)) continue;
+      out.push(`<img src="${escAttr(src)}" alt="${escAttr(attr(m[3], 'alt').slice(0, 200))}" loading="lazy">`);
+      continue;
+    }
+    out.push(`<${tag}>`);
+  }
+  return out.join('').replace(/(<p>\s*(<br>)?\s*<\/p>\s*){2,}/g, '<p><br></p>').trim();
+}
+export function htmlToText(html) {
+  return String(html || '').replace(/<br\s*\/?>/gi, '\n').replace(/<\/(p|h3|blockquote|li|figure)>/gi, '\n\n')
+    .replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/\n{3,}/g, '\n\n').trim();
+}
+export function imagesInHtml(html) {
+  const urls = []; const re = /<img[^>]+src="([^"]+)"/gi; let m;
+  while ((m = re.exec(String(html || '')))) urls.push(m[1].replace(/&amp;/g, '&'));
+  return urls;
+}
+
+export function cleanDate(v, label) {
+  if (!v) return new Date().toISOString().slice(0, 10);
+  const s = String(v).trim();
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(s)) throw new HttpError(400, `${label} tidak valid.`);
+  return s;
+}
+export function cleanMoney(v, label, min = 0) {
+  const n = Math.round(Number(String(v ?? 0).replace(/[^\d]/g, '') || 0));
+  if (!Number.isFinite(n) || n < min || n > 1e12) throw new HttpError(400, `${label} tidak valid.`);
+  return n;
+}
+export function cleanOptionalImage(v) {
+  const s = String(v || '').trim();
+  if (!s) return '';
+  if (!isImageUrl(s)) throw new HttpError(400, 'Alamat foto tidak valid.');
+  return s;
+}
 
 export function isBlobUrl(u) {
   try {
@@ -260,15 +376,13 @@ function toInt(v, min, max, label) {
 
 export function cleanCampaign(b) {
   const title = String(b.title || '').trim();
-  if (title.length < 5 || title.length > 120) throw new HttpError(400, 'Judul harus 5–120 karakter.');
+  if (title.length < 5 || title.length > 160) throw new HttpError(400, 'Judul harus 5–160 karakter.');
   const summary = String(b.summary || '').trim();
   if (summary.length < 10 || summary.length > 240) throw new HttpError(400, 'Deskripsi singkat harus 10–240 karakter.');
-  const story = String(b.story || '').trim();
-  if (story.length > 20000) throw new HttpError(400, 'Cerita terlalu panjang (maksimal 20.000 karakter).');
+  const story_html = sanitizeStory(b.story_html || '');
+  const story = htmlToText(story_html).slice(0, 50000);
   const category = CATEGORIES.includes(b.category) ? b.category : 'Umum';
   const target = toInt(b.target, 0, 1e12, 'Target dana');
-  const collected = toInt(b.collected, 0, 1e12, 'Dana terkumpul');
-  const donors = toInt(b.donors, 0, 1e7, 'Jumlah donatur');
   const sort = toInt(b.sort, -9999, 9999, 'Urutan');
   let deadline = b.deadline ? String(b.deadline).trim() : null;
   if (deadline && !/^\d{4}-\d{2}-\d{2}$/.test(deadline)) throw new HttpError(400, 'Batas waktu tidak valid.');
@@ -276,7 +390,7 @@ export function cleanCampaign(b) {
   if (!images.length) throw new HttpError(400, 'Tambahkan minimal 1 foto.');
   if (images.length > 4) throw new HttpError(400, 'Maksimal 4 foto.');
   if (!images.every(isImageUrl)) throw new HttpError(400, 'Alamat foto tidak valid.');
-  return { title, summary, story, category, target, collected, donors, deadline, images, sort, visible: !!b.visible };
+  return { title, summary, story, story_html, category, target, deadline, images, sort, visible: !!b.visible };
 }
 
 export function slugify(s) {

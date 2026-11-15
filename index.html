@@ -436,48 +436,115 @@ textarea.field{min-height:84px;resize:vertical}
 .camp-grid.one .cbody p{-webkit-line-clamp:4;font-size:1rem}
 .camp-grid.two{grid-template-columns:repeat(2,1fr)}
 
-/* ===== detail campaign ===== */
-.cview{position:fixed;inset:0;z-index:80;background:var(--cream);overflow-y:auto;overscroll-behavior:contain;animation:fade .25s}
-.cv-top{position:sticky;top:0;z-index:5;background:rgba(247,250,242,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.cv-top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:14px}
-.cv-back{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}
+/* ===== detail campaign (gaya halaman galang dana, satu kolom) ===== */
+.cview{position:fixed;inset:0;z-index:80;background:#eef3ea;overflow-y:auto;overscroll-behavior:contain;animation:fade .25s}
+.cv-col{max-width:640px;margin:0 auto;background:#fff;min-height:100%;box-shadow:0 0 40px rgba(6,51,27,.08);padding-bottom:96px;position:relative}
+.cv-top{position:sticky;top:0;z-index:6;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;height:58px;padding:0 14px}
+.cv-back{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);flex:none}
 .cv-back:hover{border-color:var(--g-500)}
-.cv-wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start;padding-top:28px;padding-bottom:110px}
-.slides{position:relative;border-radius:26px;overflow:hidden;background:#dfe8d7;aspect-ratio:4/3;box-shadow:var(--shadow)}
+.cv-top .brand img{width:34px}
+.cv-top .brand b{font-size:.9rem}
+.cv-top .brand small{font-size:.55rem}
+.cv-top .cv-tshare{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--ink);flex:none}
+.slides{position:relative;overflow:hidden;background:#1d2a22;aspect-ratio:16/9}
 .slides .track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .slides .track .sl{flex:0 0 100%;position:relative;overflow:hidden;background:#1d2a22}
 .sl .slbg{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(24px) brightness(.8);transform:scale(1.1)}
 .sl img{position:relative;width:100%;height:100%;object-fit:contain}
-.sl-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.15)}
-.sl-btn:hover{background:#fff}
-.sl-btn.pv{left:14px}.sl-btn.nx{right:14px}
-.sl-dots{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:center;gap:8px}
-.sl-dots button{width:9px;height:9px;border-radius:99px;border:0;background:rgba(255,255,255,.6);cursor:pointer;padding:0;transition:all .25s}
-.sl-dots button.on{width:26px;background:#fff}
-.sl-count{position:absolute;top:14px;right:14px;background:rgba(6,51,27,.75);color:#fff;font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px}
-.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
-.thumbs button{border:2px solid transparent;border-radius:14px;overflow:hidden;padding:0;cursor:pointer;aspect-ratio:4/3;background:#dfe8d7;opacity:.65;transition:all .2s}
-.thumbs button.on{border-color:var(--g-600);opacity:1}
-.thumbs img{width:100%;height:100%;object-fit:cover}
-.cv-story{background:#fff;border-radius:24px;padding:30px 32px;box-shadow:var(--shadow);margin-top:24px}
-.cv-story h2{font-size:1.35rem;margin-bottom:14px}
-.cv-story p{font-size:1.02rem;color:var(--body);line-height:1.8;margin:0 0 1.1em}
-.cv-side{position:sticky;top:90px}
-.cv-card{background:#fff;border-radius:24px;padding:28px;box-shadow:var(--shadow)}
-.cv-card .ccat{position:static;display:inline-block;background:var(--lime-100);margin-bottom:12px}
-.cv-card h1{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:10px}
-.cv-card .sum{color:var(--muted);margin:0 0 22px}
-.cv-amt{font-size:1.9rem;font-weight:800;color:var(--g-800);line-height:1.1}
-.cv-of{color:var(--muted);font-size:.92rem;margin:4px 0 14px}
-.cv-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 22px;text-align:center}
-.cv-stats div{background:var(--cream);border-radius:14px;padding:12px 6px}
-.cv-stats b{display:block;color:var(--ink);font-size:1.05rem}
-.cv-stats small{color:var(--muted);font-size:.76rem;font-weight:600}
-.cv-share{display:flex;gap:10px;margin-top:12px}
-.cv-share .btn{flex:1;padding:11px 12px;font-size:.88rem}
-.cv-bar{display:none}
+.sl-btn{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.sl-btn.pv{left:10px}.sl-btn.nx{right:10px}
+.sl-dots{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:6px}
+.sl-dots button{width:8px;height:8px;border-radius:99px;border:0;background:rgba(255,255,255,.6);cursor:pointer;padding:0;transition:all .25s}
+.sl-dots button.on{width:22px;background:#fff}
+.sl-count{position:absolute;top:10px;right:10px;background:rgba(6,51,27,.75);color:#fff;font-size:.75rem;font-weight:700;padding:3px 9px;border-radius:999px}
+.cv-pad{padding:18px 18px 4px}
+.cv-title{font-size:clamp(1.25rem,4.4vw,1.6rem);font-weight:800;line-height:1.3;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
+.cv-fund{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.cv-amt{font-size:1.45rem;font-weight:800;color:var(--g-700);line-height:1.2}
+.cv-of{font-size:.88rem;color:var(--muted)}
+.cv-of b{color:var(--body);font-weight:600}
+.cv-days{flex:none;text-align:center;border:1px solid var(--lime-300);background:var(--lime-100);color:var(--g-800);border-radius:14px;padding:6px 12px;font-size:.8rem;font-weight:700;line-height:1.25;min-width:64px}
+.cv-days b{display:block;font-size:1.05rem}
+.cv-pbar{height:9px;background:#e7eee1;border-radius:999px;overflow:hidden;margin:14px 0 4px}
+.cv-pbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g-600),var(--lime));border-radius:999px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.cv-pct{font-size:.8rem;color:var(--muted);font-weight:600;text-align:right}
+.cv-stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 6px}
+.cv-stats3 button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 6px;cursor:pointer;font:inherit;color:inherit;transition:border-color .2s, background .2s}
+.cv-stats3 button:hover{border-color:var(--g-500);background:var(--cream)}
+.cv-stats3 .si{width:38px;height:38px;border-radius:50%;background:var(--lime-100);color:var(--g-700);display:grid;place-items:center;margin:0 auto 6px}
+.cv-stats3 b{display:block;font-size:1.15rem;color:var(--ink)}
+.cv-stats3 small{font-size:.78rem;color:var(--muted);font-weight:600}
+.cv-h{font-size:1.05rem;margin:18px 0 10px}
+.cv-org{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.cv-org img{width:46px;height:auto;flex:none}
+.cv-org small{display:block;color:var(--muted);font-size:.76rem;font-weight:600}
+.cv-org b{display:block;color:var(--ink);font-size:.98rem}
+.cv-org .ver{display:inline-flex;align-items:center;gap:4px;color:var(--g-600);font-size:.78rem;font-weight:700}
+.cv-org .ver .icon{width:15px;height:15px}
+.cv-tabs{position:sticky;top:58px;z-index:5;background:#fff;display:flex;border-bottom:1px solid var(--line);margin-top:18px;overflow-x:auto;scrollbar-width:none}
+.cv-tabs::-webkit-scrollbar{display:none}
+.cv-tabs button{flex:1;min-width:72px;border:0;background:none;padding:10px 6px 9px;font:inherit;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;display:flex;flex-direction:column;align-items:center;gap:3px}
+.cv-tabs button .icon{width:18px;height:18px}
+.cv-tabs button.on{color:var(--g-700);border-bottom-color:var(--g-700)}
+.cv-sec-title{text-align:center;margin:6px 0 16px}
+.cv-sec-title h2{color:var(--g-700);font-size:1.2rem;margin:0}
+.cv-sec-title small{color:var(--muted);font-size:.85rem}
+.cv-storybox{position:relative;border:1px solid var(--line);border-radius:18px;padding:18px 18px 8px;overflow:hidden}
+.cv-storybox.clamp{max-height:560px}
+.cv-storybox.clamp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(rgba(255,255,255,0),#fff 85%)}
+.cv-more{display:block;width:100%;border:0;background:none;color:var(--g-700);font:inherit;font-weight:800;padding:12px 0;cursor:pointer;text-align:left}
+.rich{font-size:.98rem;line-height:1.8;color:var(--body);text-align:justify;hyphens:auto;word-break:break-word}
+.rich p{margin:0 0 1em}
+.rich strong{color:var(--ink);font-weight:700}
+.rich em{font-style:italic}
+.rich h3{font-size:1.1rem;margin:1.3em 0 .5em;text-align:left}
+.rich blockquote{margin:0 0 1em;padding:10px 14px;border-left:4px solid var(--lime);background:var(--lime-100);border-radius:0 12px 12px 0;font-style:italic;text-align:left}
+.rich img{display:block;width:100%;height:auto;border-radius:14px;margin:6px 0 14px;background:#eef3ea}
+.rich ul,.rich ol{padding-left:1.3em;margin:0 0 1em;text-align:left}
+.rich figure{margin:0 0 1em}.rich figcaption{font-size:.82rem;color:var(--muted);text-align:center}
+.cv-disc{display:flex;gap:10px;border:1px solid var(--line);background:var(--cream);border-radius:14px;padding:12px 14px;margin:16px 0;font-size:.82rem;color:var(--muted);line-height:1.55}
+.cv-disc b{display:block;color:var(--body);font-size:.88rem;margin-bottom:2px}
+.cv-disc .icon{flex:none;margin-top:2px;color:var(--g-600)}
+.cv-list{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.cv-item{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.cv-ava{width:42px;height:42px;border-radius:50%;background:var(--lime-100);color:var(--g-800);display:grid;place-items:center;font-weight:800;font-size:.9rem;flex:none}
+.cv-item .nm{font-weight:700;color:var(--ink);font-size:.95rem}
+.cv-item .sub{font-size:.85rem;color:var(--body)}
+.cv-item .sub b{color:var(--g-700)}
+.cv-item .tm{font-size:.76rem;color:var(--muted);font-weight:600}
+.cv-item .pr{margin:6px 0 0;font-size:.92rem;color:var(--body);line-height:1.6;font-style:italic}
+.cv-news{border-left:3px solid var(--lime-300);padding:0 0 18px 16px;position:relative}
+.cv-news::before{content:"";position:absolute;left:-8px;top:2px;width:13px;height:13px;border-radius:50%;background:var(--g-600);border:3px solid #fff;box-shadow:0 0 0 1px var(--lime-300)}
+.cv-news .tm{font-size:.78rem;color:var(--muted);font-weight:700}
+.cv-news h3{font-size:1rem;margin:2px 0 6px}
+.cv-news p{margin:0 0 8px;font-size:.93rem;line-height:1.7;color:var(--body)}
+.cv-news img{width:100%;border-radius:14px;margin-top:4px}
+.cv-sum2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cv-sum2 div{background:var(--cream);border-radius:14px;padding:12px 14px}
+.cv-sum2 small{display:block;color:var(--muted);font-size:.76rem;font-weight:600}
+.cv-sum2 b{color:var(--ink);font-size:1.05rem}
+.cv-empty{text-align:center;color:var(--muted);padding:34px 10px;font-size:.92rem}
+.cv-empty .icon{width:38px;height:38px;color:var(--lime-300);margin-bottom:6px}
+.cv-link{border:0;background:none;color:var(--g-700);font:inherit;font-weight:700;cursor:pointer;padding:6px 0}
+.cv-bar{position:fixed;left:0;right:0;bottom:0;z-index:7;pointer-events:none}
+.cv-bar-in{max-width:640px;margin:0 auto;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;pointer-events:auto;box-shadow:0 -8px 24px rgba(0,0,0,.06)}
+.cv-bar-in .bb{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:14px;padding:0 14px;height:48px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer;flex:none}
+.cv-bar-in .bb:hover{border-color:var(--g-500)}
+.cv-bar-in .btn{flex:1;height:48px;border-radius:14px;white-space:nowrap;padding:0 14px}
+@media (max-width:420px){
+  .cv-bar-in{gap:6px;padding-left:10px;padding-right:10px}
+  .cv-bar-in .bb{padding:0 11px;font-size:.9rem}
+  .cv-bar-in .btn{font-size:.92rem;padding:0 10px}
+  .cv-bar-in .btn .icon{display:none}
+}
+.cv-sheet{position:fixed;inset:0;z-index:9;background:rgba(6,30,16,.45);display:flex;align-items:flex-end;justify-content:center}
+.cv-sheet-in{background:#fff;width:100%;max-width:640px;border-radius:22px 22px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));animation:pop .25s ease}
+.cv-sheet-in h3{margin:0 0 14px;font-size:1.05rem}
+.cv-sheet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cv-sheet-grid a,.cv-sheet-grid button{display:flex;flex-direction:column;align-items:center;gap:6px;border:0;background:none;font:inherit;font-size:.8rem;font-weight:600;color:var(--body);text-decoration:none;cursor:pointer;padding:4px}
+.cv-sheet-grid span{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;color:#fff}
 .cv-msg{text-align:center;padding:80px 20px;color:var(--muted)}
-.cv-ended{background:var(--warn-bg);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:.88rem;font-weight:600;margin-bottom:14px}
+.cv-ended{background:var(--warn-bg);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:.85rem;font-weight:600;margin:10px 0 0}
 @media (max-width:1080px){.camp-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:900px){
   .camp-sec{padding:72px 0 0}
@@ -486,21 +553,9 @@ textarea.field{min-height:84px;resize:vertical}
   .camp-grid.one .cimg{min-height:0;aspect-ratio:16/9;align-self:auto;margin:0;border-radius:0;flex:none}
   .camp-grid.one .cbody{padding:22px}
   .camp-grid.one .cbody h3{font-size:1.25rem}
-  .cv-wrap{grid-template-columns:1fr;gap:20px;padding-top:16px}
-  .cv-side{position:static;order:-1}
-  .cv-main{display:contents}
-  .slides,.thumbs{order:-2}
-  .cv-story{order:1;margin-top:0}
-  .cv-bar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:6;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(0,0,0,.06)}
 }
 @media (max-width:640px){
   .camp-grid,.camp-grid.two{grid-template-columns:1fr}
-  .cv-top .brand b{font-size:.9rem}
-  .cv-top #cvDonateTop{display:none}
-  .slides{border-radius:18px}
-  .sl-btn{width:38px;height:38px}
-  .cv-card,.cv-story{padding:22px 20px;border-radius:20px}
-  .cv-amt{font-size:1.6rem}
 }
 
 /* responsive */
@@ -624,6 +679,8 @@ textarea.field{min-height:84px;resize:vertical}
     <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
     <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
     <symbol id="i-yt" viewBox="0 0 24 24"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
     <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V2c.5 2.5 2.5 5 6 5"/></symbol>
@@ -1274,18 +1331,22 @@ textarea.field{min-height:84px;resize:vertical}
 
 <!-- DETAIL CAMPAIGN -->
 <div class="cview" id="campaignView" role="dialog" aria-modal="true" aria-label="Detail campaign" hidden>
-  <div class="cv-top">
-    <div class="wrap">
-      <button class="cv-back" id="cvBack"><svg class="icon"><use href="#i-left"/></svg> Kembali</button>
+  <div class="cv-col">
+    <div class="cv-top">
+      <button class="cv-back" id="cvBack" aria-label="Kembali"><svg class="icon"><use href="#i-left"/></svg></button>
       <a href="/" class="brand" id="cvHome" aria-label="Beranda Yayasan Ananta Karuna Bahagia">
-        <img src="assets/img/logo-mark.png" alt="" width="40" height="28">
+        <img src="assets/img/logo-mark.png" alt="" width="34" height="24">
         <span><b>ANANTA</b><small>KARUNA BAHAGIA</small></span>
       </a>
-      <button class="btn btn-primary btn-sm" id="cvDonateTop"><svg class="icon"><use href="#i-heart"/></svg> Donasi</button>
+      <button class="cv-tshare" id="cvShareTop" aria-label="Bagikan campaign"><svg class="icon"><use href="#i-send"/></svg></button>
     </div>
+    <div id="cvBody"></div>
   </div>
-  <div id="cvBody"></div>
-  <div class="cv-bar" id="cvBar"><button class="btn btn-primary btn-block" id="cvDonateBar"><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button></div>
+  <div class="cv-bar" id="cvBar"><div class="cv-bar-in">
+    <button class="bb" id="cvHomeBar" aria-label="Ke beranda"><svg class="icon"><use href="#i-home"/></svg></button>
+    <button class="bb" id="cvShareBar"><svg class="icon"><use href="#i-send"/></svg> Bagikan</button>
+    <button class="btn btn-primary" id="cvDonateBar"><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button>
+  </div></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -1555,23 +1616,36 @@ var PROGRAMS = [
   }
 
   /* detail */
+  var cvTab = "cerita", storyOpen = false;
+  function ico(id){ return '<svg class="icon"><use href="#i-' + id + '"/></svg>'; }
+  function initials(n){ return String(n || "?").trim().split(/\s+/).map(function(w){ return w[0]; }).join("").slice(0, 2).toUpperCase(); }
+  function relDate(s){
+    if (!s) return "";
+    var d = Math.round((new Date(new Date().toDateString()) - new Date(s + "T00:00:00")) / 864e5);
+    if (d <= 0) return "Hari ini"; if (d === 1) return "Kemarin"; if (d < 7) return d + " hari lalu";
+    return new Date(s + "T00:00:00").toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+  }
   function showCv(){ cv.hidden = false; document.documentElement.style.overflow = "hidden"; cv.scrollTop = 0; }
-  function openCampaign(slug, push){
-    var local = CAMPS.filter(function(x){ return x.slug === slug; })[0];
-    showCv();
-    if (push) { history.pushState({ camp: slug }, "", "/campaign/" + encodeURIComponent(slug)); cvPushed = true; }
-    if (!local) cvBody.innerHTML = '<div class="cv-msg">Memuat campaign…</div>';
-    var p = local ? Promise.resolve(local) : fetch("/api/public?slug=" + encodeURIComponent(slug), { headers: { Accept: "application/json" } })
+  function fetchDetail(slug){
+    return fetch("/api/public?slug=" + encodeURIComponent(slug), { headers: { Accept: "application/json" } })
       .then(function(r){ return r.json().catch(function(){ return {}; }); })
       .then(function(d){ if (!d || !d.ok) throw new Error((d && d.error) || "Campaign tidak ditemukan."); return d.campaign; });
-    p.then(renderDetail).catch(function(err){
+  }
+  function openCampaign(slug, push){
+    var local = CAMPS.filter(function(x){ return x.slug === slug; })[0];
+    showCv(); cvTab = "cerita"; storyOpen = false;
+    if (push) { history.pushState({ camp: slug }, "", "/campaign/" + encodeURIComponent(slug)); cvPushed = true; }
+    if (local) renderDetail(local); else cvBody.innerHTML = '<div class="cv-msg">Memuat campaign…</div>';
+    fetchDetail(slug).then(function(full){ if (!cv.hidden) renderDetail(full, true); }).catch(function(err){
+      if (local) return;
       cvCurrent = null;
-      cvBody.innerHTML = '<div class="wrap cv-msg"><h2>' + escH(err.message) + '</h2><p>Campaign mungkin sudah selesai atau tidak lagi ditampilkan.</p><button class="btn btn-primary" id="cvErrBack">Lihat campaign lainnya</button></div>';
+      cvBody.innerHTML = '<div class="cv-msg"><h2>' + escH(err.message) + '</h2><p>Campaign mungkin sudah selesai atau tidak lagi ditampilkan.</p><button class="btn btn-primary" id="cvErrBack">Lihat campaign lainnya</button></div>';
       $("#cvErrBack").addEventListener("click", function(){ closeCampaign(); });
     });
   }
   function closeCampaign(fromPop){
     if (cv.hidden) return;
+    var sheet = $(".cv-sheet", cv); if (sheet) sheet.remove();
     cv.hidden = true; document.documentElement.style.overflow = ""; document.title = baseTitle; cvCurrent = null;
     if (!fromPop) {
       if (cvPushed) history.back(); else history.replaceState(null, "", "/");
@@ -1579,40 +1653,44 @@ var PROGRAMS = [
     }
     cvPushed = false;
   }
-  function renderDetail(c){
-    cvCurrent = c; slideIdx = 0;
+
+  function renderDetail(c, keep){
+    var prevSlide = keep ? slideIdx : 0;
+    cvCurrent = c; slideIdx = prevSlide;
     document.title = c.title + " — Yayasan Ananta Karuna Bahagia";
     var imgs = (c.images && c.images.length ? c.images : ["assets/img/hero-penerima.webp"]), p = campPct(c), d = daysLeft(c);
-    var many = imgs.length > 1;
+    var many = imgs.length > 1, loaded = Array.isArray(c.donations);
+    var prayers = loaded ? c.donations.filter(function(x){ return x.prayer; }) : [];
+    var nUpd = loaded ? c.updates.length : "–", nPray = loaded ? prayers.length : "–";
     cvBody.innerHTML =
-      '<div class="wrap cv-wrap"><div class="cv-main">' +
-        '<div class="slides" id="slides"><div class="track" id="track">' +
-          imgs.map(function(u, i){ return '<div class="sl"><div class="slbg" style="background-image:url(&quot;' + escH(u) + '&quot;)"></div><img src="' + escH(u) + '" alt="' + escH(c.title) + ' — foto ' + (i + 1) + '"' + (i ? ' loading="lazy"' : '') + '></div>'; }).join("") + '</div>' +
-          (many ? '<button class="sl-btn pv" id="slPrev" aria-label="Foto sebelumnya"><svg class="icon"><use href="#i-left"/></svg></button>' +
-                  '<button class="sl-btn nx" id="slNext" aria-label="Foto berikutnya"><svg class="icon"><use href="#i-right"/></svg></button>' +
-                  '<span class="sl-count" id="slCount">1/' + imgs.length + '</span>' +
-                  '<div class="sl-dots">' + imgs.map(function(_, i){ return '<button data-dot="' + i + '" aria-label="Foto ' + (i + 1) + '"></button>'; }).join("") + '</div>' : '') +
-        '</div>' +
-        (many ? '<div class="thumbs">' + imgs.map(function(u, i){ return '<button data-th="' + i + '" aria-label="Lihat foto ' + (i + 1) + '"><img src="' + escH(u) + '" alt="" loading="lazy"></button>'; }).join("") + '</div>' : '') +
-        (c.story ? '<div class="cv-story"><h2>Cerita</h2>' + storyHtml(c.story) + '</div>' : '') +
+      '<div class="slides" id="slides"><div class="track" id="track">' +
+        imgs.map(function(u, i){ return '<div class="sl"><div class="slbg" style="background-image:url(&quot;' + escH(u) + '&quot;)"></div><img src="' + escH(u) + '" alt="' + escH(c.title) + ' — foto ' + (i + 1) + '"' + (i ? ' loading="lazy"' : '') + '></div>'; }).join("") + '</div>' +
+        (many ? '<button class="sl-btn pv" id="slPrev" aria-label="Foto sebelumnya">' + ico("left") + '</button><button class="sl-btn nx" id="slNext" aria-label="Foto berikutnya">' + ico("right") + '</button>' +
+                '<span class="sl-count" id="slCount">1/' + imgs.length + '</span><div class="sl-dots">' + imgs.map(function(_, i){ return '<button data-dot="' + i + '" aria-label="Foto ' + (i + 1) + '"></button>'; }).join("") + '</div>' : '') +
       '</div>' +
-      '<aside class="cv-side"><div class="cv-card">' +
-        '<span class="ccat">' + escH(c.category) + '</span>' +
-        '<h1>' + escH(c.title) + '</h1><p class="sum">' + escH(c.summary) + '</p>' +
+      '<div class="cv-pad">' +
+        '<h1 class="cv-title">' + escH(c.title) + '</h1>' +
+        '<div class="cv-fund"><div><span class="cv-amt">' + rupiah(c.collected) + '</span> <span class="cv-of">terkumpul dari</span><div class="cv-of"><b>' + rupiah(c.target) + '</b></div></div>' +
+        '<div class="cv-days">' + (d === null ? '<b>∞</b>Tanpa batas' : d < 0 ? '<b>0</b>Selesai' : '<b>' + d + '</b>Hari') + '</div></div>' +
+        '<div class="cv-pbar"><span id="cvBar1"></span></div><div class="cv-pct">' + p + '% tercapai</div>' +
         (d !== null && d < 0 ? '<div class="cv-ended">Campaign ini telah berakhir. Donasi tetap bisa disalurkan untuk kebutuhan serupa.</div>' : '') +
-        '<div class="cv-amt">' + rupiah(c.collected) + '</div><div class="cv-of">terkumpul dari target <b>' + rupiah(c.target) + '</b></div>' +
-        '<div class="pbar"><span id="cvBar1"></span></div>' +
-        '<div class="cv-stats"><div><b>' + p + '%</b><small>tercapai</small></div><div><b>' + Number(c.donors || 0).toLocaleString("id-ID") + '</b><small>donatur</small></div>' +
-        '<div><b>' + (d === null ? '∞' : d < 0 ? 'Selesai' : d) + '</b><small>' + (d === null ? 'tanpa batas' : d < 0 ? 'berakhir' : 'hari lagi') + '</small></div></div>' +
-        '<button class="btn btn-primary btn-block" id="cvDonate"><svg class="icon"><use href="#i-heart"/></svg> Donasi Sekarang</button>' +
-        '<div class="cv-share"><a class="btn btn-ghost" id="cvShareWa" target="_blank" rel="noopener"><svg class="icon"><use href="#i-wa"/></svg> Bagikan</a>' +
-        '<button class="btn btn-ghost" id="cvCopy"><svg class="icon"><use href="#i-link"/></svg> Salin link</button></div>' +
-      '</div></aside></div>';
+        '<div class="cv-stats3">' +
+          '<button data-go="donatur"><span class="si">' + ico("heart") + '</span><b>' + Number(c.donors || 0).toLocaleString("id-ID") + '</b><small>Donasi</small></button>' +
+          '<button data-go="kabar"><span class="si">' + ico("news") + '</span><b>' + nUpd + '</b><small>Kabar Terbaru</small></button>' +
+          '<button data-go="doa"><span class="si">' + ico("hand-heart") + '</span><b>' + nPray + '</b><small>Doa</small></button></div>' +
+        '<h2 class="cv-h">Informasi Penggalang Dana</h2>' +
+        '<div class="cv-org"><img src="assets/img/logo-mark.png" alt=""><div><small>Penggalang Dana</small><b>Yayasan Ananta Karuna Bahagia</b><span class="ver">' + ico("circle-check") + ' Terverifikasi</span></div></div>' +
+      '</div>' +
+      '<div class="cv-tabs" role="tablist">' +
+        [["cerita", "file", "Info"], ["kabar", "news", "Kabar"], ["cair", "wallet", "Pencairan"], ["donatur", "users", "Donatur"], ["doa", "hand-heart", "Doa"]]
+          .map(function(t){ return '<button role="tab" data-tab="' + t[0] + '">' + ico(t[1]) + t[2] + '</button>'; }).join("") +
+      '</div>' +
+      '<div class="cv-pad" id="cvTabBody"></div>';
 
     setTimeout(function(){ var b = $("#cvBar1"); if (b) b.style.width = p + "%"; }, 80);
-    $("#cvDonate").addEventListener("click", function(){ donateCampaign(c); });
-    $("#cvShareWa").href = "https://wa.me/?text=" + encodeURIComponent(c.title + "\n\n" + c.summary + "\n\nYuk bantu lewat Yayasan Ananta Karuna Bahagia:\n" + campUrl(c));
-    $("#cvCopy").addEventListener("click", function(){ copy(campUrl(c)); });
+    $$(".cv-stats3 [data-go]", cvBody).forEach(function(b){ b.addEventListener("click", function(){ switchTab(b.dataset.go, true); }); });
+    $$(".cv-tabs [data-tab]", cvBody).forEach(function(b){ b.addEventListener("click", function(){ switchTab(b.dataset.tab, false); }); });
+    switchTab(cvTab, false);
 
     if (many) {
       var track = $("#track"), n = imgs.length;
@@ -1621,21 +1699,91 @@ var PROGRAMS = [
         track.style.transform = "translateX(" + (-slideIdx * 100) + "%)";
         $("#slCount").textContent = (slideIdx + 1) + "/" + n;
         $$("[data-dot]", cvBody).forEach(function(b, k){ b.classList.toggle("on", k === slideIdx); });
-        $$("[data-th]", cvBody).forEach(function(b, k){ b.classList.toggle("on", k === slideIdx); });
       };
       $("#slPrev").addEventListener("click", function(){ goSlide(slideIdx - 1); });
       $("#slNext").addEventListener("click", function(){ goSlide(slideIdx + 1); });
       $$("[data-dot]", cvBody).forEach(function(b){ b.addEventListener("click", function(){ goSlide(+b.dataset.dot); }); });
-      $$("[data-th]", cvBody).forEach(function(b){ b.addEventListener("click", function(){ goSlide(+b.dataset.th); }); });
       var sx = null, slides = $("#slides");
       slides.addEventListener("touchstart", function(e){ sx = e.touches[0].clientX; }, { passive: true });
       slides.addEventListener("touchend", function(e){ if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) goSlide(slideIdx + (dx < 0 ? 1 : -1)); sx = null; });
-      goSlide(0);
+      track.style.transition = "none"; goSlide(prevSlide); void track.offsetWidth; track.style.transition = "";
     }
   }
+
+  function switchTab(t, scroll){
+    cvTab = t;
+    var c = cvCurrent; if (!c) return;
+    $$(".cv-tabs [data-tab]", cvBody).forEach(function(b){ var on = b.dataset.tab === t; b.classList.toggle("on", on); b.setAttribute("aria-selected", on); });
+    var box = $("#cvTabBody"), loaded = Array.isArray(c.donations);
+    var empty = function(icon, txt){ return '<div class="cv-empty">' + ico(icon) + '<div>' + txt + '</div></div>'; };
+    var title = function(h, sub){ return '<div class="cv-sec-title"><h2>' + h + '</h2>' + (sub ? '<small>' + sub + '</small>' : '') + '</div>'; };
+    if (t !== "cerita" && !loaded) { box.innerHTML = '<div class="cv-empty">Memuat…</div>'; }
+    else if (t === "cerita") {
+      var html = c.story_html && c.story_html.trim() ? c.story_html : storyHtml(c.story);
+      var prayers = loaded ? c.donations.filter(function(x){ return x.prayer; }) : [];
+      box.innerHTML = title("Info Campaign", escH(c.category)) +
+        (html ? '<div class="cv-storybox' + (storyOpen ? '' : ' clamp') + '" id="cvStory"><div class="rich">' + html + '</div></div>' +
+                '<button class="cv-more" id="cvMore"' + (storyOpen ? ' hidden' : '') + '>Baca Selengkapnya</button>' : empty("file", "Cerita belum ditulis.")) +
+        '<div class="cv-disc">' + ico("alert") + '<div><b>Disclaimer</b>Informasi, opini, dan foto yang ada di halaman galang dana ini adalah tanggung jawab Yayasan Ananta Karuna Bahagia sebagai penggalang dana. Jika ada pertanyaan atau kecurigaan, hubungi kami melalui WhatsApp.</div></div>' +
+        (prayers.length ? '<h2 class="cv-h">Doa-doa Orang Baik</h2><div class="cv-list">' + prayers.slice(0, 3).map(prayerItem).join("") + '</div>' +
+          (prayers.length > 3 ? '<button class="cv-link" data-more-doa>Lihat semua doa (' + prayers.length + ') →</button>' : '') : '');
+      var story = $("#cvStory"), more = $("#cvMore");
+      if (story && more) {
+        var check = function(){ if (story.classList.contains("clamp") && story.scrollHeight <= 600) { story.classList.remove("clamp"); more.hidden = true; } };
+        check(); $$("img", story).forEach(function(im){ im.addEventListener("load", check); });
+        more.addEventListener("click", function(){ storyOpen = true; story.classList.remove("clamp"); more.hidden = true; });
+      }
+      var md = $("[data-more-doa]", box); if (md) md.addEventListener("click", function(){ switchTab("doa", true); });
+    }
+    else if (t === "kabar") {
+      box.innerHTML = title("Kabar Terbaru", "Perkembangan penerima manfaat") + (c.updates.length ? c.updates.map(function(u){
+        return '<div class="cv-news"><div class="tm">' + escH(relDate(u.date)) + '</div><h3>' + escH(u.title) + '</h3>' + storyHtml(u.body) + (u.image ? '<img src="' + escH(u.image) + '" alt="" loading="lazy">' : '') + '</div>';
+      }).join("") : empty("news", "Belum ada kabar terbaru."));
+    }
+    else if (t === "cair") {
+      var tot = c.disbursements.reduce(function(s, x){ return s + Number(x.amount || 0); }, 0);
+      box.innerHTML = title("Pencairan Dana", "Transparansi penyaluran donasi") +
+        (c.disbursements.length ? '<div class="cv-sum2"><div><small>Total dicairkan</small><b>' + rupiah(tot) + '</b></div><div><small>Dana terkumpul</small><b>' + rupiah(c.collected) + '</b></div></div>' +
+          c.disbursements.map(function(x){ return '<div class="cv-news"><div class="tm">' + escH(relDate(x.date)) + '</div><h3>' + rupiah(x.amount) + '</h3>' + storyHtml(x.description) + (x.image ? '<img src="' + escH(x.image) + '" alt="" loading="lazy">' : '') + '</div>'; }).join("")
+          : empty("wallet", "Belum ada pencairan dana."));
+    }
+    else if (t === "donatur") {
+      box.innerHTML = title("Donatur", Number(c.donors || 0).toLocaleString("id-ID") + " orang baik telah berdonasi") + (c.donations.length ? '<div class="cv-list">' + c.donations.map(function(x){
+        return '<div class="cv-item"><div class="cv-ava">' + escH(initials(x.name)) + '</div><div style="flex:1;min-width:0"><div class="nm">' + escH(x.name) + '</div>' +
+          '<div class="sub">Berdonasi <b>' + rupiah(x.amount) + '</b>' + (x.donor_count > 1 ? ' · ' + x.donor_count + ' donatur' : '') + '</div><div class="tm">' + escH(relDate(x.date)) + '</div></div></div>';
+      }).join("") + '</div>' : empty("users", "Jadilah donatur pertama untuk campaign ini."));
+    }
+    else if (t === "doa") {
+      var pr = c.donations.filter(function(x){ return x.prayer; });
+      box.innerHTML = title("Doa-doa Orang Baik", pr.length ? pr.length + " doa untuk penerima manfaat" : "") + (pr.length ? '<div class="cv-list">' + pr.map(prayerItem).join("") + '</div>' : empty("hand-heart", "Belum ada doa. Sertakan doa terbaik Anda saat berdonasi."));
+    }
+    if (scroll) { var tabs = $(".cv-tabs", cvBody); cv.scrollTo({ top: tabs.offsetTop - 58, behavior: "smooth" }); }
+  }
+  function prayerItem(x){
+    return '<div class="cv-item"><div class="cv-ava">' + escH(initials(x.name)) + '</div><div style="flex:1;min-width:0"><div class="nm">' + escH(x.name) + '</div><div class="tm">' + escH(relDate(x.date)) + '</div><p class="pr">“' + escH(x.prayer) + '”</p></div></div>';
+  }
+
+  function shareCampaign(){
+    var c = cvCurrent; if (!c) return;
+    var url = campUrl(c), text = c.title + "\n\n" + c.summary + "\n\nYuk bantu lewat Yayasan Ananta Karuna Bahagia:";
+    if (navigator.share) { navigator.share({ title: c.title, text: text, url: url }).catch(function(){}); return; }
+    var old = $(".cv-sheet", cv); if (old) old.remove();
+    var sh = document.createElement("div"); sh.className = "cv-sheet";
+    sh.innerHTML = '<div class="cv-sheet-in" role="dialog" aria-label="Bagikan"><h3>Bagikan campaign ini</h3><div class="cv-sheet-grid">' +
+      '<a href="https://wa.me/?text=' + encodeURIComponent(text + "\n" + url) + '" target="_blank" rel="noopener"><span style="background:#25d366">' + ico("wa") + '</span>WhatsApp</a>' +
+      '<a href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url) + '" target="_blank" rel="noopener"><span style="background:#1877f2">' + ico("fb") + '</span>Facebook</a>' +
+      '<a href="https://t.me/share/url?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(c.title) + '" target="_blank" rel="noopener"><span style="background:#229ed9">' + ico("send") + '</span>Telegram</a>' +
+      '<button type="button" data-copy><span style="background:var(--g-700)">' + ico("link") + '</span>Salin link</button></div></div>';
+    cv.appendChild(sh);
+    sh.addEventListener("click", function(e){ if (e.target === sh) sh.remove(); });
+    $("[data-copy]", sh).addEventListener("click", function(){ copy(url); sh.remove(); });
+  }
+
   $("#cvBack").addEventListener("click", function(){ closeCampaign(); });
   $("#cvHome").addEventListener("click", function(e){ e.preventDefault(); closeCampaign(); });
-  $("#cvDonateTop").addEventListener("click", function(){ if (cvCurrent) donateCampaign(cvCurrent); else openDonate(); });
+  $("#cvHomeBar").addEventListener("click", function(){ closeCampaign(); });
+  $("#cvShareTop").addEventListener("click", shareCampaign);
+  $("#cvShareBar").addEventListener("click", shareCampaign);
   $("#cvDonateBar").addEventListener("click", function(){ if (cvCurrent) donateCampaign(cvCurrent); else openDonate(); });
   document.addEventListener("keydown", function(e){
     if (cv.hidden || openModal || lb.classList.contains("open")) return;

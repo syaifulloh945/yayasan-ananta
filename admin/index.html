@@ -140,6 +140,41 @@ th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vert
 th{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
 
+/* tab edit campaign */
+.etabs{display:flex;gap:4px;border-bottom:1.5px solid var(--line);margin:0 0 18px;overflow-x:auto}
+.etab{border:0;background:none;padding:11px 14px;font-weight:700;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1.5px;white-space:nowrap;font-size:.92rem}
+.etab:hover{color:var(--ink)}
+.etab.on{color:var(--g-700);border-bottom-color:var(--g-700)}
+.etab .cnt{font-weight:600}
+/* editor cerita */
+.ed{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.ed:focus-within{border-color:var(--g-500);box-shadow:0 0 0 4px rgba(63,163,77,.12)}
+.ed-tools{display:flex;flex-wrap:wrap;gap:4px;padding:8px;background:var(--bg);border-bottom:1px solid var(--line);position:sticky;top:62px;z-index:2}
+.ed-tools button{display:inline-flex;align-items:center;gap:6px;border:1px solid transparent;background:#fff;border-radius:8px;padding:7px 11px;cursor:pointer;font-size:.88rem;color:var(--ink);min-width:36px;justify-content:center}
+.ed-tools button:hover{border-color:var(--g-500)}
+.ed-tools .ed-sp{flex:1}
+.ed-tools .ed-word{background:var(--lime-100);color:var(--g-800);font-weight:700}
+.ed-area{min-height:320px;padding:18px 20px;outline:0;font-size:1rem;line-height:1.75;color:var(--body);max-height:70vh;overflow:auto}
+.ed-area:empty::before{content:attr(data-ph);color:var(--muted)}
+.ed-area p{margin:0 0 .9em}
+.ed-area h3{font-size:1.15rem;margin:1.2em 0 .5em}
+.ed-area blockquote{margin:0 0 1em;padding:10px 16px;border-left:4px solid var(--lime);background:var(--lime-100);border-radius:0 10px 10px 0;font-style:italic}
+.ed-area img{max-width:100%;height:auto;border-radius:12px;display:block;margin:6px auto}
+.ed-area img:hover{outline:3px solid var(--lime-300)}
+.ed-area ul,.ed-area ol{padding-left:1.4em;margin:0 0 1em}
+.ed-status{padding:8px 14px;background:var(--amber-bg);color:var(--amber);font-size:.85rem;font-weight:600}
+/* catatan donasi/kabar/pencairan */
+.rec{display:flex;gap:14px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:14px}
+.rec img{width:88px;height:66px;object-fit:cover;border-radius:10px;flex:none}
+.rec h3{font-size:1rem;margin:2px 0}
+.rec .meta{font-size:.78rem;color:var(--muted);font-weight:600}
+.rec .acts{display:flex;gap:6px;flex:none}
+.clip{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.clip2{margin:0;color:var(--body);font-size:.9rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.one-img{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.one-img img{max-width:100%;max-height:180px;border-radius:12px}
+.check input{width:18px;height:18px;accent-color:var(--g-700)}
+
 /* modal & toast */
 .modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,30,16,.5)}
 .modal-box{background:#fff;border-radius:20px;width:100%;max-width:460px;max-height:calc(100vh - 32px);overflow:auto;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.3)}
@@ -160,6 +195,10 @@ td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
   .citem img{width:80px;height:64px}
   .cact{grid-column:1 / -1;justify-content:flex-start}
   .photos{grid-template-columns:1fr 1fr}
+  .ed-tools{top:118px}
+  .rec{flex-wrap:wrap}
+  .rec .acts{width:100%}
+  .clip{max-width:100%;white-space:normal}
   .top .user .uname{display:none}
 }
 @media (max-width:560px){
@@ -191,6 +230,7 @@ td .acts{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
   <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
 </defs></svg>
 
@@ -438,48 +478,221 @@ function viewCampaigns(v){
 }
 
 /* ---------- form campaign ---------- */
-function viewEdit(v, id){
-  if (id) api('admin', 'campaign', { query: '&id=' + id }).then(function(d){ formCampaign(v, d.campaign); }).catch(function(x){ if (x.message !== '401') viewError(v, x.message); });
-  else formCampaign(v, { title:'', category:'Kesehatan', summary:'', story:'', target:0, collected:0, donors:0, deadline:'', images:[], visible:true, sort:0 });
+function today(){ var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+function textToHtml(t){ t = String(t || '').trim(); if (!t) return ''; return t.split(/\n\s*\n/).map(function(p){ return '<p>' + esc(p).replace(/\n/g, '<br>') + '</p>'; }).join(''); }
+function viewEdit(v, id, tab){
+  if (id) api('admin', 'campaign', { query: '&id=' + id }).then(function(d){ formCampaign(v, d.campaign, tab); }).catch(function(x){ if (x.message !== '401') viewError(v, x.message); });
+  else formCampaign(v, { title:'', category:'Kesehatan', summary:'', story_html:'', target:0, collected:0, donors:0, deadline:'', images:[], visible:true, sort:0, donations:[], updates:[], disbursements:[] });
 }
 function moneyInput(id, val){ return '<div class="money"><span>Rp</span><input class="field" id="' + id + '" inputmode="numeric" value="' + (val ? Number(val).toLocaleString('id-ID') : '') + '" placeholder="0"></div>'; }
+function bindMoney(root){ root.querySelectorAll('.money input').forEach(function(el){ el.addEventListener('input', function(){ var n = num(el.value); el.value = n ? n.toLocaleString('id-ID') : ''; }); }); }
 
-function formCampaign(v, c){
+// Pembersih HTML di browser (sama aturannya dengan server).
+var EDITOR_TAGS = { P:'p', BR:'br', STRONG:'strong', B:'strong', EM:'em', I:'em', U:'u', H1:'h3', H2:'h3', H3:'h3', H4:'h3', BLOCKQUOTE:'blockquote', UL:'ul', OL:'ol', LI:'li', IMG:'img', FIGURE:'figure', FIGCAPTION:'figcaption', DIV:'p' };
+function okImgSrc(src, allowData){
+  return /^https:\/\/[a-z0-9.-]+\.public\.blob\.vercel-storage\.com\//i.test(src) || /^\/assets\/img\/campaign\/[a-z0-9._-]+\.(webp|jpe?g|png)$/i.test(src) ||
+    (allowData && /^data:image\/(png|jpe?g|webp|gif|bmp)/i.test(src)) || (location.hostname === 'localhost' && /^(data:image|\/assets\/)/.test(src));
+}
+function cleanHtml(html, allowData){
+  var doc = new DOMParser().parseFromString('<div>' + String(html || '') + '</div>', 'text/html');
+  function walk(node){
+    var out = '';
+    node.childNodes.forEach(function(n){
+      if (n.nodeType === 3) { out += esc(n.nodeValue.replace(/ /g, ' ')); return; }
+      if (n.nodeType !== 1) return;
+      var t = EDITOR_TAGS[n.tagName];
+      if (/^(SCRIPT|STYLE|IFRAME|OBJECT|EMBED|SVG|MATH|TEMPLATE|NOSCRIPT)$/.test(n.tagName)) return;
+      if (!t) { out += walk(n); return; }
+      if (t === 'br') { out += '<br>'; return; }
+      if (t === 'img') { var s = n.getAttribute('src') || ''; if (okImgSrc(s, allowData)) out += '<img src="' + esc(s) + '" alt="' + esc((n.getAttribute('alt') || '').slice(0, 200)) + '">'; return; }
+      var inner = walk(n);
+      if (t === 'p' && !inner.replace(/<br>/g, '').trim()) { out += '<p><br></p>'; return; }
+      out += '<' + t + '>' + inner + '</' + t + '>';
+    });
+    return out;
+  }
+  return walk(doc.body.firstChild).replace(/(<p><br><\/p>){2,}/g, '<p><br></p>');
+}
+function dataUrlToFile(u, name){
+  var m = /^data:([^;]+);base64,(.*)$/.exec(u); if (!m) return null;
+  var bin = atob(m[2]), arr = new Uint8Array(bin.length); for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return new File([arr], name || 'foto', { type: m[1] });
+}
+function uploadFile(file){ return compress(file).then(function(d){ return api('admin', 'upload', { body: { data: d } }); }).then(function(r){ return r.url; }); }
+var mammothLoading = null;
+function loadMammoth(){
+  if (window.mammoth) return Promise.resolve(window.mammoth);
+  if (!mammothLoading) mammothLoading = new Promise(function(res, rej){
+    var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js';
+    s.onload = function(){ res(window.mammoth); }; s.onerror = function(){ mammothLoading = null; rej(new Error('Gagal memuat pembaca file Word. Periksa koneksi internet.')); };
+    document.head.appendChild(s);
+  });
+  return mammothLoading;
+}
+
+// Editor cerita (seperti Word sederhana)
+function makeEditor(host, html, opts){
+  host.innerHTML =
+    '<div class="ed"><div class="ed-tools" role="toolbar" aria-label="Format teks">' +
+    '<button type="button" data-cmd="bold" title="Tebal (Ctrl+B)"><b>B</b></button>' +
+    '<button type="button" data-cmd="italic" title="Miring (Ctrl+I)"><i>I</i></button>' +
+    '<button type="button" data-cmd="h3" title="Subjudul">H</button>' +
+    '<button type="button" data-cmd="quote" title="Kutipan">❝</button>' +
+    '<button type="button" data-cmd="ul" title="Daftar">• List</button>' +
+    '<button type="button" data-cmd="img" title="Sisipkan foto di posisi kursor">' + ic('img') + ' Foto</button>' +
+    '<span class="ed-sp"></span>' +
+    '<button type="button" class="ed-word" data-cmd="word" title="Ambil teks & foto dari file Word">' + ic('file') + ' Impor dari Word</button>' +
+    '</div><div class="ed-area" contenteditable="true" spellcheck="true" data-ph="Tulis cerita campaign di sini, atau klik “Impor dari Word”."></div>' +
+    '<div class="ed-status" hidden></div></div>' +
+    '<input type="file" class="ed-img" accept="image/jpeg,image/png,image/webp" hidden><input type="file" class="ed-docx" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>';
+  var area = host.querySelector('.ed-area'), status = host.querySelector('.ed-status');
+  var imgIn = host.querySelector('.ed-img'), docIn = host.querySelector('.ed-docx'), savedRange = null, busyCount = 0;
+  area.innerHTML = cleanHtml(html, false) || '';
+  try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) {}
+  function setStatus(msg){ status.hidden = !msg; status.textContent = msg || ''; }
+  function saveRange(){ var s = window.getSelection(); if (s.rangeCount && area.contains(s.anchorNode)) savedRange = s.getRangeAt(0).cloneRange(); }
+  function restoreRange(){ area.focus(); var s = window.getSelection(); s.removeAllRanges(); if (savedRange) s.addRange(savedRange); else { var r = document.createRange(); r.selectNodeContents(area); r.collapse(false); s.addRange(r); } }
+  function blockOf(){ var s = window.getSelection(); var n = s.anchorNode; while (n && n !== area) { if (n.nodeType === 1 && /^(BLOCKQUOTE|H3)$/.test(n.tagName)) return n.tagName; n = n.parentNode; } return ''; }
+  area.addEventListener('keyup', saveRange); area.addEventListener('mouseup', saveRange); area.addEventListener('blur', saveRange);
+  area.addEventListener('paste', function(e){
+    var cd = e.clipboardData; if (!cd) return;
+    var h = cd.getData('text/html'), t = cd.getData('text/plain');
+    e.preventDefault();
+    document.execCommand('insertHTML', false, h ? cleanHtml(h, false) : textToHtml(t));
+  });
+  host.querySelectorAll('[data-cmd]').forEach(function(b){
+    b.addEventListener('mousedown', function(e){ e.preventDefault(); });
+    b.addEventListener('click', function(){
+      var c = b.dataset.cmd;
+      if (c === 'img') { saveRange(); imgIn.click(); return; }
+      if (c === 'word') { docIn.click(); return; }
+      area.focus();
+      if (c === 'bold' || c === 'italic') document.execCommand(c);
+      if (c === 'h3') document.execCommand('formatBlock', false, blockOf() === 'H3' ? '<p>' : '<h3>');
+      if (c === 'quote') document.execCommand('formatBlock', false, blockOf() === 'BLOCKQUOTE' ? '<p>' : '<blockquote>');
+      if (c === 'ul') document.execCommand('insertUnorderedList');
+      saveRange();
+    });
+  });
+  imgIn.addEventListener('change', function(){
+    var files = Array.prototype.slice.call(imgIn.files || []); imgIn.value = '';
+    files.reduce(function(p, f){
+      return p.then(function(){
+        busyCount++; setStatus('Mengunggah foto…');
+        return uploadFile(f).then(function(url){ restoreRange(); document.execCommand('insertHTML', false, '<p><img src="' + esc(url) + '" alt=""></p><p><br></p>'); saveRange(); })
+          .catch(function(x){ if (x.message !== '401') toast('Gagal mengunggah ' + f.name + ': ' + x.message); })
+          .then(function(){ busyCount--; if (!busyCount) setStatus(''); });
+      });
+    }, Promise.resolve());
+  });
+  docIn.addEventListener('change', function(){
+    var f = docIn.files && docIn.files[0]; docIn.value = '';
+    if (!f) return;
+    if (!/\.docx$/i.test(f.name)) return toast('Pilih file Word berformat .docx (bukan .doc lama).');
+    var go = !area.textContent.trim() && !area.querySelector('img') ? Promise.resolve(true) :
+      confirmBox('Ganti isi cerita?', 'Isi cerita yang sekarang akan diganti dengan isi file "' + f.name + '".', 'Ya, ganti');
+    go.then(function(yes){
+      if (!yes) return;
+      busyCount++; setStatus('Membaca file Word…');
+      Promise.all([loadMammoth(), f.arrayBuffer()]).then(function(r){
+        return r[0].convertToHtml({ arrayBuffer: r[1] });
+      }).then(function(result){
+        var tmp = document.createElement('div'); tmp.innerHTML = cleanHtml(result.value, true);
+        // Paragraf pertama dipakai sebagai judul / deskripsi jika masih kosong
+        if (opts && opts.onFirstText) opts.onFirstText(tmp);
+        var imgs = Array.prototype.slice.call(tmp.querySelectorAll('img'));
+        var n = 0;
+        return imgs.reduce(function(p, im, i){
+          return p.then(function(){
+            setStatus('Mengunggah foto ' + (i + 1) + ' dari ' + imgs.length + '…');
+            var file = dataUrlToFile(im.getAttribute('src'), 'word-' + (i + 1));
+            if (!file) { im.remove(); return; }
+            return uploadFile(file).then(function(url){ im.setAttribute('src', url); n++; }).catch(function(x){ im.remove(); if (x.message !== '401') toast('Satu foto dari Word dilewati: ' + x.message); });
+          });
+        }, Promise.resolve()).then(function(){
+          area.innerHTML = cleanHtml(tmp.innerHTML, false);
+          toast('Isi Word dimasukkan' + (imgs.length ? ' (' + n + ' foto)' : '') + '. Periksa lalu klik Simpan.');
+        });
+      }).catch(function(x){ if (x.message !== '401') toast(x.message || 'Gagal membaca file Word.'); })
+        .then(function(){ busyCount--; setStatus(''); });
+    });
+  });
+  return {
+    getHtml: function(){ return cleanHtml(area.innerHTML, false); },
+    isBusy: function(){ return busyCount > 0; }
+  };
+}
+
+function singleImageField(host, url){
+  var cur = url || '', busyUp = false;
+  function draw(){
+    host.innerHTML = cur
+      ? '<div class="one-img"><img src="' + esc(cur) + '" alt=""><button type="button" class="btn btn-danger btn-sm" data-rm>' + ic('trash') + ' Hapus foto</button></div>'
+      : '<button type="button" class="ph add" style="aspect-ratio:auto;height:110px;width:100%" data-add>' + ic('img') + '<br>' + (busyUp ? 'Mengunggah…' : 'Pilih foto (opsional)') + '</button>';
+    var rm = host.querySelector('[data-rm]'); if (rm) rm.onclick = function(){ cur = ''; draw(); };
+    var add = host.querySelector('[data-add]'); if (add) add.onclick = function(){ inp.click(); };
+  }
+  var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/jpeg,image/png,image/webp'; inp.hidden = true; host.after(inp);
+  inp.onchange = function(){ var f = inp.files[0]; inp.value = ''; if (!f) return; busyUp = true; draw();
+    uploadFile(f).then(function(u){ cur = u; }).catch(function(x){ if (x.message !== '401') toast(x.message); }).then(function(){ busyUp = false; draw(); }); };
+  draw();
+  return { get: function(){ return cur; }, busy: function(){ return busyUp; } };
+}
+
+function formCampaign(v, c, tab){
   var images = (c.images || []).slice();
   var uploading = 0;
+  tab = c.id ? (tab || 'info') : 'info';
+  var tabs = [['info', 'Info & Cerita'], ['donasi', 'Catat Donasi'], ['kabar', 'Kabar Terbaru'], ['cair', 'Pencairan']];
   v.innerHTML =
-    '<div class="head"><div><button class="link" id="back">← Kembali</button><h1 style="margin-top:8px">' + (c.id ? 'Edit Campaign' : 'Campaign Baru') + '</h1></div>' +
+    '<div class="head"><div><button class="link" id="back">← Kembali</button><h1 style="margin-top:8px">' + (c.id ? esc(c.title) : 'Campaign Baru') + '</h1></div>' +
     (c.id && c.visible ? '<a class="btn btn-ghost btn-sm" href="/campaign/' + esc(c.slug) + '" target="_blank" rel="noopener">' + ic('ext') + ' Lihat di website</a>' : '') + '</div>' +
-    '<form id="cForm" novalidate>' +
+    (c.id ? '<div class="etabs" role="tablist">' + tabs.map(function(t){ return '<button type="button" class="etab" data-tab="' + t[0] + '" role="tab">' + t[1] + '<span class="cnt" data-cnt="' + t[0] + '"></span></button>'; }).join('') + '</div>'
+          : '<div class="alert warn" style="margin:0 0 16px">Simpan campaign dulu. Setelah tersimpan, tab <b>Catat Donasi</b>, <b>Kabar Terbaru</b>, dan <b>Pencairan</b> akan muncul.</div>') +
+    '<div data-panel="info"><form id="cForm" novalidate>' +
     '<div class="card"><h2>Informasi Campaign</h2>' +
-    '<label class="lbl" for="cTitle">Judul campaign</label><input class="field" id="cTitle" maxlength="120" value="' + esc(c.title) + '" placeholder="Contoh: Sumur Bor untuk Desa Terpencil">' +
+    '<label class="lbl" for="cTitle">Judul campaign</label><input class="field" id="cTitle" maxlength="160" value="' + esc(c.title) + '" placeholder="Contoh: Sumur Bor untuk Desa Terpencil">' +
     '<div class="row2"><div><label class="lbl" for="cCat">Kategori</label><select class="field" id="cCat">' +
     CATEGORIES.map(function(k){ return '<option' + (k === c.category ? ' selected' : '') + '>' + k + '</option>'; }).join('') + '</select></div>' +
     '<div><label class="lbl" for="cSort">Urutan tampil</label><input class="field" id="cSort" type="number" value="' + (c.sort || 0) + '"><div class="hint">Angka lebih kecil tampil lebih dulu.</div></div></div>' +
     '<label class="lbl" for="cSum">Deskripsi singkat <span class="counter" id="sumCount"></span></label><textarea class="field" id="cSum" maxlength="240" placeholder="1–2 kalimat yang tampil di kartu campaign halaman depan.">' + esc(c.summary) + '</textarea>' +
-    '<label class="lbl" for="cStory">Cerita lengkap (copywriting)</label><textarea class="field story" id="cStory" maxlength="20000" placeholder="Ceritakan latar belakang, kondisi penerima manfaat, kebutuhan dana, dan ajakan berdonasi.">' + esc(c.story) + '</textarea>' +
-    '<div class="hint">Pisahkan paragraf dengan satu baris kosong (tekan Enter dua kali).</div></div>' +
-
-    '<div class="card"><h2>Foto Slideshow <span style="font-weight:600;color:var(--muted);font-size:.85rem">(maksimal 4)</span></h2>' +
-    '<p class="hint" style="margin:0 0 12px">Foto pertama menjadi foto sampul. Foto otomatis dikecilkan agar website tetap cepat.</p>' +
-    '<div class="photos" id="photos"></div><input type="file" id="fileIn" accept="image/jpeg,image/png,image/webp" multiple hidden></div>' +
-
-    '<div class="card"><h2>Target &amp; Progres Donasi</h2>' +
     '<div class="row2"><div><label class="lbl" for="cTarget">Target dana</label>' + moneyInput('cTarget', c.target) + '</div>' +
-    '<div><label class="lbl" for="cColl">Dana terkumpul</label>' + moneyInput('cColl', c.collected) + '<div class="hint">Perbarui setiap ada donasi masuk.</div></div></div>' +
-    '<div class="row2"><div><label class="lbl" for="cDonors">Jumlah donatur</label><input class="field" id="cDonors" inputmode="numeric" value="' + (c.donors || 0) + '"></div>' +
     '<div><label class="lbl" for="cDead">Batas waktu <span style="font-weight:500;color:var(--muted)">(opsional)</span></label><input class="field" id="cDead" type="date" value="' + esc(c.deadline || '') + '"></div></div>' +
+    (c.id ? '<div class="hint" style="margin-top:10px">Dana terkumpul <b>' + rp(c.collected) + '</b> dari ' + Number(c.donors || 0).toLocaleString('id-ID') + ' donatur. Dihitung otomatis dari tab <b>Catat Donasi</b>.</div>' : '') +
     '<label class="vis"><span class="switch"><input type="checkbox" id="cVis" ' + (c.visible ? 'checked' : '') + '><span></span></span><span><b>Tampilkan di website</b><small>Matikan jika campaign masih draf atau sudah selesai.</small></span></label></div>' +
 
+    '<div class="card"><h2>Foto Banner <span style="font-weight:600;color:var(--muted);font-size:.85rem">(1–4 foto, bisa digeser di website)</span></h2>' +
+    '<p class="hint" style="margin:0 0 12px">Foto pertama menjadi sampul di kartu halaman depan. Ukuran ideal lanskap 16:9 (misalnya 1280×720).</p>' +
+    '<div class="photos" id="photos"></div><input type="file" id="fileIn" accept="image/jpeg,image/png,image/webp" multiple hidden></div>' +
+
+    '<div class="card"><h2>Cerita Lengkap</h2>' +
+    '<p class="hint" style="margin:0 0 12px">Bisa diketik langsung, ditempel dari Word, atau klik <b>Impor dari Word</b>: teks, huruf tebal/miring, dan foto di tengah tulisan ikut masuk otomatis.</p>' +
+    '<div id="edHost"></div></div>' +
+
     '<div id="cErr" class="alert err" hidden></div>' +
-    '<div class="form-foot"><button type="button" class="btn btn-ghost" id="cancel">Batal</button><button class="btn btn-primary" id="save">Simpan Campaign</button></div></form>';
+    '<div class="form-foot"><button type="button" class="btn btn-ghost" id="cancel">Batal</button><button class="btn btn-primary" id="save">Simpan Campaign</button></div></form></div>' +
+    '<div data-panel="donasi" hidden></div><div data-panel="kabar" hidden></div><div data-panel="cair" hidden></div>';
 
   var sum = document.getElementById('cSum'), cnt = document.getElementById('sumCount');
   function upd(){ cnt.textContent = sum.value.length + '/240'; }
   sum.oninput = upd; upd();
-  ['cTarget', 'cColl'].forEach(function(id){ var el = document.getElementById(id); el.oninput = function(){ var n = num(el.value); el.value = n ? n.toLocaleString('id-ID') : ''; }; });
-  document.getElementById('cDonors').oninput = function(e){ e.target.value = String(num(e.target.value) || ''); };
+  bindMoney(v);
   document.getElementById('back').onclick = document.getElementById('cancel').onclick = function(){ go('campaigns'); };
+
+  var editor = makeEditor(document.getElementById('edHost'), c.story_html || textToHtml(c.story), {
+    onFirstText: function(tmp){
+      var t = document.getElementById('cTitle');
+      var first = tmp.querySelector('h3, p');
+      if (first && !t.value.trim()) {
+        var txt = first.textContent.trim();
+        if (txt.length >= 5 && txt.length <= 220) { t.value = txt.length > 160 ? txt.slice(0, 159).replace(/\s+\S*$/, '') : txt; first.remove(); }
+      }
+      if (!sum.value.trim()) {
+        var p = Array.prototype.slice.call(tmp.querySelectorAll('p')).map(function(x){ return x.textContent.trim(); }).filter(function(x){ return x.length > 40; })[0];
+        if (p) { sum.value = p.length > 237 ? p.slice(0, 236).replace(/\s+\S*$/, '') + '…' : p; upd(); }
+      }
+    }
+  });
 
   var photos = document.getElementById('photos'), fileIn = document.getElementById('fileIn');
   function drawPhotos(){
@@ -502,8 +715,7 @@ function formCampaign(v, c){
     fileIn.value = '';
     files.forEach(function(f){
       uploading++; drawPhotos();
-      compress(f).then(function(dataUrl){ return api('admin', 'upload', { body: { data: dataUrl } }); })
-        .then(function(d){ images.push(d.url); })
+      uploadFile(f).then(function(url){ images.push(url); })
         .catch(function(x){ if (x.message !== '401') toast('Gagal mengunggah ' + f.name + ': ' + x.message); })
         .then(function(){ uploading--; drawPhotos(); });
     });
@@ -513,31 +725,185 @@ function formCampaign(v, c){
     e.preventDefault();
     var err = document.getElementById('cErr'), btn = document.getElementById('save');
     err.hidden = true;
-    if (uploading) return showErr(err, 'Tunggu sampai semua foto selesai diunggah.');
+    if (uploading || editor.isBusy()) return showErr(err, 'Tunggu sampai semua foto selesai diunggah.');
     var data = {
       id: c.id || 0,
       title: document.getElementById('cTitle').value.trim(),
       category: document.getElementById('cCat').value,
       sort: Number(document.getElementById('cSort').value) || 0,
       summary: sum.value.trim(),
-      story: document.getElementById('cStory').value.trim(),
+      story_html: editor.getHtml(),
       target: num(document.getElementById('cTarget').value),
-      collected: num(document.getElementById('cColl').value),
-      donors: num(document.getElementById('cDonors').value),
       deadline: document.getElementById('cDead').value || null,
       visible: document.getElementById('cVis').checked,
       images: images
     };
     if (data.title.length < 5) return showErr(err, 'Judul minimal 5 karakter.');
     if (data.summary.length < 10) return showErr(err, 'Deskripsi singkat minimal 10 karakter.');
-    if (!data.images.length) return showErr(err, 'Tambahkan minimal 1 foto.');
+    if (!data.images.length) return showErr(err, 'Tambahkan minimal 1 foto banner.');
     if (!data.target) return showErr(err, 'Isi target dana.');
     busy(btn, true, 'Menyimpan…');
     api('admin', 'campaign-save', { body: data }).then(function(d){
+      if (!c.id) { toast('Campaign tersimpan. Sekarang Anda bisa mencatat donasi & kabar.'); go('edit', d.campaign.id); return; }
       toast(data.visible ? 'Tersimpan & tampil di website' : 'Tersimpan (disembunyikan)');
-      go('campaigns');
+      busy(btn, false);
+      Object.assign(c, d.campaign);
     }).catch(function(x){ busy(btn, false); if (x.message !== '401') showErr(err, x.message); });
   };
+
+  if (!c.id) return;
+  function counts(){
+    v.querySelector('[data-cnt="donasi"]').textContent = c.donations.length ? ' (' + c.donations.length + ')' : '';
+    v.querySelector('[data-cnt="kabar"]').textContent = c.updates.length ? ' (' + c.updates.length + ')' : '';
+    v.querySelector('[data-cnt="cair"]').textContent = c.disbursements.length ? ' (' + c.disbursements.length + ')' : '';
+  }
+  function refresh(d){ Object.assign(c, d.campaign); counts(); renderTab(tab); }
+  function showTab(t){
+    tab = t;
+    v.querySelectorAll('.etab').forEach(function(b){ var on = b.dataset.tab === t; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+    v.querySelectorAll('[data-panel]').forEach(function(p){ p.hidden = p.dataset.panel !== t; });
+    renderTab(t);
+  }
+  function renderTab(t){
+    var p = v.querySelector('[data-panel="' + t + '"]');
+    if (t === 'donasi') panelDonations(p, c, refresh);
+    if (t === 'kabar') panelUpdates(p, c, refresh);
+    if (t === 'cair') panelDisb(p, c, refresh);
+  }
+  v.querySelectorAll('.etab').forEach(function(b){ b.onclick = function(){ showTab(b.dataset.tab); }; });
+  counts(); showTab(tab);
+}
+
+function fmtD(s){ return s ? new Date(s + 'T00:00:00').toLocaleDateString('id-ID', { day:'numeric', month:'short', year:'numeric' }) : '-'; }
+function delConfirm(what, action, id, refresh){
+  confirmBox('Hapus ' + what + '?', 'Data ini akan dihapus permanen.', 'Ya, hapus', true).then(function(yes){
+    if (!yes) return;
+    api('admin', action, { body: { id: id } }).then(function(d){ toast('Dihapus'); refresh(d); }).catch(function(x){ if (x.message !== '401') toast(x.message); });
+  });
+}
+
+function panelDonations(p, c, refresh){
+  var prayers = c.donations.filter(function(d){ return d.prayer && d.show_prayer; }).length;
+  p.innerHTML = '<div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">' +
+    '<div class="stat"><small>Terkumpul</small><b>' + rp(c.collected) + '</b><i>' + (c.target ? Math.min(100, Math.floor(c.collected / c.target * 100)) : 0) + '% dari ' + rp(c.target) + '</i></div>' +
+    '<div class="stat"><small>Donatur</small><b>' + Number(c.donors || 0).toLocaleString('id-ID') + '</b></div>' +
+    '<div class="stat"><small>Doa tampil</small><b>' + prayers + '</b></div></div>' +
+    '<div class="card"><div class="head" style="margin-bottom:10px"><div><h2>Catatan Donasi</h2><p class="hint" style="margin:0">Setiap catatan otomatis menambah dana terkumpul dan jumlah donatur di website.</p></div>' +
+    '<button class="btn btn-primary btn-sm" data-add>' + ic('plus') + ' Catat Donasi</button></div>' +
+    (c.donations.length ? '<table><thead><tr><th>Tanggal</th><th>Donatur</th><th>Nominal</th><th>Doa</th><th></th></tr></thead><tbody>' +
+      c.donations.map(function(d, i){
+        return '<tr><td>' + fmtD(d.date) + '</td><td><b>' + esc(d.anonymous || !d.name ? 'Hamba Allah' : d.name) + '</b>' + (d.donor_count > 1 ? ' <span class="tag">' + d.donor_count + ' donatur</span>' : '') + '</td>' +
+          '<td>' + rp(d.amount) + '</td><td class="clip">' + (d.prayer ? esc(d.prayer) + (d.show_prayer ? '' : ' <span class="tag off">disembunyikan</span>') : '<span style="color:var(--muted)">-</span>') + '</td>' +
+          '<td><div class="acts"><button class="btn btn-ghost btn-sm" data-ed="' + i + '">' + ic('edit') + '</button><button class="btn btn-danger btn-sm" data-del="' + d.id + '">' + ic('trash') + '</button></div></td></tr>';
+      }).join('') + '</tbody></table>'
+      : '<div class="empty">' + ic('flag') + '<p>Belum ada catatan donasi.<br>Klik “Catat Donasi” setiap ada transfer masuk.</p></div>') + '</div>';
+  p.querySelector('[data-add]').onclick = function(){ donationModal(c, null, refresh); };
+  p.querySelectorAll('[data-ed]').forEach(function(b){ b.onclick = function(){ donationModal(c, c.donations[Number(b.dataset.ed)], refresh); }; });
+  p.querySelectorAll('[data-del]').forEach(function(b){ b.onclick = function(){ delConfirm('catatan donasi', 'donation-delete', Number(b.dataset.del), refresh); }; });
+}
+function donationModal(c, d, refresh){
+  d = d || { date: today(), name: '', anonymous: false, amount: 0, donor_count: 1, prayer: '', show_prayer: true };
+  modal('<h2>' + (d.id ? 'Edit' : 'Catat') + ' Donasi</h2><form id="dF" novalidate>' +
+    '<div class="row2"><div><label class="lbl" for="dDate">Tanggal</label><input class="field" id="dDate" type="date" value="' + esc(d.date) + '"></div>' +
+    '<div><label class="lbl" for="dAmt">Nominal</label>' + moneyInput('dAmt', d.amount) + '</div></div>' +
+    '<label class="lbl" for="dName">Nama donatur</label><input class="field" id="dName" value="' + esc(d.name) + '" placeholder="Nama sesuai konfirmasi">' +
+    '<label class="check" style="display:flex;gap:8px;margin-top:8px;font-size:.88rem"><input type="checkbox" id="dAnon" ' + (d.anonymous ? 'checked' : '') + '> Tampilkan sebagai “Hamba Allah”</label>' +
+    '<label class="lbl" for="dCnt">Jumlah donatur dalam catatan ini</label><input class="field" id="dCnt" type="number" min="1" value="' + (d.donor_count || 1) + '"><div class="hint">Biarkan 1. Isi lebih dari 1 hanya untuk donasi gabungan, misalnya total dari Kitabisa.</div>' +
+    '<label class="lbl" for="dPr">Doa / pesan <span style="font-weight:500;color:var(--muted)">(opsional)</span></label><textarea class="field" id="dPr" maxlength="1000">' + esc(d.prayer) + '</textarea>' +
+    '<label class="check" style="display:flex;gap:8px;margin-top:8px;font-size:.88rem"><input type="checkbox" id="dShow" ' + (d.show_prayer !== false ? 'checked' : '') + '> Tampilkan doa di website</label>' +
+    '<div id="dErr" class="alert err" hidden></div>' +
+    '<div class="acts"><button type="button" class="btn btn-ghost" data-close>Batal</button><button class="btn btn-primary" id="dBtn">Simpan</button></div></form>',
+    function(box, close){
+      bindMoney(box);
+      box.querySelector('#dF').onsubmit = function(e){
+        e.preventDefault();
+        var err = box.querySelector('#dErr'), btn = box.querySelector('#dBtn');
+        var data = { campaign_id: c.id, id: d.id || 0, date: box.querySelector('#dDate').value, amount: num(box.querySelector('#dAmt').value),
+          name: box.querySelector('#dName').value.trim(), anonymous: box.querySelector('#dAnon').checked,
+          donor_count: Number(box.querySelector('#dCnt').value) || 1, prayer: box.querySelector('#dPr').value.trim(), show_prayer: box.querySelector('#dShow').checked };
+        if (!data.amount) return showErr(err, 'Isi nominal donasi.');
+        if (!data.name && !data.anonymous) return showErr(err, 'Isi nama donatur atau centang Hamba Allah.');
+        busy(btn, true);
+        api('admin', 'donation-save', { body: data }).then(function(r){ close(); toast('Donasi tercatat. Dana terkumpul diperbarui.'); refresh(r); })
+          .catch(function(x){ busy(btn, false); if (x.message !== '401') showErr(err, x.message); });
+      };
+    });
+}
+
+function panelUpdates(p, c, refresh){
+  p.innerHTML = '<div class="card"><div class="head" style="margin-bottom:10px"><div><h2>Kabar Terbaru</h2><p class="hint" style="margin:0">Kabarkan perkembangan penerima manfaat kepada donatur.</p></div>' +
+    '<button class="btn btn-primary btn-sm" data-add>' + ic('plus') + ' Tulis Kabar</button></div>' +
+    (c.updates.length ? '<div class="clist">' + c.updates.map(function(u, i){
+      return '<div class="rec">' + (u.image ? '<img src="' + esc(u.image) + '" alt="">' : '') + '<div style="flex:1;min-width:0"><div class="meta">' + fmtD(u.date) + '</div><h3>' + esc(u.title) + '</h3><p class="clip2">' + esc(u.body) + '</p></div>' +
+        '<div class="acts"><button class="btn btn-ghost btn-sm" data-ed="' + i + '">' + ic('edit') + '</button><button class="btn btn-danger btn-sm" data-del="' + u.id + '">' + ic('trash') + '</button></div></div>';
+    }).join('') + '</div>' : '<div class="empty">' + ic('flag') + '<p>Belum ada kabar terbaru.</p></div>') + '</div>';
+  p.querySelector('[data-add]').onclick = function(){ updateModal(c, null, refresh); };
+  p.querySelectorAll('[data-ed]').forEach(function(b){ b.onclick = function(){ updateModal(c, c.updates[Number(b.dataset.ed)], refresh); }; });
+  p.querySelectorAll('[data-del]').forEach(function(b){ b.onclick = function(){ delConfirm('kabar ini', 'update-delete', Number(b.dataset.del), refresh); }; });
+}
+function updateModal(c, u, refresh){
+  u = u || { date: today(), title: '', body: '', image: '' };
+  modal('<h2>' + (u.id ? 'Edit' : 'Tulis') + ' Kabar</h2><form id="uF" novalidate>' +
+    '<label class="lbl" for="uDate">Tanggal</label><input class="field" id="uDate" type="date" value="' + esc(u.date) + '">' +
+    '<label class="lbl" for="uTitle">Judul</label><input class="field" id="uTitle" maxlength="150" value="' + esc(u.title) + '" placeholder="Contoh: Adik Rafka mulai fisioterapi">' +
+    '<label class="lbl" for="uBody">Isi kabar</label><textarea class="field" id="uBody" style="min-height:140px">' + esc(u.body) + '</textarea>' +
+    '<label class="lbl">Foto</label><div id="uImg"></div>' +
+    '<div id="uErr" class="alert err" hidden></div>' +
+    '<div class="acts"><button type="button" class="btn btn-ghost" data-close>Batal</button><button class="btn btn-primary" id="uBtn">Simpan</button></div></form>',
+    function(box, close){
+      var img = singleImageField(box.querySelector('#uImg'), u.image);
+      box.querySelector('#uF').onsubmit = function(e){
+        e.preventDefault();
+        var err = box.querySelector('#uErr'), btn = box.querySelector('#uBtn');
+        if (img.busy()) return showErr(err, 'Tunggu foto selesai diunggah.');
+        var data = { campaign_id: c.id, id: u.id || 0, date: box.querySelector('#uDate').value, title: box.querySelector('#uTitle').value.trim(), body: box.querySelector('#uBody').value.trim(), image: img.get() };
+        if (!data.title) return showErr(err, 'Isi judul kabar.');
+        if (!data.body) return showErr(err, 'Isi kabar tidak boleh kosong.');
+        busy(btn, true);
+        api('admin', 'update-save', { body: data }).then(function(r){ close(); toast('Kabar tersimpan'); refresh(r); })
+          .catch(function(x){ busy(btn, false); if (x.message !== '401') showErr(err, x.message); });
+      };
+    });
+}
+
+function panelDisb(p, c, refresh){
+  var total = c.disbursements.reduce(function(s, d){ return s + Number(d.amount || 0); }, 0);
+  p.innerHTML = '<div class="stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="stat"><small>Total dicairkan</small><b>' + rp(total) + '</b></div>' +
+    '<div class="stat"><small>Sisa dana</small><b>' + rp(Math.max(0, c.collected - total)) + '</b><i>dari ' + rp(c.collected) + ' terkumpul</i></div></div>' +
+    '<div class="card"><div class="head" style="margin-bottom:10px"><div><h2>Pencairan Dana</h2><p class="hint" style="margin:0">Catat setiap penyaluran dana agar transparan bagi donatur.</p></div>' +
+    '<button class="btn btn-primary btn-sm" data-add>' + ic('plus') + ' Catat Pencairan</button></div>' +
+    (c.disbursements.length ? '<div class="clist">' + c.disbursements.map(function(d, i){
+      return '<div class="rec">' + (d.image ? '<img src="' + esc(d.image) + '" alt="">' : '') + '<div style="flex:1;min-width:0"><div class="meta">' + fmtD(d.date) + '</div><h3>' + rp(d.amount) + '</h3><p class="clip2">' + esc(d.description) + '</p></div>' +
+        '<div class="acts"><button class="btn btn-ghost btn-sm" data-ed="' + i + '">' + ic('edit') + '</button><button class="btn btn-danger btn-sm" data-del="' + d.id + '">' + ic('trash') + '</button></div></div>';
+    }).join('') + '</div>' : '<div class="empty">' + ic('flag') + '<p>Belum ada pencairan dana.</p></div>') + '</div>';
+  p.querySelector('[data-add]').onclick = function(){ disbModal(c, null, refresh); };
+  p.querySelectorAll('[data-ed]').forEach(function(b){ b.onclick = function(){ disbModal(c, c.disbursements[Number(b.dataset.ed)], refresh); }; });
+  p.querySelectorAll('[data-del]').forEach(function(b){ b.onclick = function(){ delConfirm('data pencairan', 'disb-delete', Number(b.dataset.del), refresh); }; });
+}
+function disbModal(c, d, refresh){
+  d = d || { date: today(), amount: 0, description: '', image: '' };
+  modal('<h2>' + (d.id ? 'Edit' : 'Catat') + ' Pencairan</h2><form id="pF" novalidate>' +
+    '<div class="row2"><div><label class="lbl" for="pDate">Tanggal</label><input class="field" id="pDate" type="date" value="' + esc(d.date) + '"></div>' +
+    '<div><label class="lbl" for="pAmt">Nominal</label>' + moneyInput('pAmt', d.amount) + '</div></div>' +
+    '<label class="lbl" for="pDesc">Keterangan</label><textarea class="field" id="pDesc" placeholder="Contoh: Biaya fisioterapi 2x seminggu bulan November dan susu khusus">' + esc(d.description) + '</textarea>' +
+    '<label class="lbl">Foto bukti</label><div id="pImg"></div>' +
+    '<div id="pErr" class="alert err" hidden></div>' +
+    '<div class="acts"><button type="button" class="btn btn-ghost" data-close>Batal</button><button class="btn btn-primary" id="pBtn">Simpan</button></div></form>',
+    function(box, close){
+      bindMoney(box);
+      var img = singleImageField(box.querySelector('#pImg'), d.image);
+      box.querySelector('#pF').onsubmit = function(e){
+        e.preventDefault();
+        var err = box.querySelector('#pErr'), btn = box.querySelector('#pBtn');
+        if (img.busy()) return showErr(err, 'Tunggu foto selesai diunggah.');
+        var data = { campaign_id: c.id, id: d.id || 0, date: box.querySelector('#pDate').value, amount: num(box.querySelector('#pAmt').value), description: box.querySelector('#pDesc').value.trim(), image: img.get() };
+        if (!data.amount) return showErr(err, 'Isi nominal pencairan.');
+        if (!data.description) return showErr(err, 'Isi keterangan pencairan.');
+        busy(btn, true);
+        api('admin', 'disb-save', { body: data }).then(function(r){ close(); toast('Pencairan tersimpan'); refresh(r); })
+          .catch(function(x){ busy(btn, false); if (x.message !== '401') showErr(err, x.message); });
+      };
+    });
 }
 
 // Kecilkan foto di browser: sisi terpanjang maks 1600px, format WEBP/JPEG.
