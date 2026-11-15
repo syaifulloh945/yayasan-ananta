@@ -3,6 +3,7 @@
 import { neon } from '@neondatabase/serverless';
 import crypto from 'node:crypto';
 import { SEED_CAMPAIGNS } from './_seed.js';
+import { RAFKA_SLUG, RAFKA_STORY_HTML } from './_rafka_story.js';
 
 /* ---------------- Error & respons ---------------- */
 export class HttpError extends Error {
@@ -150,6 +151,12 @@ export function ensureSchema() {
                  VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10::jsonb,$11,$12) ON CONFLICT (slug) DO NOTHING`,
           [s.slug, s.title, s.category, s.summary, s.story, s.target, s.collected, s.donors, s.deadline,
             JSON.stringify(s.images), s.visible, s.sort]);
+      }
+      // Cerita Rafka hasil impor Word (sekali saja).
+      const rk = await q(`INSERT INTO meta (key) VALUES ('rafka-story-v2') ON CONFLICT (key) DO NOTHING RETURNING key`);
+      if (rk[0]) {
+        const html = sanitizeStory(RAFKA_STORY_HTML);
+        await q('UPDATE campaigns SET story_html = $1, story = $2, updated_at = now() WHERE slug = $3', [html, htmlToText(html), RAFKA_SLUG]);
       }
     })().catch((e) => { schemaReady = null; throw e; });
   }
