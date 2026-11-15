@@ -499,7 +499,7 @@ textarea.field{min-height:84px;resize:vertical}
 .rich em{font-style:italic}
 .rich h3{font-size:1.1rem;margin:1.3em 0 .5em;text-align:left}
 .rich blockquote{margin:0 0 1em;padding:10px 14px;border-left:4px solid var(--lime);background:var(--lime-100);border-radius:0 12px 12px 0;font-style:italic;text-align:left}
-.rich img{display:block;max-width:100%;width:auto;height:auto;max-height:560px;border-radius:14px;margin:6px auto 14px;background:#eef3ea}
+.rich img{display:block;max-width:100%;width:auto;height:auto;max-height:560px;min-width:40%;border-radius:14px;margin:6px auto 14px;background:#eef3ea}
 .rich p:has(> img){text-align:center}
 .rich p:has(> img ~ img){display:flex;gap:8px;align-items:stretch}
 .rich p:has(> img ~ img) > img{flex:1 1 0;min-width:0;width:0;max-height:440px;object-fit:cover;margin:6px 0 14px}
@@ -1730,6 +1730,7 @@ var PROGRAMS = [
         '<div class="cv-disc">' + ico("alert") + '<div><b>Disclaimer</b>Informasi, opini, dan foto yang ada di halaman galang dana ini adalah tanggung jawab Yayasan Ananta Karuna Bahagia sebagai penggalang dana. Jika ada pertanyaan atau kecurigaan, hubungi kami melalui WhatsApp.</div></div>' +
         (prayers.length ? '<h2 class="cv-h">Doa-doa Orang Baik</h2><div class="cv-list">' + prayers.slice(0, 3).map(prayerItem).join("") + '</div>' +
           (prayers.length > 3 ? '<button class="cv-link" data-more-doa>Lihat semua doa (' + prayers.length + ') →</button>' : '') : '');
+      $$(".rich img", box).forEach(function(im){ im.removeAttribute("loading"); im.loading = "eager"; });
       var story = $("#cvStory"), more = $("#cvMore");
       if (story && more) {
         var check = function(){ if (story.classList.contains("clamp") && story.scrollHeight <= 600) { story.classList.remove("clamp"); more.hidden = true; } };
